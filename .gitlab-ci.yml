@@ -47,6 +47,6 @@ pages:
     - mv dist public
   artifacts:
     paths:
-      - static
+      - public
   only:
     - master
