@@ -1,4 +1,4 @@
-image: node:current-alpine-3.15
+image: node:current-alpine3.15
 
 variables:
   # to cache oth npm modules and Cypress binary we use environment variables
