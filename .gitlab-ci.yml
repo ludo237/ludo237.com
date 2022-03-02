@@ -15,10 +15,9 @@ cache:
 
 lint:
   script:
-    #- npm install -E
-    #- npm run lint
-    #- npm run typecheck
-    - echo hi
+    - npm install -E
+    - npm run lint
+    - npm run typecheck
 
 build:
   environment:
