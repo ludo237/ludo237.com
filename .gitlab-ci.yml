@@ -25,6 +25,7 @@ build:
   artifacts:
     paths:
       - node_modules/
+      - dist/
     expire_in: 1 day
     when: always
   needs:
