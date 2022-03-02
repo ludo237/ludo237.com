@@ -4,15 +4,8 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 
-let base = "/";
-
-if (process.env.CI_JOB_NAME === "pages") {
-  base = process.env.CI_PAGES_URL ? new URL(process.env.CI_PAGES_URL).pathname : "/";
-}
-
 // https://vitejs.dev/config/
 export default defineConfig({
-  base,
   publicDir: "static",
   plugins: [vue(), vueJsx()],
   resolve: {
