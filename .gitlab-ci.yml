@@ -4,18 +4,19 @@ variables:
   # to cache oth npm modules and Cypress binary we use environment variables
   # to point at the folders we can list as paths in "cache" job settings
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cypress"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/Cypress"
 
 cache:
   key: "${CI_COMMIT_REF_SLUG}"
   paths:
     - .npm
-    - cypress
+    - Cypress
     - node_modules
 
 lint:
   script:
     - npm install -E
+    - npm run lint
     - npm run typecheck
 
 build:
@@ -34,7 +35,6 @@ build:
     - apk add curl g++ python3 make
     - curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | ash -s -- -b /usr/local/bin
   script:
-    - cp .env.example .env
     - npm install -E
     - npm run build
 
