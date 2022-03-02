@@ -4,13 +4,13 @@ variables:
   # to cache oth npm modules and Cypress binary we use environment variables
   # to point at the folders we can list as paths in "cache" job settings
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/Cypress"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cypress"
 
 cache:
   key: "${CI_COMMIT_REF_SLUG}"
   paths:
     - .npm
-    - Cypress
+    - cypress
     - node_modules
 
 lint:
