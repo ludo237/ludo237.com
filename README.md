@@ -1,3 +1,3 @@
-# ludo237dotcom
+# Ludo237.com
 
-Source code of my website
+My personal website
