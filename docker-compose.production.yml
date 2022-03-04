@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  nuxt:
+  remix:
     image: registry.gitlab.com/ludo237/ludo237.com/remix:production
     container_name: ludo_remix
     restart: always
