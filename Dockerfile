@@ -7,8 +7,7 @@ WORKDIR /build_app
 COPY ./ .
 
 RUN npm install -E \
-    && npm run build \
-    && rm -f .env.example
+    && npm run build
 
 FROM node:16-alpine
 

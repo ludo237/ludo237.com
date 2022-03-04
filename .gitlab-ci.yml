@@ -24,9 +24,6 @@ cache:
     - Cypress
     - node_modules
 
-before_script:
-  - cp .env.example .env
-
 build:
   image: docker:stable
   services:
