@@ -14,6 +14,7 @@ const useTextareaClass = createMemoClass((props: TextareaProps) => {
 
   return cx(
     "block w-full sm:text-sm rounded-md",
+    "text-slate-900 dark:text-slate-50 dark:bg-slate-800 placeholder-slate-500 dark:placeholder-slate-200",
     styles[props.appearance ?? "normal"],
   );
 });

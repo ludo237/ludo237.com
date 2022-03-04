@@ -7,7 +7,7 @@ type InputGroupProps = {
   children: React.ReactNode
 };
 
-export default function InputGroupProps (props: InputGroupProps) {
+export default function InputGroup (props: InputGroupProps) {
   const { children, label } = props;
 
   return (

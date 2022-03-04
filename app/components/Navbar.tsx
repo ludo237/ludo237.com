@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Brand from "~/components/Brand";
+import Icon from "~/components/Icon";
 import Link from "~/components/Link";
 
 const navigation = [
@@ -22,9 +22,9 @@ export default function Navbar () {
             <Brand />
             <div className="-mr-2 flex items-center md:hidden">
               <Popover.Button
-                className="bg-white rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:bg-slate-700 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
+                className="rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
                 <span className="sr-only">Open main menu</span>
-                <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                <Icon className="h-6 w-6" aria-hidden="true" icon={["fas", "bars"]} />
               </Popover.Button>
             </div>
           </div>
@@ -51,14 +51,14 @@ export default function Navbar () {
           focus
           className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
         >
-          <div className="rounded-lg shadow-lg border border-slate-50 bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+          <div className="rounded-lg shadow-lg border border-sky-50 dark:border-sky-800 bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="px-5 pt-4 flex items-center justify-between">
               <Brand />
               <div className="-mr-4">
                 <Popover.Button
-                  className="bg-white rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  className="rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
                   <span className="sr-only">Close menu</span>
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <Icon className="h-6 w-6" aria-hidden="true" icon={["fas", "times"]} />
                 </Popover.Button>
               </div>
             </div>

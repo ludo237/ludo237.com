@@ -14,7 +14,7 @@ export default function Input (props: DetailedHTMLProps<InputHTMLAttributes<HTML
       type={type}
       name={name}
       id={`#${id}`}
-      className="block w-full border-0 p-0 text-slate-900 placeholder-slate-500 focus:ring-0 sm:text-sm"
+      className="block w-full border-0 p-0 text-slate-900 dark:text-slate-50 dark:bg-slate-800 placeholder-slate-500 dark:placeholder-slate-200 focus:ring-0 sm:text-sm"
       placeholder={placeholder}
       {...rest}
     />
