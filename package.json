@@ -5,6 +5,7 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
+    "postinstall": "remix setup",
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./app/styles/tailwind.build.css -o app/styles/tailwind.css",
     "dev:css": "tailwindcss -w -i ./app/styles/tailwind.build.css -o app/styles/tailwind.css",
@@ -16,24 +17,24 @@
     "@heroicons/react": "^1.0.6",
     "@remix-run/react": "^1.2.3",
     "@remix-run/serve": "^1.2.3",
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "clsx": "^1.1.1",
     "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "remix": "^1.2.3"
+    "remix": "^1.2.3",
+    "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.2.3",
     "@remix-run/eslint-config": "^1.2.3",
-    "@tailwindcss/forms": "^0.5.0",
-    "@tailwindcss/typography": "^0.5.2",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "autoprefixer": "^10.4.2",
-    "clsx": "^1.1.1",
     "concurrently": "^7.0.0",
     "eslint": "^8.9.0",
     "postcss": "^8.4.7",
-    "tailwindcss": "^3.0.23",
     "typescript": "^4.5.5"
   },
   "engines": {

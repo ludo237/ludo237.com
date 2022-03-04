@@ -1,13 +1,25 @@
-import { Form } from "@remix-run/react";
+import { Form, useTransition } from "@remix-run/react";
+import Button from "~/components/Button";
+import ExternalLink from "~/components/ExternalLink";
 import Input from "~/components/Input";
 import InputGroup from "~/components/InputGroup";
 import Textarea from "~/components/Textarea";
 
+const socialLinks = [
+  { href: "https://t.me/ludo237", name: "Telegram" },
+  { href: "https://twitter.com/ludo237", name: "Twitter" },
+  { href: "https://github.com/ludo237", name: "Github" },
+];
+
+// TODO this can be promoted to sub route technically
 export default function ContactForm () {
+  const transition = useTransition();
+
   return (
     <div className="bg-white shadow-md border border-sky-200 sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
-      <div className="px-4 py-8 sm:px-10 space-y-3">
-        <Form action="#" method="post" className="space-y-6">
+      <div className="px-4 pb-8 pt-7 sm:px-10 space-y-4">
+        <h2 className="leading-loose">Contact Me</h2>
+        <Form method="post" className="space-y-6">
           <div className="flex justify-between items-baseline space-x-3">
             <InputGroup label={"Your Name"}>
               <Input
@@ -42,14 +54,13 @@ export default function ContactForm () {
             />
           </InputGroup>
 
-          <div>
-            <button
-              type="submit"
-              className="transition-colors w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
-            >
-              Send
-            </button>
-          </div>
+          <Button
+            type={"submit"}
+            className="w-full"
+            loading={transition.state !== "idle"}
+          >
+            <span className="w-full text-center">Send</span>
+          </Button>
         </Form>
 
         <div className="relative">
@@ -62,35 +73,16 @@ export default function ContactForm () {
         </div>
         <p className="text-sm font-medium text-slate-700">Reach me on</p>
         <div className="mt-1 grid grid-cols-3 gap-3">
-          <div>
-            <a
-              href="#"
-              className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 hover:bg-slate-50"
+          {socialLinks.map((socialLink, index) =>
+            <ExternalLink
+              key={index}
+              to={socialLink.href}
+              className="inline-flex justify-center py-1.5 px-3.5 border border-slate-300 rounded-md shadow-sm bg-white"
             >
-              <span className="sr-only">Telegram</span>
-              Telegram
-            </a>
-          </div>
-
-          <div>
-            <a
-              href="#"
-              className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 hover:bg-slate-50"
-            >
-              <span className="sr-only">Twitter</span>
-              Twitter
-            </a>
-          </div>
-
-          <div>
-            <a
-              href="#"
-              className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-md shadow-sm bg-white text-sm font-medium text-slate-500 hover:bg-slate-50"
-            >
-              <span className="sr-only">GitHub</span>
-              Github
-            </a>
-          </div>
+              <span className="sr-only">{socialLink.name}</span>
+              {socialLink.name}
+            </ExternalLink>,
+          )}
         </div>
       </div>
     </div>

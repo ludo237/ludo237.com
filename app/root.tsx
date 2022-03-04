@@ -10,7 +10,9 @@ import type { MetaFunction } from "remix";
 import styles from "./styles/tailwind.css";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return {
+    title: "Claudio Ludovico | Entrepreneur, Coder and Futurist",
+  };
 };
 
 export const links: LinksFunction = () => {

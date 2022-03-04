@@ -1,10 +1,8 @@
-import { Link } from "@remix-run/react";
+import Link from "~/components/Link";
 
 export default function Brand () {
   return (
-    <Link
-      to="/"
-    >
+    <Link to="/">
       <div className="border border-sky-500 border-4 inline-flex justify-between items-baseline">
         <div className="text-lg px-2 py-0.5 font-medium text-sky-500 uppercase">
           Ludo

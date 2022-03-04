@@ -1,10 +1,20 @@
 import { ChevronRightIcon } from "@heroicons/react/solid";
+import { ActionFunction } from "remix";
+import { delay } from "~/utils";
 import ContactForm from "~/components/ContactForm";
 import Link from "~/components/Link";
 import Navbar from "~/components/Navbar";
 
+export const action: ActionFunction = async () => {
+  // TODO validate the schema client side
+  // Actually save the inquiry in our local DB with Prisma
+  // Create a cookie or whatever to store the current user-uuid inquiry in order to let the user do only 1 inquiry a day
+  // Returns le funny message if OK or something else if KO
+  await delay(5000, () => console.log("simulation"));
+  return {};
+};
 
-export default function Example () {
+export default function Index () {
   return (
     <div className="relative pt-6 pb-16 sm:pb-24">
       <Navbar />
