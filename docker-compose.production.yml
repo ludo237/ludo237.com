@@ -6,7 +6,7 @@ services:
     container_name: ludo_remix
     restart: always
     volumes:
-      - ./production.db:/usr/src/app/prisma/database.db
+      - ./database.db:/usr/src/app/prisma/database.db
     ports:
       - "3002:3000"
     networks:
