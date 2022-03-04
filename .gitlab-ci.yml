@@ -1,10 +1,21 @@
-image: node:current-alpine3.15
+image: node:16-alpine
 
 variables:
-  # to cache oth npm modules and Cypress binary we use environment variables
-  # to point at the folders we can list as paths in "cache" job settings
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_DRIVER: overlay2
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/Cypress"
+
+.init_ssh: &init_ssh |
+  apk add --update openssh-client bash
+  mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+  echo $SSH_PRIVATE_KEY >> ~/.ssh/id_ed25519
+  chmod 400 ~/.ssh/id_ed25519
+  eval $(ssh-agent -s)
+  echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 cache:
   key: "${CI_COMMIT_REF_SLUG}"
@@ -12,3 +23,28 @@ cache:
     - .npm
     - Cypress
     - node_modules
+
+build:
+  image: docker:stable
+  services:
+    - docker:stable-dind
+  before_script:
+    - DOCKER_TAG=${CI_COMMIT_TAG:-branch-$CI_COMMIT_REF_NAME}
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker pull $CI_REGISTRY/ludo237/ludo237.com/remix:production || true
+    - docker build . --cache-from $CI_REGISTRY/ludo237/ludo237.com/remix:production -t $CI_REGISTRY/ludo237/ludo237.com/remix:production -f ./.docker/Dockerfile
+    - docker push $CI_REGISTRY/ludo237/ludo237.com/remix:production
+
+production:
+  stage: deploy
+  needs: [ "build" ]
+  dependencies:
+    - build
+  environment:
+    name: production
+  before_script:
+    - *init_ssh
+  script:
+    - scp -i ~/.ssh/id_ed25519 -P $SSH_PORT docker-compose.production.yml $SSH_USER@$IP:$PRODUCTION_PATH/docker-compose.yml
+    - ssh -i ~/.ssh/id_ed25519 -p $SSH_PORT $SSH_USER@$IP "cd $PRODUCTION_PATH && docker-compose pull && docker-compose up -d --build && exit"

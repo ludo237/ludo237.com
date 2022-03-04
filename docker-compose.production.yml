@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  nuxt:
+    image: registry.gitlab.com/ludo237/ludo237.com/remix:production
+    container_name: ludo_remix
+    restart: always
+    ports:
+      - "3002:3000"
+    networks:
+      - ludo
+
+networks:
+  ludo:
+    external: true
+    name: ludo
