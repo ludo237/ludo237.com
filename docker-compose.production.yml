@@ -12,5 +12,5 @@ services:
 
 networks:
   ludo:
-    external: true
+    external: false
     name: ludo
