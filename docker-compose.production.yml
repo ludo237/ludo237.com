@@ -5,6 +5,8 @@ services:
     image: registry.gitlab.com/ludo237/ludo237.com/remix:production
     container_name: ludo_remix
     restart: always
+    volumes:
+      - ./production.db:/usr/src/app/prisma/database.db
     ports:
       - "3002:3000"
     networks:

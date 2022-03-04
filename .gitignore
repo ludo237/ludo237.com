@@ -1,6 +1,7 @@
-node_modules
+/node_modules
 /.idea
 /.cache
 /build
 /public/build
+/prisma/database.db
 .env

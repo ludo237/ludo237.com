@@ -1,5 +1,5 @@
 import { ActionFunction } from "remix";
-import { delay } from "~/utils";
+import { createInquiry } from "~/api/inquiry";
 import ContactForm from "~/components/ContactForm";
 import Link from "~/components/Link";
 import Navbar from "~/components/Navbar";
@@ -10,8 +10,13 @@ export const action: ActionFunction = async () => {
   // Actually save the inquiry in our local DB with Prisma
   // Create a cookie or whatever to store the current user-uuid inquiry in order to let the user do only 1 inquiry a day
   // Returns le funny message if OK or something else if KO
-  await delay(5000, () => console.log("simulation"));
-  return {};
+  const inquiry = await createInquiry({
+    name: "foo",
+    email: "foo@bar.com",
+    content: "hello world",
+  });
+
+  return { inquiry };
 };
 
 export default function Index () {
