@@ -5,6 +5,8 @@ services:
     image: registry.gitlab.com/ludo237/ludo237.com/remix:production
     container_name: ludo_remix
     restart: always
+    env_file:
+      - ./.env
     volumes:
       - ./database.db:/usr/src/app/prisma/database.db
     ports:

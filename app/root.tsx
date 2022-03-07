@@ -14,6 +14,7 @@ import styles from "./styles/tailwind.css";
 export const meta: MetaFunction = () => {
   return {
     title: "Claudio Ludovico | Entrepreneur, Coder and Futurist",
+    description: "I'm part of the ‘90s generation that grew up with the Fresh Prince of Bel Air and the Commodore 64.",
   };
 };
 
