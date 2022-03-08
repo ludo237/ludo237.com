@@ -4,6 +4,9 @@
   "description": "My personal website",
   "license": "MIT",
   "sideEffects": false,
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "postinstall": "remix setup",
     "build": "npm run build:css && remix build",
@@ -39,9 +42,11 @@
     "@types/react-dom": "^17.0.9",
     "autoprefixer": "^10.4.2",
     "concurrently": "^7.0.0",
+    "esbuild-register": "^3.3.2",
     "eslint": "^8.9.0",
     "postcss": "^8.4.7",
     "prisma": "^3.10.0",
+    "ts-node": "^10.7.0",
     "typescript": "^4.5.5"
   },
   "engines": {

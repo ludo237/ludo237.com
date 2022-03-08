@@ -2,14 +2,14 @@ import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { config, library } from "@fortawesome/fontawesome-svg-core";
-import { faBars, faCheckCircle, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCheckCircle, faChevronRight, faPaperclip, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faTelegram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 // We handle the CSS somewhere else
 config.autoAddCss = false;
 
 library.add(
-  faBars, faCheckCircle, faChevronRight, faGithub, faTelegram, faTimes, faTwitter,
+  faBars, faCheckCircle, faChevronRight, faGithub, faPaperclip, faTelegram, faTimes, faTwitter,
 );
 
 export default function Icon (props: FontAwesomeIconProps) {

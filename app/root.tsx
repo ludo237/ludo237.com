@@ -9,6 +9,7 @@ import {
 } from "remix";
 import { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import type { MetaFunction } from "remix";
+import Navbar from "~/components/Navbar";
 import styles from "./styles/tailwind.css";
 
 export const meta: MetaFunction = () => {
@@ -66,8 +67,13 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
 export default function App () {
   return (
     <Document>
-      <main>
-        <Outlet />
+      <main className="relative pt-3 pb-16 sm:pb-24">
+        <Navbar />
+        <div className="mt-10 sm:mt-20">
+          <div className="mx-auto max-w-7xl">
+            <Outlet />
+          </div>
+        </div>
         <ScrollRestoration />
         <LiveReload />
       </main>
