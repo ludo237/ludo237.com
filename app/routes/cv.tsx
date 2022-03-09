@@ -1,5 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
-import { LoaderFunction } from "remix";
+import { LoaderFunction, MetaFunction } from "remix";
 import { Education, Job, Language, Project } from "~/api/types";
 import { getEducations, getJobs, getLanguages, getProjects } from "~/api/curriculum";
 import ExternalLink from "~/components/ExternalLink";
@@ -11,6 +11,13 @@ type LoaderData = {
   languages: Language[],
   jobs: Job[],
   projects: Project[],
+};
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "My curriculum",
+    description: "Take a look at my working history, skills, educations and more",
+  };
 };
 
 export const loader: LoaderFunction = async () => {
@@ -78,12 +85,13 @@ export default function Cv () {
             <dt className="text-sm font-medium text-slate-500">Noteworthy skills and interests</dt>
             <dd className="mt-1 text-sm sm:mt-0 sm:col-span-2">
               <p className="prose prose-sm max-w-none">
-                I'm fluent with backend languages such as PHP (10 years of experience), Go (~1 year of experience), Python and Ruby for scripting
-                purposes. I'm also able to manage IAAS with Terraform and orchestrate Docker containers with k8s. I like to write front end
-                applications using Vue and React though recently I've moved more towards React because of how confused was the Vue 3 migration, when I
-                have time I like to research and study about UX design on web and mobile in order to understand how to create good looking and easy to
-                use interfaces. In my spare time I study finance and economy in order to understand how the world works on a macro scale, I also
-                engage in Bitcoin-only conversations and play video games.
+                I'm fluent with backend languages such as <strong>PHP</strong> (10 years of experience), <strong>GO</strong>, <strong>Python</strong>
+                and <strong>Ruby</strong> for scripting purposes. I'm also able to manage <i>IAAS</i> with <strong>Terraform</strong> and orchestrate
+                <strong>Docker</strong> containers with k8s. I like to write front end applications
+                using <strong>Vue</strong> and <strong>React</strong> though recently I've moved more towards React because of how confused
+                the Vue 3 migration was. When I have time I like to research and study about UX design on web and mobile in order to understand how
+                to create good looking and easy to use interfaces. In my spare time I study finance and economy in order to understand how the world
+                works on a macro scale, I also engage in Bitcoin-only conversations and play video games.
               </p>
             </dd>
           </div>
