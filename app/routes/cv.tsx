@@ -4,7 +4,6 @@ import { Education, Job, Language, Project } from "~/api/types";
 import { getEducations, getJobs, getLanguages, getProjects } from "~/api/curriculum";
 import ExternalLink from "~/components/ExternalLink";
 import Icon from "~/components/Icon";
-import Link from "~/components/Link";
 
 type LoaderData = {
   contacts: { href: string, name: string }[],

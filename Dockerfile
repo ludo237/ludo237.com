@@ -21,6 +21,7 @@ COPY --from=BUILDER /build_app/node_modules /usr/src/app/node_modules
 COPY --from=BUILDER /build_app/.cache /usr/src/app/.cache
 COPY --from=BUILDER /build_app/build /usr/src/app/build
 COPY --from=BUILDER /build_app/public /usr/src/app/public
+COPY --from=BUILDER /build_app/prisma /usr/src/app/prisma
 
 EXPOSE 3000
 

@@ -48,3 +48,5 @@ production:
   script:
     - scp -i ~/.ssh/id_ed25519 -P $SSH_PORT docker-compose.production.yml $SSH_USER@$IP:$PRODUCTION_PATH/docker-compose.yml
     - ssh -i ~/.ssh/id_ed25519 -p $SSH_PORT $SSH_USER@$IP "cd $PRODUCTION_PATH && docker-compose pull && docker-compose up -d --build && exit"
+    - ssh -i ~/.ssh/id_ed25519 -p $SSH_PORT $SSH_USER@$IP "cd $PRODUCTION_PATH && docker exec -it ludo_remix npx prisma db pull && exit"
+    - ssh -i ~/.ssh/id_ed25519 -p $SSH_PORT $SSH_USER@$IP "cd $PRODUCTION_PATH && docker exec -it ludo_remix npx prisma generate && exit"
