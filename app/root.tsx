@@ -10,7 +10,7 @@ import {
 import { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import type { MetaFunction } from "remix";
 import Navbar from "~/components/Navbar";
-import styles from "./styles/tailwind.css";
+import styles from "~/styles/tailwind.css";
 
 export const meta: MetaFunction = () => {
   return {

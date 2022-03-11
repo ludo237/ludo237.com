@@ -7,11 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Inquiry {
+model Post {
   id        String   @id @default(uuid())
-  name      String
-  email     String
-  content   String
+  slug      String   @unique
+  title     String
+  excerpt   String
+  markdown  String
+  html      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

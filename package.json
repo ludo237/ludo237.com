@@ -38,16 +38,20 @@
   "devDependencies": {
     "@remix-run/dev": "^1.2.3",
     "@remix-run/eslint-config": "^1.2.3",
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
+    "@types/markdown-it": "^12.2.3",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.13",
     "autoprefixer": "^10.4.2",
     "concurrently": "^7.0.0",
     "esbuild-register": "^3.3.2",
-    "eslint": "^8.9.0",
-    "postcss": "^8.4.7",
+    "eslint": "^8.10.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^12.3.2",
+    "postcss": "^8.4.8",
     "prisma": "^3.10.0",
+    "tiny-glob": "^0.2.9",
     "ts-node": "^10.7.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.2"
   },
   "engines": {
     "node": ">=14"

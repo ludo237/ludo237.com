@@ -1,19 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { Form, useActionData, useLoaderData, useTransition } from "@remix-run/react";
-import { ActionFunction, json, LoaderFunction } from "remix";
-import { object, string } from "yup";
-import { createInquirySession, getInquiryId } from "~/modules/session.server";
-import { parseFormData } from "~/utils";
-import { createInquiry } from "~/api/inquiry";
-import Alert from "~/components/Alert";
-import Button from "~/components/Button";
 import ExternalLink from "~/components/ExternalLink";
 import Link from "~/components/Link";
 import Icon from "~/components/Icon";
-import Input from "~/components/Input";
-import InputGroup from "~/components/InputGroup";
-import Navbar from "~/components/Navbar";
-import Textarea from "~/components/Textarea";
 
 const socialLinks: { href: string, name: string, icon: IconProp }[] = [
   { href: "https://t.me/ludo237", name: "Telegram", icon: ["fab", "telegram"] },
@@ -21,49 +9,7 @@ const socialLinks: { href: string, name: string, icon: IconProp }[] = [
   { href: "https://github.com/ludo237", name: "Github", icon: ["fab", "github"] },
 ];
 
-const inquirySchema = object({
-  name: string().required(),
-  email: string().required().email(),
-  message: string().required(),
-});
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const id = await getInquiryId(request);
-
-  if (id) {
-    return { submitted: true };
-  }
-
-  return {};
-};
-
-export const action: ActionFunction = async ({ request }) => {
-  const [formData, errors] = await parseFormData(request, inquirySchema);
-
-  if (!formData || errors) {
-    return { errors };
-  }
-
-  const inquiry = await createInquiry({
-    name: formData.name,
-    email: formData.email,
-    content: formData.message,
-  });
-
-  return json({ submitted: true, inquiry },
-    {
-      headers: {
-        "Set-Cookie": await createInquirySession(inquiry),
-      },
-    },
-  );
-};
-
 export default function Index () {
-  const transition = useTransition();
-  const loaderData = useLoaderData();
-  const actionData = useActionData();
-
   return (
     <div className="lg:grid lg:grid-cols-12 lg:gap-8">
       <div className="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
@@ -102,83 +48,24 @@ export default function Index () {
       </div>
       <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
         <div className="shadow-md border border-sky-200 sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
-          <div className="px-4 pb-8 pt-7 sm:px-10 space-y-4">
-            {actionData?.submitted || loaderData?.submitted
-              ? <>
-                <Alert
-                  color={"green"}
-                  icon={"check-circle"}
-                >
-                  <p>Your inquiry has been sent. Allow me a few days to answer you</p>
-                </Alert>
-              </>
-              : <>
-                <h2 className="leading-loose text-slate-900 dark:text-slate-50">Contact Me</h2>
-                <Form method={"post"} className="space-y-6">
-                  <InputGroup
-                    label={"Your Name"}
-                    error={actionData?.errors?.name}
-                  >
-                    <Input
-                      type={"text"}
-                      name={"name"}
-                      id={"name"}
-                      autoComplete={"name"}
-                      placeholder="Foo Bar"
-                      required
-                    />
-                  </InputGroup>
-
-                  <InputGroup
-                    label={"Your Email"}
-                    error={actionData?.errors?.email}
-                  >
-                    <Input
-                      type={"email"}
-                      name={"email"}
-                      id={"email"}
-                      autoComplete={"email"}
-                      placeholder="foo@bar.com"
-                      required
-                    />
-                  </InputGroup>
-
-                  <InputGroup
-                    label={"Your Message"}
-                    error={actionData?.errors?.message}
-                  >
-                    <Textarea
-                      appearance={"transparent"}
-                      id={"message"}
-                      name={"message"}
-                      placeholder={"Hello I would like to..."}
-                      required
-                    />
-                  </InputGroup>
-
-                  <Button
-                    type={"submit"}
-                    className="w-full"
-                    loading={transition.state !== "idle"}
-                  >
-                    <span className="w-full text-center">Send</span>
-                  </Button>
-                </Form>
-
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div className="w-full border-t border-sky-200" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="py-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-100">Or</span>
-                  </div>
-                </div>
-              </>
-            }
-            <p className="text-sm font-medium text-slate-700 dark:text-slate-100">Reach me on</p>
+          <div className="px-4 pb-8 pt-7 sm:px-10 space-y-2">
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-100">
+              <span className={"mr-1"}>If you want to send me an inquiry you can reach me at</span>
+              <ExternalLink to={"mailto:inquiry@ludo237.com"} color={"sky"} size={"sm"}>inquiry@ludo237.com</ExternalLink>
+            </p>
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                <div className="w-full border-t border-sky-200" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="py-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-100">Or</span>
+              </div>
+            </div>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-100">You can find me on</p>
             <div className="mt-1 grid grid-cols-3 gap-3">
               {socialLinks.map((socialLink, index) =>
                 <ExternalLink
+                  title={socialLink.name}
                   key={index}
                   to={socialLink.href}
                   className="inline-flex justify-center py-1.5 px-3.5 border border-slate-300 rounded-md shadow-sm"
