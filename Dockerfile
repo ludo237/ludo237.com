@@ -1,6 +1,11 @@
 FROM node:16-alpine as BUILDER
 
+ARG DATABASE_URL="file:./database.db"
+ARG SESSION_SECRET=abcd12345
+
 ENV PATH=/build_app/node_modules/.bin:$PATH
+ENV DATABASE_URL ${DATABASE_URL}
+ENV SESSION_SECRET ${SESSION_SECRET}
 
 WORKDIR /build_app
 
@@ -11,8 +16,13 @@ RUN npm install -E \
 
 FROM node:16-alpine
 
+ARG DATABASE_URL="file:./database.db"
+ARG SESSION_SECRET=abcd12345
+
 ENV NODE_ENV=production
-ENV PATH=/usr/src/app/node_modules/.bin:$PATH
+ENV PATH=/build_app/node_modules/.bin:$PATH
+ENV DATABASE_URL ${DATABASE_URL}
+ENV SESSION_SECRET ${SESSION_SECRET}
 
 WORKDIR /usr/src/app
 
