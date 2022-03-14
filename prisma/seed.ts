@@ -6,9 +6,13 @@ import matter from "gray-matter";
 
 const db = new PrismaClient();
 
-const main = async () => {
+const fetchFiles = async (path: string): Promise<string[]> => {
+  return await glob(path, { filesOnly: true, flush: true });
+};
+
+const postsSeeder = async () => {
   const markdown = new MarkdownIt();
-  let files = await glob("posts/*.mdx", { filesOnly: true, flush: true });
+  const files = await fetchFiles("posts/*.mdx");
 
   for (let file of files) {
     const data = await fs.readFile(`./${file}`);
@@ -24,6 +28,10 @@ const main = async () => {
       },
     });
   }
+};
+
+const main = async () => {
+  await postsSeeder();
 };
 
 main()

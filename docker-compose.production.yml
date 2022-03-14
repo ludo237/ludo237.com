@@ -7,8 +7,6 @@ services:
     restart: always
     env_file:
       - ./.env
-    volumes:
-      - ./database.db:/usr/src/app/prisma/database.db
     ports:
       - "3002:3000"
     networks:

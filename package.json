@@ -9,8 +9,9 @@
   },
   "scripts": {
     "postinstall": "remix setup",
-    "build": "npm run build:css && remix build",
+    "build": "npm run build:css && npm run build:db && remix build",
     "build:css": "tailwindcss -m -i ./app/styles/tailwind.build.css -o app/styles/tailwind.css",
+    "build:db": "rm prisma/database.db && npx prisma db push && npx prisma db seed",
     "dev:css": "tailwindcss -w -i ./app/styles/tailwind.build.css -o app/styles/tailwind.css",
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "start": "cross-env NODE_ENV=production remix-serve build"
