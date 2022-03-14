@@ -25,6 +25,7 @@ const postsSeeder = async () => {
         excerpt: post.data.excerpt,
         markdown: post.content,
         html: markdown.render(post.content),
+        createdAt: new Date(post.data.createdAt),
       },
     });
   }
