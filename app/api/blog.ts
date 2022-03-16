@@ -26,7 +26,7 @@ export const getPost = async (slug: string): Promise<Post> => {
   });
 
   if (!post) {
-    throw new Response("n", { status: 404 });
+    throw new Response("not found", { status: 404 });
   }
 
   return post as Post;
