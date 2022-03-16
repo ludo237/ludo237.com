@@ -25,5 +25,9 @@ export const getPost = async (slug: string): Promise<Post> => {
     },
   });
 
+  if (!post) {
+    throw new Response("n", { status: 404 });
+  }
+
   return post as Post;
 };

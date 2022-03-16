@@ -12,6 +12,7 @@ model Post {
   slug      String   @unique
   title     String
   excerpt   String
+  cover     String
   markdown  String
   html      String
   createdAt DateTime @default(now())

@@ -82,3 +82,13 @@ export const parseFormData = async (request: Request, schema: ObjectSchema<any, 
     return [undefined, errors];
   }
 };
+
+/**
+ * Try to guess the reading time by using an average of 237 words per minute
+ * @param content
+ */
+export const readingTime = (content: string): number => {
+  //Matches words See https://regex101.com/r/q2Kqjg/6
+  const words = content.match(/\w+/g)?.length || 0;
+  return Math.ceil(words / 237);
+};

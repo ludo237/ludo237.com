@@ -23,6 +23,7 @@ const postsSeeder = async () => {
         slug: file.replace("posts/", "").replace(/\.mdx?$/, ""),
         title: post.data.title,
         excerpt: post.data.excerpt,
+        cover: post.data.cover,
         markdown: post.content,
         html: markdown.render(post.content),
         createdAt: new Date(post.data.createdAt),

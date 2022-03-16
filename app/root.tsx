@@ -9,13 +9,14 @@ import {
 } from "remix";
 import { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import type { MetaFunction } from "remix";
+import Link from "~/components/Link";
 import Navbar from "~/components/Navbar";
 import styles from "~/styles/tailwind.css";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "Claudio Ludovico | Entrepreneur, Coder and Futurist",
-    description: "I'm part of the ‘90s generation that grew up with the Fresh Prince of Bel Air and the Commodore 64.",
+    title: "Claudio Ludovico | Entrepreneur - Coder - Futurist",
+    description: "I am part of the ‘90s generation that grew up with the Fresh Prince of Bel Air and the Commodore 64.",
   };
 };
 
@@ -54,7 +55,10 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
             <div className="sm:ml-6">
               <div className="sm:border-l sm:border-slate-200 sm:pl-6">
                 <h1 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight sm:text-5xl">{caught.statusText}</h1>
-                <p className="mt-1 text-base text-slate-600 dark:text-slate-100">Please check the URL in the address bar and try again.</p>
+                <p className="mt-1 text-base space-x-1 text-slate-600 dark:text-slate-100">
+                  <span>Please check the URL in the address bar and try again,</span>
+                  <Link to={"/"} title={"home"} color={"sky"}>go Home.</Link>
+                </p>
               </div>
             </div>
           </div>

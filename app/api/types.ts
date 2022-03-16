@@ -6,6 +6,7 @@ export interface Model {
 
 export interface Post extends Model {
   readonly slug: string,
+  cover: string;
   title: string,
   excerpt: string,
   markdown: string,
