@@ -28,8 +28,8 @@ export default function Blog () {
   return (
     <div className="md:px-4 px-6 grid gap-5 lg:grid-cols-3 lg:max-w-none">
       {posts.map((post) => (
-        <Link to={`/blog/${post.slug}`}>
-          <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+        <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+          <Link to={`/blog/${post.slug}`} color={"none"} size={"none"}>
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src={post.cover} alt={post.excerpt} />
             </div>
@@ -46,8 +46,8 @@ export default function Blog () {
                 </div>
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );

@@ -4,20 +4,22 @@ import cx from "clsx";
 import { createMemoClass } from "~/utils";
 
 export interface LinkProps extends BaseLinkProps {
-  color?: "gray" | "sky";
+  color?: "gray" | "none" | "sky";
   disabled?: boolean;
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
-  size?: "sm" | "base";
+  size?: "sm" | "base" | "none";
 }
 
 export const useLinkClass = createMemoClass((props: LinkProps) => {
   const colors = {
+    none: "",
     gray: "text-slate-900 dark:text-white hover:text-slate-600 dark:hover:text-slate-200",
     sky: "font-medium text-sky-600 hover:text-sky-500",
   };
 
   const sizes = {
+    none: "",
     sm: "text-sm",
     base: "sm:text-base lg:text-sm xl:text-base",
   };
