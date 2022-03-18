@@ -1,6 +1,7 @@
-import { Prisma } from "@prisma/client";
+import { Post, Prisma } from "@prisma/client";
 import { database } from "~/modules/database.server";
-import { Post } from "~/api/types";
+
+export type { Post } from "@prisma/client";
 
 type Filters = {
   select?: Prisma.PostSelect;

@@ -1,7 +1,6 @@
 import invariant from "@remix-run/dev/invariant";
 import { HtmlMetaDescriptor, LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import { Post } from "~/api/types";
-import { getPost } from "~/api/blog";
+import { getPost, Post } from "~/api/blog";
 
 type LoaderData = {
   post: Post

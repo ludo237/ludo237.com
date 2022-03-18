@@ -15,8 +15,10 @@ import styles from "~/styles/tailwind.css";
 
 export const meta: MetaFunction = () => {
   return {
+    charset: "utf-8",
     title: "Claudio Ludovico | Entrepreneur - Coder - Futurist",
     description: "I am part of the ‘90s generation that grew up with the Fresh Prince of Bel Air and the Commodore 64.",
+    viewport: "width=device-width,initial-scale=1",
   };
 };
 
@@ -28,10 +30,8 @@ export const links: LinksFunction = () => {
 
 const Document = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
+    <html lang="en" className="min-h-screen">
     <head>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
       <Meta />
       <Links />
     </head>

@@ -1,8 +1,7 @@
 import { useLoaderData } from "@remix-run/react";
 import { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import { LoaderFunction, MetaFunction } from "remix";
-import { getPosts } from "~/api/blog";
-import { Post } from "~/api/types";
+import { getPosts, Post } from "~/api/blog";
 import Link from "~/components/Link";
 import { readingTime } from "~/utils";
 
