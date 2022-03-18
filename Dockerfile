@@ -55,6 +55,7 @@ COPY --from=BUILDER /usr/src/app/build /usr/src/app/build
 COPY --from=BUILDER /usr/src/app/public /usr/src/app/public
 COPY --from=BUILDER /usr/src/app/package* /usr/src/app/
 COPY --from=BUILDER /usr/src/app/prisma /usr/src/app/prisma
+COPY --from=BUILDER /usr/src/app/database.db /usr/src/app/database.db
 
 EXPOSE 3000
 
