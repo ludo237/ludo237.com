@@ -49,7 +49,7 @@ FROM BASE
 WORKDIR /usr/src/app
 
 COPY --from=PRODUCTION_DEPENDENCIES /usr/src/app/node_modules /usr/src/app/node_modules
-COPY --from=BUILDER /usr/src/app/node_modules/.prisma /usr/src/app/.prisma
+COPY --from=BUILDER /usr/src/app/node_modules/.prisma /usr/src/app/node_modules/.prisma
 COPY --from=BUILDER /usr/src/app/.cache /usr/src/app/.cache
 COPY --from=BUILDER /usr/src/app/build /usr/src/app/build
 COPY --from=BUILDER /usr/src/app/public /usr/src/app/public
