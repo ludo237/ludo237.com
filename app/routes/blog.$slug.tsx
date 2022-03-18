@@ -1,4 +1,4 @@
-import invariant from "@remix-run/dev/invariant";
+import invariant from "tiny-invariant";
 import { HtmlMetaDescriptor, LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import { getPost, Post } from "~/api/blog";
 
