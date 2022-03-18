@@ -1,6 +1,8 @@
 node_modules
-npm-debug.log
-public/build
+*.log
+.DS_Store
+.env
 .cache
+public/build
 build
 prisma/database.db
