@@ -1,4 +1,4 @@
-import { Post, Prisma } from "@prisma/client";
+import type { Post, Prisma } from "@prisma/client";
 import { database } from "~/modules/database.server";
 
 export type { Post } from "@prisma/client";

@@ -1,7 +1,7 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import ExternalLink from "~/components/ExternalLink";
-import Link from "~/components/Link";
 import Icon from "~/components/Icon";
+import Link from "~/components/Link";
 
 const socialLinks: { href: string, name: string, icon: IconProp }[] = [
   { href: "https://t.me/ludo237", name: "Telegram", icon: ["fab", "telegram"] },

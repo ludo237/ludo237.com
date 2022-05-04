@@ -1,14 +1,7 @@
+import type { CatchBoundaryComponent } from "@remix-run/react/routeModules";
 import React from "react";
-import {
-  Links, LinksFunction,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration, useCatch,
-} from "remix";
-import { CatchBoundaryComponent } from "@remix-run/react/routeModules";
-import type { MetaFunction } from "remix";
+import type { LinksFunction, MetaFunction } from "remix";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from "remix";
 import Link from "~/components/Link";
 import Navbar from "~/components/Navbar";
 import styles from "~/styles/tailwind.css";
