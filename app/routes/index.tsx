@@ -7,6 +7,7 @@ const socialLinks: { href: string, name: string, icon: IconProp }[] = [
   { href: "https://t.me/ludo237", name: "Telegram", icon: ["fab", "telegram"] },
   { href: "https://twitter.com/ludo237", name: "Twitter", icon: ["fab", "twitter"] },
   { href: "https://github.com/ludo237", name: "Github", icon: ["fab", "github"] },
+  { href: "https://linkedin.com/in/ludo237", name: "Linkedin", icon: ["fab", "linkedin"]}
 ];
 
 export default function Index () {
@@ -62,7 +63,7 @@ export default function Index () {
               </div>
             </div>
             <p className="text-sm font-medium text-slate-700 dark:text-slate-100">You can find me on</p>
-            <div className="mt-1 grid grid-cols-3 gap-3">
+            <div className="mt-1 grid grid-cols-4 gap-3">
               {socialLinks.map((socialLink, index) =>
                 <ExternalLink
                   title={socialLink.name}
