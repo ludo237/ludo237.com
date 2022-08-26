@@ -1,6 +1,7 @@
-import React from "react";
 import cx from "clsx";
-import { LinkProps, useLinkClass } from "~/components/Link";
+import React from "react";
+import type { LinkProps } from "~/components/Link";
+import { useLinkClass } from "~/components/Link";
 
 export default function ExternalLink (props: LinkProps) {
   const {
@@ -22,8 +23,8 @@ export default function ExternalLink (props: LinkProps) {
     <a
       href={to.toString()}
       title={title}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={"_blank"}
+      rel={"noopener noreferrer"}
       className={cx(classes, className)}
       {...rest}
     >

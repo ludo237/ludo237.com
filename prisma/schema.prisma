@@ -7,14 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// MongoDB M-M relationship
+// see https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#mongodb
+model Tag {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String   @unique
+  name      String
+  postIDs   String[] @db.ObjectId
+  posts     Post[]   @relation(fields: [postIDs], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tags")
+}
+
 model Post {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   slug      String   @unique
   title     String
   excerpt   String
   cover     String
   markdown  String
   html      String
+  tagIDs    String[] @db.ObjectId
+  tags      Tag[]    @relation(fields: [tagIDs], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

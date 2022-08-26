@@ -1,6 +1,9 @@
+import type { HtmlMetaDescriptor } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
+import type { LoaderFunction, MetaFunction } from "@remix-run/server-runtime";
 import invariant from "tiny-invariant";
-import { HtmlMetaDescriptor, LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import { getPost, Post } from "~/api/blog";
+import type { Post } from "~/api/blog";
+import { getPost } from "~/api/blog";
 
 type LoaderData = {
   post: Post
@@ -44,6 +47,6 @@ export default function BlogPost () {
   };
 
   return (
-    <article className="px-6 md:px-0 mx-auto prose prose-sky prose-lg text-slate-500" dangerouslySetInnerHTML={rawHtml()} />
+    <article className={"px-6 md:px-0 mx-auto prose prose-sky prose-lg text-slate-500"} dangerouslySetInnerHTML={rawHtml()} />
   );
 }

@@ -18,6 +18,8 @@ const postsSeeder = async () => {
     const data = await fs.readFile(`./${file}`);
     const post = matter(data);
 
+    // TODO extract tags from header and perform a firstOrCreate query
+    //      create an array of IDs of Tags and fill the post query below
     await db.post.create({
       data: {
         slug: file.replace("posts/", "").replace(/\.mdx?$/, ""),
@@ -27,6 +29,11 @@ const postsSeeder = async () => {
         markdown: post.content,
         html: markdown.render(post.content),
         createdAt: new Date(post.data.createdAt),
+        /**
+         * tags: {
+         *  connect: [{ id: 2 }, { id: 3 }, { id: 7 }],
+         * }
+         */
       },
     });
   }

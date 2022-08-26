@@ -1,8 +1,8 @@
+import type { IconName } from "@fortawesome/fontawesome-svg-core";
 import cx from "clsx";
 import React from "react";
-import { IconName } from "@fortawesome/fontawesome-svg-core";
-import { createMemoClass } from "~/utils";
 import Icon from "~/components/Icon";
+import { createMemoClass } from "~/utils";
 
 type AlertProps = {
   color: "green",
@@ -27,11 +27,11 @@ export default function Alert (props: AlertProps) {
 
   return (
     <div className={cx(colors, ["border-l-4", "p-4"])}>
-      <div className="flex items-center">
-        <div className="flex-shrink-0">
-          <Icon className="h-3 w-3" icon={["fas", icon]} />
+      <div className={"flex items-center"}>
+        <div className={"shrink-0"}>
+          <Icon className={"h-3 w-3"} icon={["fas", icon]} />
         </div>
-        <div className="ml-3 text-sm">
+        <div className={"ml-3 text-sm"}>
           {children}
         </div>
       </div>

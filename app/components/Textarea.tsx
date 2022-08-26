@@ -1,5 +1,5 @@
 import cx from "clsx";
-import { DetailedHTMLProps, TextareaHTMLAttributes } from "react";
+import type { DetailedHTMLProps, TextareaHTMLAttributes } from "react";
 import { createMemoClass } from "~/utils";
 
 type TextareaProps = {

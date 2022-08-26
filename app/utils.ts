@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ObjectSchema, ValidationError } from "yup";
+import type { ObjectSchema, ValidationError } from "yup";
 
 export type customJsonForm = { [key: string]: any };
 

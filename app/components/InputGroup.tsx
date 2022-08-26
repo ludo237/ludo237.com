@@ -1,7 +1,8 @@
 import cx from "clsx";
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { createMemoClass } from "~/utils";
+import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import React from "react";
 import Label from "~/components/Label";
+import { createMemoClass } from "~/utils";
 
 type InputGroupProps = {
   children: React.ReactNode
@@ -64,7 +65,7 @@ export default function InputGroup (props: InputGroupProps) {
       {children}
 
       {error
-        ? <small className="text-xs text-red-500">{error}</small>
+        ? <small className={"text-xs text-red-500"}>{error}</small>
         : null
       }
     </div>

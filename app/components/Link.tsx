@@ -1,6 +1,7 @@
-import React from "react";
-import { Link as BaseLink, LinkProps as BaseLinkProps } from "@remix-run/react";
+import type { LinkProps as BaseLinkProps } from "@remix-run/react";
+import { Link as BaseLink } from "@remix-run/react";
 import cx from "clsx";
+import React from "react";
 import { createMemoClass } from "~/utils";
 
 export interface LinkProps extends BaseLinkProps {

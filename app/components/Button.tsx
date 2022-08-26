@@ -1,5 +1,6 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import cx from "clsx";
+import type { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import React from "react";
 import { createMemoClass } from "~/utils";
 
 type ButtonProps = {

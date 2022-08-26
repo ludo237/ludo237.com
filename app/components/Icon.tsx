@@ -1,14 +1,16 @@
-import React from "react";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { config, library } from "@fortawesome/fontawesome-svg-core";
-import { faBars, faCheckCircle, faChevronRight, faPaperclip, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin, faTelegram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faBars, faCheckCircle, faChevronRight, faPaperclip, faTimes } from "@fortawesome/free-solid-svg-icons";
+import type { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
 // We handle the CSS somewhere else
 config.autoAddCss = false;
 
 library.add(
+// @ts-ignore
   faBars, faCheckCircle, faChevronRight, faGithub, faLinkedin, faPaperclip, faTelegram, faTimes, faTwitter,
 );
 
