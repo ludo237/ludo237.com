@@ -81,9 +81,15 @@ const cvSeeder = async () => {
 
   const jobs = [
     {
+      company: "Microsoft",
+      startedAt: new Date(2011, 1),
+      endedAt: new Date(2011, 8),
+      description: "I was fascinated by this new launch from Microsoft, finally a Windows Phone that actually worked, so cool! I took the plundge and went straight into develop applications for the OS, mostly in C#. This excitement didn't last long because I realized the path Microsoft was taking with this OS so I left the project.",
+    },
+    {
       company: "6GO S.r.l.",
-      startedAt: new Date(2012, 9),
-      endedAt: null,
+      startedAt: new Date(2010, 7),
+      endedAt: new Date(2013, 7),
       description: "In this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integratorIn this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integrator",
     },
     {
@@ -93,10 +99,22 @@ const cvSeeder = async () => {
       description: "Provides QA feedback and direct testing to Google Big Query",
     },
     {
-      company: "Microsoft",
-      startedAt: new Date(2011, 8),
-      endedAt: new Date(2011, 9),
-      description: "Develop some awesome games with Kinect, Windows Phone 7, Windows Phone 8.x and Microsoft Windows 7",
+      company: "Twitter",
+      startedAt: new Date(2012, 1),
+      endedAt: new Date(2016, 1),
+      description: "Manage to deliver new improvements with the twitter timeline team, deploy UI components to Twitter scale and reach millions of user with my improvements",
+    },
+    {
+      company: "Amazon",
+      startedAt: new Date(2016, 4),
+      endedAt: new Date(2018, 7),
+      description: "Having a great time around you help you push your best code to production, worked on improving the efficency and reliability of the AWS console to scale",
+    },
+    {
+      company: "6GO S.r.l.",
+      startedAt: new Date(2019, 3),
+      endedAt: new Date(2023, 1),
+      description: "Came back to this company with only one goal in mind: take everything I learned and apply it to scale the company back-end API to reach new customers around the workd while orchestrating diverse teams of developers in a remote and asynchronous environment",
     },
   ];
   for (const job of jobs) {
