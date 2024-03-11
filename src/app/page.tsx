@@ -2,7 +2,7 @@
 export default function Home() {
   return (
     <div>
-      Hello world
+      New website building in progress
     </div>
   );
 }

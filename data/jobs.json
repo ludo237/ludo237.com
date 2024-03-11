@@ -1,5 +1,12 @@
 [
   {
+    "company": "Immobiliare S.p.a",
+    "description": "Mantaining backend services written in PHP for Indomio and Immobiliare group in Europe",
+    "startedAt": 1680332400,
+    "createdAt": 1710142776,
+    "updatedAt": 1710142776
+  },
+  {
     "company": "Microsoft",
     "description": "I was fascinated by this new launch from Microsoft, finally a Windows Phone that actually worked, so cool! I took the plundge and went straight into develop applications for the OS, mostly in C#. This excitement didn't last long because I realized the path Microsoft was taking with this OS so I left the project.",
     "startedAt": 1296518400000,
@@ -34,9 +41,7 @@
     "company": "Amazon",
     "description": "Having a great time around you help you push your best code to production, worked on improving the efficency and reliability of the AWS console to scale",
     "startedAt": 1462060800000,
-    "endedAt": 1533081600000,
-    "createdAt": 1670745463161,
-    "updatedAt": 1670745463161
+    "endedAt": 1533081600000
   },
   {
     "company": "6GO S.r.l.",
