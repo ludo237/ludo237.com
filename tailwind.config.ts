@@ -1,13 +1,12 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
+import type {Config} from "tailwindcss";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
+const config = {
   content: [
-    './src/pages/**/*.{ts,tsx}',
-    './src/components/**/*.{ts,tsx}',
-    './src/lib/**/*.{ts,tsx}',
-    './src/app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-};
+  plugins: [
+    require("@tailwindcss/typography"),
+  ],
+} satisfies Config
+
+export default config

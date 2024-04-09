@@ -1,6 +1,8 @@
 [
   {
-    "company": "Immobiliare S.p.a",
+    "avatar": "/companies/immo_logo.jpg",
+    "company": "Immobiliare",
+    "short": "IM",
     "description": "Mantaining backend services written in PHP for Indomio and Immobiliare group in Europe",
     "startedAt": 1680332400,
     "createdAt": 1710142776,
@@ -19,15 +21,16 @@
     "description": "In this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integratorIn this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integrator",
     "startedAt": 1280620800000,
     "endedAt": 1375315200000,
-    "createdAt": 1670745461772,
-    "updatedAt": 1670745461772
+    "createdAt": 1670745461315,
+    "updatedAt": 1670745461315
   },
   {
     "company": "Google",
     "description": "Provides QA feedback and direct testing to Google Big Query",
     "startedAt": 1328054400000,
     "endedAt": 1341100800000,
-    "createdAt": 1670745462227
+    "createdAt": 1670745462227,
+    "updatedAt": 1670745462227
   },
   {
     "company": "Twitter",
@@ -41,7 +44,9 @@
     "company": "Amazon",
     "description": "Having a great time around you help you push your best code to production, worked on improving the efficency and reliability of the AWS console to scale",
     "startedAt": 1462060800000,
-    "endedAt": 1533081600000
+    "endedAt": 1533081600000,
+    "createdAt": 1670745462704,
+    "updatedAt": 1670745462704
   },
   {
     "company": "6GO S.r.l.",
