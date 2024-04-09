@@ -13,7 +13,7 @@ const JobsCard: FC = async () => {
     <Card>
       <CardHeader>
         <CardTitle className="text-sky-500">Jobs</CardTitle>
-        <CardDescription>Shows where I'm currently work</CardDescription>
+        <CardDescription>Shows where I&apos;m currently work</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-8">
         <div className="flex items-center gap-4">
