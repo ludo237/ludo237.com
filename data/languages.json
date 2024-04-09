@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Italian",
+    "experience": "mother tongue",
+    "createdAt": 1670745464075,
+    "updatedAt": 1670745464075
+  },
+  {
+    "name": "English",
+    "experience": "fluent",
+    "createdAt": 1670745464531,
+    "updatedAt": 1670745464532
+  },
+  {
+    "name": "Spanish",
+    "experience": "beginner",
+    "createdAt": 1670745464989,
+    "updatedAt": 1670745464989
+  }
+]
