@@ -16,7 +16,7 @@ export default function RootLayout(props: LayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className="h-screen">
+      <body className="h-screen dark:bg-zinc-800">
         {props.children}
         <SpeedInsights />
         <Analytics />

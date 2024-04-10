@@ -10,11 +10,11 @@ const HomePage: FC = () => {
   return (
     <div>
       <div className="mx-auto flex flex-col items-center gap-2 py-4 md:py-6 md:pb-4 lg:py-12 lg:pb-10 max-w-3xl">
-        <h1 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1] text-balance">
+        <h1 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1] text-balance dark:text-zinc-200">
           Claudio Ludovico
         </h1>
-        <small className="text-sky-600">also known as ludo237</small>
-        <span className="max-w-[750px] text-center text-lg text-muted-foreground sm:text-xl">
+        <small className="text-sky-600 dark:text-sky-500">also known as ludo237</small>
+        <span className="max-w-[750px] text-center text-lg text-muted-foreground sm:text-xl dark:text-zinc-300">
           Entrepreneur - Engineer - Optimistic for the Future
         </span>
       </div>

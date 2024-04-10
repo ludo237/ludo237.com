@@ -23,7 +23,7 @@ const JobsCard: FC = async () => {
           </Avatar>
           <div className="grid gap-1">
             <p className="font-medium text-sky-500 leading-none">{jobs[0].company}</p>
-            <p className=" text-sm text-zinc-600">{jobs[0].description}</p>
+            <p className=" text-sm text-zinc-600  dark:text-zinc-200">{jobs[0].description}</p>
           </div>
           <div className="text-sm ml-auto">{fromUnixTime(jobs[0].startedAt).toLocaleDateString()}</div>
         </div>
