@@ -1,5 +1,13 @@
 'use client';
-import { Github, Gitlab, Layers, Linkedin, Send, Twitter } from 'lucide-react';
+import {
+  Github,
+  Gitlab,
+  Layers,
+  Linkedin,
+  QrCode,
+  Send,
+  Twitter,
+} from 'lucide-react';
 import Link from 'next/link';
 import { FC, useState } from 'react';
 import { ContactForm } from '~/components/ContactForm';
@@ -127,6 +135,13 @@ const SocialCard: FC = () => {
             title='Gitlab'
           >
             <Gitlab className='size-6 text-orange-700' />
+          </Link>
+          <Link
+            href='https://www.ideaqr.com/ludo237'
+            target='_blank'
+            title='IdeaQR'
+          >
+            <QrCode className='size-6 text-emerald-500' />
           </Link>
         </div>
       </CardContent>
