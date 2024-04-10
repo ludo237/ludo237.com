@@ -13,6 +13,8 @@ import {
 } from '~/components/ui';
 import { readingTime } from '~/lib/utils';
 
+export const revalidate = 60 * 60 * 24;
+
 const Post: FC<{ post: Post }> = ({ post }) => {
   return (
     <Card>

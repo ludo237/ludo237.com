@@ -75,6 +75,7 @@ export const getPost = async (slug: string) => {
     title: data.title,
     summary: data.excerpt,
     cover: data.cover,
+    tags: data.tags,
     date: new Date(data.createdAt),
     content,
   } as Post;

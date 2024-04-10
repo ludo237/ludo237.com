@@ -15,6 +15,7 @@ interface Post {
   cover: string;
   content: string;
   date: Date;
+  tags: string[];
 }
 
 interface GithubEvent {

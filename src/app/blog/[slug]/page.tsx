@@ -1,5 +1,6 @@
 import { formatDistanceToNowStrict } from 'date-fns';
 import * as marked from 'marked';
+import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { FC } from 'react';
 import { getPost } from '~/actions';
@@ -12,6 +13,27 @@ import {
   CardTitle,
 } from '~/components/ui';
 import { readingTime } from '~/lib/utils';
+
+export const revalidate = 60 * 60 * 24;
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getPost(params.slug);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: post.title,
+    description: post.summary,
+    keywords: post.tags,
+    openGraph: {
+      images: [post.cover, ...previousImages],
+    },
+  };
+}
 
 const BlogSlugPage: FC<{ params: { slug: string } }> = async ({ params }) => {
   const post = await getPost(params.slug);
