@@ -1,7 +1,17 @@
 'use client';
 
-import { BookPlus, BookUp, Dot, LucideIcon } from 'lucide-react';
-import { FC, useMemo } from 'react';
+import {
+  BookPlus,
+  BookUp,
+  BookX,
+  Dot,
+  GitPullRequestArrow,
+  LucideIcon,
+  MessageSquareText,
+  ThumbsUp,
+} from 'lucide-react';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { getGilabProjects } from '~/actions';
 import { ScrollArea } from '~/components/ui/ScrollArea';
 import { Separator } from '~/components/ui/Separator';
 import {
@@ -11,7 +21,10 @@ import {
   TooltipTrigger,
 } from '~/components/ui/Tooltip';
 
-const GitlabFeedItem: FC<{ event: GitlabEvent }> = ({ event }) => {
+const GitlabFeedItem: FC<{ event: GitlabEvent; project?: GitlabProject }> = ({
+  event,
+  project,
+}) => {
   const Icon: LucideIcon = useMemo(() => {
     switch (event.action_name) {
       case 'opened':
@@ -20,6 +33,15 @@ const GitlabFeedItem: FC<{ event: GitlabEvent }> = ({ event }) => {
       case 'pushed':
       case 'pushed to':
         return BookUp;
+      case 'commented':
+      case 'commented on':
+        return MessageSquareText;
+      case 'deleted':
+        return BookX;
+      case 'approved':
+        return ThumbsUp;
+      case 'accepted':
+        return GitPullRequestArrow;
       default:
         return Dot;
     }
@@ -37,18 +59,33 @@ const GitlabFeedItem: FC<{ event: GitlabEvent }> = ({ event }) => {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <div>{event.project_id}</div>
+      <div>{project?.name ?? event.project_id}</div>
     </li>
   );
 };
 
 const GitlabFeed: FC<{ events: GitlabEvent[] }> = ({ events }) => {
+  const [projects, setProjects] = useState<GitlabProject[]>([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const response = await getGilabProjects();
+      const data = await response.json();
+      setProjects(data);
+    };
+
+    fetchProjects().catch(console.error);
+  }, [events]);
+
   return (
     <ScrollArea className='h-72'>
       <div className='p-3'>
         {events.map((event) => (
           <div key={event.id}>
-            <GitlabFeedItem event={event} />
+            <GitlabFeedItem
+              event={event}
+              project={projects.find((p) => p.id === event.project_id)}
+            />
             <Separator className='my-1.5' />
           </div>
         ))}

@@ -33,16 +33,19 @@ interface GitlabEvent {
   title: string;
   project_id: number;
   action_name:
-    | 'opened'
     | 'approved'
+    | 'accepted'
     | 'closed'
     | 'commented'
+    | 'commented on'
     | 'created'
     | 'destroyed'
+    | 'deleted'
     | 'expired'
     | 'joined'
     | 'left'
     | 'merged'
+    | 'opened'
     | 'pushed'
     | 'pushed new'
     | 'pushed to'
@@ -60,4 +63,10 @@ interface GitlabEvent {
     | 'user';
   target_title: string;
   created_at: string;
+}
+
+interface GitlabProject {
+  id: number;
+  description: string;
+  name: string;
 }
