@@ -1,15 +1,19 @@
 [
   {
     "avatar": "/companies/immo_logo.jpg",
-    "company": "Immobiliare",
+    "company": "Immobiliare.it",
     "short": "IM",
+    "about": "Immobiliare.it is Italy's largest property portal with over 1.2 million listings and more than 50 million monthly visits to the website and mobile app. The portal was launched in 2007 with the goal of offering the best platform to publish and search for property listings. Currently more than 20,000 real estate agents and developers use our services.",
     "description": "Mantaining backend services written in PHP for Indomio and Immobiliare group in Europe",
     "startedAt": 1680332400,
     "createdAt": 1710142776,
     "updatedAt": 1710142776
   },
   {
+    "avatar": "/companies/msft_logo.jpg",
     "company": "Microsoft",
+    "short": "MS",
+    "about": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today",
     "description": "I was fascinated by this new launch from Microsoft, finally a Windows Phone that actually worked, so cool! I took the plundge and went straight into develop applications for the OS, mostly in C#. This excitement didn't last long because I realized the path Microsoft was taking with this OS so I left the project.",
     "startedAt": 1296518400000,
     "endedAt": 1314835200000,

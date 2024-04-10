@@ -44,7 +44,7 @@ const JobsCard: FC = async () => {
         </div>
       </CardContent>
       <CardFooter className='flex justify-end'>
-        <Link href='/curriculum'>
+        <Link href='/cv'>
           <CardDescription className='text-sm'>
             Check out my complete curriculum
           </CardDescription>
