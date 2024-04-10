@@ -1,6 +1,10 @@
+'use server';
+
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import { z } from 'zod';
+import { contactSchema } from '~/schemas';
 
 const github = {
   url: 'https://api.github.com',
@@ -74,4 +78,10 @@ export const getPost = async (slug: string) => {
     date: new Date(data.createdAt),
     content,
   } as Post;
+};
+
+export const sendEmail = async (
+  values: z.infer<typeof contactSchema>
+): Promise<boolean> => {
+  return true;
 };
