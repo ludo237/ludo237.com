@@ -8,6 +8,15 @@ interface Job {
   updatedAt: number;
 }
 
+interface Post {
+  slug: string;
+  title: string;
+  summary: string;
+  cover: string;
+  content: string;
+  date: Date;
+}
+
 interface GithubEvent {
   id: number;
   type: string;

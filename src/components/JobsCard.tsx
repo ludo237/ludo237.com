@@ -13,7 +13,7 @@ import {
 } from '~/components/ui/Card';
 
 const JobsCard: FC = async () => {
-  const file = await fs.readFile(process.cwd() + '/data/jobs.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/data/db/jobs.json', 'utf8');
   const jobs = JSON.parse(file) as Job[];
 
   return (
@@ -22,13 +22,13 @@ const JobsCard: FC = async () => {
         <CardTitle className='text-sky-500'>Jobs</CardTitle>
         <CardDescription>Shows where I&apos;m currently work</CardDescription>
       </CardHeader>
-      <CardContent className='grid gap-8'>
-        <div className='flex items-center gap-4'>
+      <CardContent className='grid gap-9'>
+        <div className='flex items-center gap-3'>
           <Avatar className='hidden size-9 sm:flex'>
             <AvatarImage src={jobs[0].avatar} alt={jobs[0].company} />
             <AvatarFallback>{jobs[0].short}</AvatarFallback>
           </Avatar>
-          <div className='grid gap-1'>
+          <div className='grow space-y-0.5'>
             <p className='font-medium leading-none text-sky-500'>
               {jobs[0].company}
             </p>
@@ -36,9 +36,9 @@ const JobsCard: FC = async () => {
               {jobs[0].description}
             </p>
           </div>
-          <div className='ml-auto text-sm'>
+          <small className='ml-auto text-xs text-zinc-400'>
             {fromUnixTime(jobs[0].startedAt).toLocaleDateString()}
-          </div>
+          </small>
         </div>
       </CardContent>
       <CardFooter className='flex justify-end'>
