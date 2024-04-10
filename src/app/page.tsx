@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import { BioCard } from '~/components/BioCard';
-import { BlogCard } from '~/components/BlogCard';
-import { GitFeedCard } from '~/components/GitFeedCard';
-import { JobsCard } from '~/components/JobsCard';
-import { SocialCard } from '~/components/SocialdCard';
+import {
+  BioCard,
+  BlogCard,
+  GitFeedCard,
+  JobsCard,
+  SocialCard,
+} from '~/components/cards';
 
 const HomePage: FC = () => {
   return (

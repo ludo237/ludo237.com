@@ -9,8 +9,11 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/Tabs';
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '~/components/ui';
 
 const GitFeedCard: FC = async () => {
   const githubResponse = await getGithubEvents();

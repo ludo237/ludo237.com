@@ -10,16 +10,15 @@ import {
   MessageSquareText,
   ThumbsUp,
 } from 'lucide-react';
-import { FC, useEffect, useMemo, useState } from 'react';
-import { getGilabProjects } from '~/actions';
-import { ScrollArea } from '~/components/ui/ScrollArea';
-import { Separator } from '~/components/ui/Separator';
+import { FC, useMemo } from 'react';
 import {
+  ScrollArea,
+  Separator,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '~/components/ui/Tooltip';
+} from '~/components/ui';
 
 const GitlabFeedItem: FC<{ event: GitlabEvent; project?: GitlabProject }> = ({
   event,
@@ -65,27 +64,12 @@ const GitlabFeedItem: FC<{ event: GitlabEvent; project?: GitlabProject }> = ({
 };
 
 const GitlabFeed: FC<{ events: GitlabEvent[] }> = ({ events }) => {
-  const [projects, setProjects] = useState<GitlabProject[]>([]);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const response = await getGilabProjects();
-      const data = await response.json();
-      setProjects(data);
-    };
-
-    fetchProjects().catch(console.error);
-  }, [events]);
-
   return (
     <ScrollArea className='h-72'>
       <div className='p-3'>
         {events.map((event) => (
           <div key={event.id}>
-            <GitlabFeedItem
-              event={event}
-              project={projects.find((p) => p.id === event.project_id)}
-            />
+            <GitlabFeedItem event={event} />
             <Separator className='my-1.5' />
           </div>
         ))}

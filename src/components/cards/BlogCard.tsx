@@ -1,8 +1,6 @@
-import fs from 'fs';
-import matter from 'gray-matter';
 import Link from 'next/link';
-import path from 'path';
 import { FC } from 'react';
+import { getPosts } from '~/actions';
 import {
   Card,
   CardContent,
@@ -10,27 +8,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui';
 
 const BlogCard: FC = async () => {
-  const postsDirectory = path.join(process.cwd(), '/data/posts');
-  const files = fs.readdirSync(postsDirectory);
-  const posts: Post[] = files
-    .map((file) => {
-      const slug = path.basename(file, '.mdx');
-      const fullPath = path.join(postsDirectory, file);
-      const fileContent = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContent);
-      return {
-        slug,
-        title: data.title,
-        summary: data.excerpt,
-        cover: data.cover,
-        date: new Date(data.createdAt),
-        content,
-      };
-    })
-    .sort((a, b) => b.date.getTime() - a.date.getTime());
+  const posts = await getPosts();
 
   return (
     <Card>

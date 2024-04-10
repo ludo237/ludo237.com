@@ -2,15 +2,17 @@ import { fromUnixTime } from 'date-fns';
 import { promises as fs } from 'fs';
 import Link from 'next/link';
 import { FC } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/Avatar';
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui';
 
 const JobsCard: FC = async () => {
   const file = await fs.readFile(process.cwd() + '/data/db/jobs.json', 'utf8');
