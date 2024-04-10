@@ -83,7 +83,7 @@ const ContactForm: FC = () => {
                 <Textarea placeholder='Type here your message' {...field} />
               </FormControl>
               <FormDescription>
-                Describe why you're contacting me
+                Describe why you&apos;re contacting me
               </FormDescription>
               <FormMessage />
             </FormItem>
