@@ -4,7 +4,7 @@ const gitlabApiKey = process.env.GITLAB_FEED_TOKEN;
 export const getGilabProjects = async () => {
   return await fetch('https://gitlab.com/api/v4/users/ludo237/projects', {
     headers: {
-      Authorization: `Bearer glpat-3ZNRWyMb5dUACsybsfEz`,
+      Authorization: `Bearer ${gitlabApiKey}`,
       'Content-Type': 'application/json',
     },
   });
