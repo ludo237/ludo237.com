@@ -1,7 +1,7 @@
-import { fromUnixTime } from 'date-fns';
-import { promises as fs } from 'fs';
+import { formatDistanceStrict } from 'date-fns';
 import Link from 'next/link';
 import { FC } from 'react';
+import { getJobs } from '~/actions';
 import {
   Avatar,
   AvatarFallback,
@@ -15,8 +15,7 @@ import {
 } from '~/components/ui';
 
 const JobsCard: FC = async () => {
-  const file = await fs.readFile(process.cwd() + '/data/db/jobs.json', 'utf8');
-  const jobs = JSON.parse(file) as Job[];
+  const job = (await getJobs())[0];
 
   return (
     <Card>
@@ -27,19 +26,19 @@ const JobsCard: FC = async () => {
       <CardContent className='grid gap-9'>
         <div className='flex items-center gap-3'>
           <Avatar className='hidden size-9 sm:flex'>
-            <AvatarImage src={jobs[0].avatar} alt={jobs[0].company} />
-            <AvatarFallback>{jobs[0].short}</AvatarFallback>
+            <AvatarImage src={job.avatar} alt={job.company} />
+            <AvatarFallback>{job.short}</AvatarFallback>
           </Avatar>
           <div className='grow space-y-0.5'>
             <p className='font-medium leading-none text-sky-500'>
-              {jobs[0].company}
+              {job.company}
             </p>
             <p className=' text-sm text-zinc-600  dark:text-zinc-200'>
-              {jobs[0].description}
+              {job.role.title}
             </p>
           </div>
           <small className='ml-auto text-xs text-zinc-400'>
-            {fromUnixTime(jobs[0].startedAt).toLocaleDateString()}
+            {formatDistanceStrict(job.endedAt || new Date(), job.startedAt)}
           </small>
         </div>
       </CardContent>

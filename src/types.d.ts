@@ -1,14 +1,43 @@
-interface Job {
+interface BaseModel {
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface Role {
+  title: string;
+  description: string;
+}
+
+interface Job extends BaseModel {
   avatar: string;
   short: string;
   company: string;
-  description: string;
-  startedAt: number;
-  createdAt: number;
-  updatedAt: number;
+  role: Role;
+  about: string;
+  startedAt: Date;
+  endedAt?: Date;
 }
 
-interface Post {
+interface Education extends BaseModel {
+  name: string;
+  description: string;
+  startDate: Date;
+  endDate: Date;
+}
+
+interface Language extends BaseModel {
+  name: string;
+  description: string;
+  experience: string;
+}
+
+interface Project extends BaseModel {
+  url: string;
+  name: string;
+  description: string;
+}
+
+interface Post extends BaseModel {
   slug: string;
   title: string;
   summary: string;

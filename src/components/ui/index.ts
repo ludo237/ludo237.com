@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Alert';
 export * from './AspectRatio';
 export * from './Avatar';
@@ -6,6 +7,7 @@ export * from './Card';
 export * from './Dialog';
 export * from './Drawer';
 export * from './Form';
+export * from './HoverCard';
 export * from './Input';
 export * from './Label';
 export * from './ScrollArea';

@@ -33,12 +33,5 @@
     "description": "Useful set of Eloquent traits. The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding Model, which is used to interact with that table.",
     "createdAt": 1670745460404,
     "updatedAt": 1670745460404
-  },
-  {
-    "url": "https://gitlab.com/ludo237/ts-toolbox",
-    "name": "TS Toolbox",
-    "description": "A collection of useful agnostic functions that I've created trough time. They can be useful anywhere",
-    "createdAt": 1670745460859,
-    "updatedAt": 1670745460859
   }
 ]
