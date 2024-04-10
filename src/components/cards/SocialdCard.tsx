@@ -42,8 +42,8 @@ const ContactMeDesktopDialog: FC<{ open: boolean; setOpen: any }> = ({
         <DialogHeader>
           <DialogTitle>Send me a message</DialogTitle>
           <DialogDescription>
-            Be sure to specify why you're contacting me. I'll get back to you as
-            soon as possible.
+            Be sure to specify why you&apos;re contacting me. I&apos;ll get back
+            to you as soon as possible.
           </DialogDescription>
         </DialogHeader>
         <ContactForm />
@@ -67,8 +67,8 @@ const ContactMeMobileDialog: FC<{ open: boolean; setOpen: any }> = ({
         <DrawerHeader className='text-left'>
           <DrawerTitle>Send me a message</DrawerTitle>
           <DrawerDescription>
-            Be sure to specify why you're contacting me. I'll get back to you as
-            soon as possible.
+            Be sure to specify why you&apos;re contacting me. I&apos;ll get back
+            to you as soon as possible.
           </DrawerDescription>
           <ContactForm />
         </DrawerHeader>
