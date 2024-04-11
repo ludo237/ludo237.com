@@ -2,17 +2,13 @@
   {
     "name": "Standford University",
     "description": "Basic Knowledge of Machine Learning and Neural Networks, Machine LearningBasic Knowledge of Machine Learning and Neural Networks, Machine Learning",
-    "startedAt": 1422748800000,
-    "endedAt": 1454284800000,
-    "createdAt": 1670745465446,
-    "updatedAt": 1670745465446
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   },
   {
     "name": "SUPSI",
     "description": "I learned the basic of Computer Science, Match analysis and Software design that helped, and still help, me in my work experience",
-    "startedAt": 1296518400000,
-    "endedAt": 1328054400000,
-    "createdAt": 1670745465905,
-    "updatedAt": 1670745465905
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   }
 ]

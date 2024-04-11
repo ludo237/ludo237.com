@@ -1,4 +1,5 @@
 import { DownloadCloudIcon } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { getEducations, getJobs, getLanguages, getProjects } from '~/actions';
 import { CvJob } from '~/components/CvJob';
@@ -15,6 +16,11 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui';
+
+export const metadata: Metadata = {
+  title: 'Ludo237 | CV',
+  description: 'A resume of my professional experience.',
+};
 
 const CvPage = async () => {
   const eduations = await getEducations();
@@ -49,6 +55,40 @@ const CvPage = async () => {
                 ))}
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value='projects'>
+              <AccordionTrigger>Public Projects</AccordionTrigger>
+              <AccordionContent className='space-y-6'>
+                {projects.map((project, index) => (
+                  <div key={index} className='flex items-center gap-3'>
+                    <div className='grow space-y-0.5'>
+                      <h4 className='font-medium leading-none text-sky-500'>
+                        {project.name}
+                      </h4>
+                      <small className='ml-auto text-xs text-zinc-600 dark:text-zinc-400'>
+                        {project.description}
+                      </small>
+                    </div>
+                  </div>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value='educations'>
+              <AccordionTrigger>Educaton</AccordionTrigger>
+              <AccordionContent className='space-y-6'>
+                {eduations.map((edu, index) => (
+                  <div key={index} className='flex items-center gap-3'>
+                    <div className='grow space-y-0.5'>
+                      <h4 className='font-medium leading-none text-sky-500'>
+                        {edu.name}
+                      </h4>
+                      <small className='ml-auto text-xs text-zinc-600 dark:text-zinc-400'>
+                        {edu.description}
+                      </small>
+                    </div>
+                  </div>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
             <AccordionItem value='languages'>
               <AccordionTrigger>Spoken languages</AccordionTrigger>
               <AccordionContent className='space-y-6'>
@@ -65,10 +105,6 @@ const CvPage = async () => {
                   </div>
                 ))}
               </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value='educations'>
-              <AccordionTrigger>Educaton</AccordionTrigger>
-              <AccordionContent>wip</AccordionContent>
             </AccordionItem>
           </Accordion>
         </CardContent>

@@ -1,4 +1,5 @@
 import { formatDistanceToNowStrict } from 'date-fns';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -14,6 +15,12 @@ import {
 import { readingTime } from '~/lib/utils';
 
 export const revalidate = 60 * 60 * 24;
+
+export const metadata: Metadata = {
+  title: 'Ludo237 | Blog',
+  description:
+    'Some thoughts on software engineering, entrepreneurship, and life.',
+};
 
 const Post: FC<{ post: Post }> = ({ post }) => {
   return (

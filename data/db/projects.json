@@ -3,35 +3,35 @@
     "url": "https://github.com/vuejs/vue",
     "name": "VueJS",
     "description": "Contributed to the codebase and translation initially to v0.x",
-    "createdAt": 1670745458582,
-    "updatedAt": 1670745458582
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   },
   {
     "url": "https://github.com/laravel/framework",
     "name": "Laravel",
     "description": "Contributed to bug fixing and documentation",
-    "createdAt": 1670745459037,
-    "updatedAt": 1670745459037
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   },
   {
     "url": "https://gitlab.com/ludo237/laravel-rules",
     "name": "Laravel Rules",
     "description": "A set of custom Laravel rules that I've developed over the years I find them useful",
-    "createdAt": 1670745459493,
-    "updatedAt": 1670745459493
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   },
   {
     "url": "https://gitlab.com/ludo237/delayed-artistic-guppy",
     "name": "Delayed Artistic Guppy",
     "description": "Package that generates slugify words like Gfycat or Twitch Clips",
-    "createdAt": 1670745459948,
-    "updatedAt": 1670745459948
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   },
   {
     "url": "https://gitlab.com/ludo237/laravel-eloquent-traits",
     "name": "Eloquent Traits",
     "description": "Useful set of Eloquent traits. The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding Model, which is used to interact with that table.",
-    "createdAt": 1670745460404,
-    "updatedAt": 1670745460404
+    "createdAt": "2024-04-10T00:00:00.000Z",
+    "updatedAt": "2024-04-10T00:00:00.000Z"
   }
 ]
