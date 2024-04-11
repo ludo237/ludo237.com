@@ -2,6 +2,7 @@
 
 import fs from 'fs';
 import matter from 'gray-matter';
+import { createTransport } from 'nodemailer';
 import path from 'path';
 import { z } from 'zod';
 import { contactSchema } from '~/schemas';
@@ -14,6 +15,14 @@ const github = {
 const gitlab = {
   url: 'https://gitlab.com/api/v4',
   token: process.env.GITLAB_FEED_TOKEN,
+};
+
+const email = {
+  service: process.env.EMAIL_SERVICE,
+  defaultSubject: 'New contact from ludo237.com',
+  to: process.env.EMAIL_TO,
+  user: process.env.EMAIL_USER,
+  password: process.env.EMAIL_PASSWORD,
 };
 
 export const getGithubEvents = async () => {
@@ -81,12 +90,6 @@ export const getPost = async (slug: string) => {
   } as Post;
 };
 
-export const sendEmail = async (
-  values: z.infer<typeof contactSchema>
-): Promise<boolean> => {
-  return true;
-};
-
 export const getJobs = async () => {
   const jobsDirectory = path.join(process.cwd(), '/data/db/jobs.json');
   const fileContent = fs.readFileSync(jobsDirectory, 'utf8');
@@ -123,4 +126,33 @@ export const getProjects = async () => {
   const projects = JSON.parse(fileContent) as Project[];
 
   return projects;
+};
+
+export const sendEmail = async (
+  values: z.infer<typeof contactSchema>
+): Promise<boolean> => {
+  const transporter = createTransport({
+    service: email.service,
+    auth: {
+      user: email.user,
+      pass: email.password,
+    },
+  });
+
+  const mailOptions = {
+    from: values.email,
+    to: email.to,
+    subject: email.defaultSubject,
+    text: values.message,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    return true;
+  } catch (error) {
+    // Suppress the error for the time being
+    // TODO Log it somewhere
+    console.log(error);
+    return false;
+  }
 };

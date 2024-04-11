@@ -30,6 +30,7 @@ const ContactForm: FC = () => {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       handler: '',
+      email: '',
       message: '',
     },
   });
@@ -67,6 +68,23 @@ const ContactForm: FC = () => {
               </FormControl>
               <FormDescription>
                 Your full name or nickname, like Twitter handler or GitHub
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name='email'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Your Email</FormLabel>
+              <FormControl>
+                <Input placeholder='jhon.doe@gmail.com' {...field} />
+              </FormControl>
+              <FormDescription>
+                Please provide your email so I can contact you.
               </FormDescription>
               <FormMessage />
             </FormItem>
