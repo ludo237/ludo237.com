@@ -49,36 +49,8 @@
       "title": "Frontend Engineer",
       "description": "Manage to deliver new improvements with the twitter timeline team, deploy UI components to Twitter scale and reach millions of user with my improvements"
     },
-    "startedAt": "2012-01-01T00:00:00.000Z",
+    "startedAt": "2013-01-01T00:00:00.000Z",
     "endedAt": "2016-01-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
-  },
-  {
-    "avatar": "/companies/msft_logo.jpg",
-    "company": "Microsoft",
-    "short": "MS",
-    "about": "Every company has a mission. What's ours? To empower every person and every organization to achieve more. We believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today",
-    "role": {
-      "title": "C# Developer",
-      "description": "I was fascinated by this new launch from Microsoft, finally a Windows Phone that actually worked, so cool! I took the plundge and went straight into develop applications for the OS, mostly in C#. This excitement didn't last long because I realized the path Microsoft was taking with this OS so I left the project."
-    },
-    "startedAt": "2011-02-01T00:00:00.000Z",
-    "endedAt": "2011-08-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
-  },
-  {
-    "avatar": "/companies/google_logo.jpg",
-    "company": "Google",
-    "short": "GOOG",
-    "about": "A problem isn't truly solved until it's solved for all. Googlers build products that help create opportunities for everyone, whether down the street or across the globe. Bring your insight, imagination and a healthy disregard for the impossible. Bring everything that makes you unique. Together, we can build for everyone.",
-    "role": {
-      "title": "QA",
-      "description": "Provides QA feedback and direct testing to Google Big Query"
-    },
-    "startedAt": "2012-01-01T00:00:00.000Z",
-    "endedAt": "2012-05-01T00:00:00.000Z",
     "createdAt": "2024-04-10T00:00:00.000Z",
     "updatedAt": "2024-04-10T00:00:00.000Z"
   },
@@ -92,7 +64,7 @@
       "description": "In this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integratorIn this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integrator"
     },
     "startedAt": "2010-07-01T00:00:00.000Z",
-    "endedAt": "2013-07-01T00:00:00.000Z",
+    "endedAt": "2013-01-01T00:00:00.000Z",
     "createdAt": "2024-04-10T00:00:00.000Z",
     "updatedAt": "2024-04-10T00:00:00.000Z"
   }
