@@ -16,7 +16,7 @@ const BioCard: FC = () => {
       <CardHeader>
         <CardTitle className='text-sky-500'>About Me</CardTitle>
         <CardDescription>
-          I am part of the ‘90s generation that grew up with the Fresh Prince of
+          I am part of the 90s generation that grew up with the Fresh Prince of
           Bel Air and the Commodore 64
         </CardDescription>
       </CardHeader>
