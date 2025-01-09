@@ -3,6 +3,16 @@
 import React, { useEffect, useState } from 'react';
 import { SudokuBoard } from '~/components/sudoku/Board';
 import { DifficultySelector } from '~/components/sudoku/DifficultySelector';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '~/components/ui/AlertDialog';
+import { Separator } from '~/components/ui/Separator';
 import { generateSudoku, isValid } from '~/lib/sudoku';
 
 const Game: React.FC = () => {
@@ -79,41 +89,41 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center'>
-      <div className='mb-4 flex gap-8 text-sm'>
-        <div>Time: {formatTime(time)}</div>
-        <div>Moves: {moves}</div>
-      </div>
-      {isComplete && (
-        <div className='fixed inset-0 flex items-center justify-center bg-black/50'>
-          <div className='rounded-lg bg-white p-6 text-center'>
-            <h2 className='mb-4 text-2xl font-bold'>Congratulations! 🎉</h2>
-            <p>You've completed the puzzle!</p>
-            <button
-              className='mt-4 rounded bg-sky-500 px-4 py-2 text-white hover:bg-sky-600'
-              onClick={() => {
-                setIsComplete(false);
-                setTime(0);
-                setMoves(0);
-                setDifficulty(difficulty); // This will generate a new puzzle
-              }}
-            >
-              Play Again
-            </button>
-          </div>
+    <>
+      <AlertDialog defaultOpen={isComplete}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>You have completed the puzzle!</AlertDialogTitle>
+            <AlertDialogDescription>
+              Good job, it tooke you {time} and {moves} moves to complete this
+              Sudoku in {difficulty} mode
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction>Play Again</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <div className='flex flex-col items-center justify-center space-y-6'>
+        <div className='flex space-x-3 text-sm'>
+          <p>Time: {formatTime(time)}</p>
+          <Separator orientation='vertical' />
+          <p>Moves: {moves}</p>
         </div>
-      )}
-      <DifficultySelector
-        difficulty={difficulty}
-        onDifficultyChange={handleDifficultyChange}
-      />
-      <SudokuBoard
-        board={board}
-        initialBoard={initialBoard}
-        errors={errors}
-        onCellChange={handleCellChange}
-      />
-    </div>
+
+        <DifficultySelector
+          difficulty={difficulty}
+          onDifficultyChange={handleDifficultyChange}
+        />
+        <SudokuBoard
+          board={board}
+          initialBoard={initialBoard}
+          errors={errors}
+          onCellChange={handleCellChange}
+        />
+      </div>
+    </>
   );
 };
 

@@ -12,26 +12,24 @@ const DifficultySelector: React.FC<DifficultySelectorProps> = ({
   onDifficultyChange,
 }) => {
   return (
-    <div className='pb-4'>
-      <RadioGroup
-        className='flex items-center space-x-3'
-        defaultValue={difficulty}
-        onValueChange={(value) => onDifficultyChange(value)}
-      >
-        <div className='flex items-center space-x-1.5'>
-          <RadioGroupItem value='easy' id='easy' />
-          <Label htmlFor='easy'>Easy</Label>
-        </div>
-        <div className='flex items-center space-x-1.5'>
-          <RadioGroupItem value='medium' id='medium' />
-          <Label htmlFor='medium'>Medium</Label>
-        </div>
-        <div className='flex items-center space-x-1.5'>
-          <RadioGroupItem value='hard' id='hard' />
-          <Label htmlFor='hard'>Hard</Label>
-        </div>
-      </RadioGroup>
-    </div>
+    <RadioGroup
+      className='flex items-center space-x-3'
+      defaultValue={difficulty}
+      onValueChange={(value) => onDifficultyChange(value)}
+    >
+      <div className='flex items-center space-x-1.5'>
+        <RadioGroupItem value='easy' id='easy' />
+        <Label htmlFor='easy'>Easy</Label>
+      </div>
+      <div className='flex items-center space-x-1.5'>
+        <RadioGroupItem value='medium' id='medium' />
+        <Label htmlFor='medium'>Medium</Label>
+      </div>
+      <div className='flex items-center space-x-1.5'>
+        <RadioGroupItem value='hard' id='hard' />
+        <Label htmlFor='hard'>Hard</Label>
+      </div>
+    </RadioGroup>
   );
 };
 
