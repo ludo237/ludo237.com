@@ -110,3 +110,5 @@ interface GitlabProject {
   description: string;
   name: string;
 }
+
+type SudokuBoard = number[][];

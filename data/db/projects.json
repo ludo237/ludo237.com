@@ -1,27 +1,27 @@
 [
   {
+    "url": "/sudoku",
+    "name": "Sudoku Classic",
+    "description": "Simple sudoku board that reflects the classic game, which i like a lot",
+    "external": false
+  },
+  {
     "url": "https://ideaqr.com",
     "name": "IdeaQR",
     "description": "IdeaQR is the most used QR Code as a service in Italy",
-    "external": true,
-    "createdAt": "2020-01-01T00:00:00.000Z",
-    "updatedAt": "2025-01-01T00:00:00.000Z"
+    "external": true
   },
   {
     "url": "https://digie.it",
     "name": "Digie",
     "description": "Digie is digital signage as a service for businesses all around the world",
-    "external": true,
-    "createdAt": "2020-01-01T00:00:00.000Z",
-    "updatedAt": "2025-01-01T00:00:00.000Z"
+    "external": true
   },
   {
     "url": "https://github.com/vuejs/vue",
     "name": "VueJS",
     "description": "Contributed to the codebase and translation initially to v0.x",
-    "external": true,
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "external": true
   },
   {
     "url": "https://github.com/laravel/framework",
@@ -35,24 +35,18 @@
     "url": "https://gitlab.com/ludo237/laravel-rules",
     "name": "Laravel Rules",
     "description": "A set of custom Laravel rules that I've developed over the years I find them useful",
-    "external": true,
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "external": true
   },
   {
     "url": "https://gitlab.com/ludo237/delayed-artistic-guppy",
     "name": "Delayed Artistic Guppy",
     "description": "Package that generates slugify words like Gfycat or Twitch Clips",
-    "external": true,
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "external": true
   },
   {
     "url": "https://gitlab.com/ludo237/laravel-eloquent-traits",
     "name": "Eloquent Traits",
     "description": "Useful set of Eloquent traits. The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding Model, which is used to interact with that table.",
-    "external": true,
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "external": true
   }
 ]

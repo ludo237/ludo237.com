@@ -1,4 +1,5 @@
 import { ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 import { FC } from 'react';
 import { getProjects } from '~/actions';
 import {
@@ -31,8 +32,17 @@ const ProjectsCard: FC = async () => {
                     className='flex items-center space-x-1.5 font-medium leading-none text-sky-500 group-hover/post:underline'
                   >
                     <ExternalLink className='size-3' />
-                    <p>{p.name}</p>
+                    <span>{p.name}</span>
                   </a>
+                )}
+
+                {!p.external && (
+                  <Link
+                    href={p.url}
+                    className='flex items-center space-x-1.5 font-medium leading-none text-sky-500 group-hover/post:underline'
+                  >
+                    <span>{p.name}</span>
+                  </Link>
                 )}
                 <p className='text-sm text-zinc-600 dark:text-zinc-200'>
                   {p.description}
