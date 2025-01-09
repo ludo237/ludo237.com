@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { getPosts } from '~/actions';
+import { Header } from '~/components/header';
 import { AspectRatio } from '~/components/ui/aspect-ratio';
 import {
   Card,
@@ -53,11 +54,14 @@ const BlogPage: FC = async () => {
   const posts = await getPosts();
 
   return (
-    <div className='mx-3 grid max-w-7xl grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:mx-auto'>
-      {posts.map((post) => (
-        <Post key={post.slug} post={post} />
-      ))}
-    </div>
+    <>
+      <Header />
+      <main className='mx-3 grid max-w-7xl grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:mx-auto'>
+        {posts.map((post) => (
+          <Post key={post.slug} post={post} />
+        ))}
+      </main>
+    </>
   );
 };
 

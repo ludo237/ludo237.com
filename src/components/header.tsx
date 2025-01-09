@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Navbar } from '~/components/navbar';
 
 const Header: FC = () => {
   return (
@@ -9,9 +10,7 @@ const Header: FC = () => {
       <small className='text-sky-600 dark:text-sky-500'>
         also known as ludo237
       </small>
-      <span className='text-muted-foreground max-w-[750px] text-center text-lg dark:text-zinc-300 sm:text-xl'>
-        Entrepreneur - Engineer - Optimistic for the Future
-      </span>
+      <Navbar />
     </div>
   );
 };

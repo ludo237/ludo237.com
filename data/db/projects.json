@@ -1,5 +1,11 @@
 [
   {
+    "url": "/tempmail",
+    "name": "Temporary Emails",
+    "description": "Forget about spam, advertising mailings, hacking and attacking robots. Keep your real mailbox clean and secure. Temp Mail provides temporary, secure, anonymous, free, disposable email address.",
+    "external": false
+  },
+  {
     "url": "/sudoku",
     "name": "Sudoku Classic",
     "description": "Simple sudoku board that reflects the classic game, which i like a lot",

@@ -4,6 +4,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { FC } from 'react';
 import { getPost } from '~/actions';
+import { Header } from '~/components/header';
 import { AspectRatio } from '~/components/ui/aspect-ratio';
 import {
   Card,
@@ -45,34 +46,38 @@ const BlogSlugPage: FC<{ params: Promise<{ slug: string }> }> = async ({
   const markdownContent = marked.parse(post.content);
 
   return (
-    <div className='mx-auto max-w-2xl'>
-      <Card>
-        <div className='relative overflow-hidden rounded-t-md'>
-          <AspectRatio ratio={16 / 9}>
-            <Image
-              src={post.cover}
-              alt={post.title}
-              fill
-              className='object-cover'
-            />
-          </AspectRatio>
-        </div>
-        <CardHeader>
-          <CardTitle className='text-sky-500'>{post.title}</CardTitle>
+    <>
+      <Header />
 
-          <CardDescription>
-            {readingTime(post.content)} minutes read.Written{' '}
-            {formatDistanceToNowStrict(post.date, { addSuffix: true })}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div
-            className='prose prose-sm dark:prose-invert md:prose-base'
-            dangerouslySetInnerHTML={{ __html: markdownContent }}
-          />
-        </CardContent>
-      </Card>
-    </div>
+      <main className='mx-auto max-w-2xl'>
+        <Card>
+          <div className='relative overflow-hidden rounded-t-md'>
+            <AspectRatio ratio={16 / 9}>
+              <Image
+                src={post.cover}
+                alt={post.title}
+                fill
+                className='object-cover'
+              />
+            </AspectRatio>
+          </div>
+          <CardHeader>
+            <CardTitle className='text-sky-500'>{post.title}</CardTitle>
+
+            <CardDescription>
+              {readingTime(post.content)} minutes read.Written{' '}
+              {formatDistanceToNowStrict(post.date, { addSuffix: true })}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div
+              className='prose prose-sm dark:prose-invert md:prose-base'
+              dangerouslySetInnerHTML={{ __html: markdownContent }}
+            />
+          </CardContent>
+        </Card>
+      </main>
+    </>
   );
 };
 
