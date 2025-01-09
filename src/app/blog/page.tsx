@@ -14,7 +14,7 @@ import {
 } from '~/components/ui/Card';
 import { readingTime } from '~/lib/utils';
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: 'Ludo237 | Blog',

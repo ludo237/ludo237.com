@@ -14,13 +14,14 @@ import {
 } from '~/components/ui/Card';
 import { readingTime } from '~/lib/utils';
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86400;
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } },
+  { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  const slug = (await params).slug;
+  const post = await getPost(slug);
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -35,8 +36,11 @@ export async function generateMetadata(
   };
 }
 
-const BlogSlugPage: FC<{ params: { slug: string } }> = async ({ params }) => {
-  const post = await getPost(params.slug);
+const BlogSlugPage: FC<{ params: Promise<{ slug: string }> }> = async ({
+  params,
+}) => {
+  const slug = (await params).slug;
+  const post = await getPost(slug);
 
   const markdownContent = marked.parse(post.content);
 
@@ -57,7 +61,7 @@ const BlogSlugPage: FC<{ params: { slug: string } }> = async ({ params }) => {
           <CardTitle className='text-sky-500'>{post.title}</CardTitle>
 
           <CardDescription>
-            {readingTime(post.content)} minutes read. Written{' '}
+            {readingTime(post.content)} minutes read.Written{' '}
             {formatDistanceToNowStrict(post.date, { addSuffix: true })}
           </CardDescription>
         </CardHeader>
