@@ -1,16 +1,14 @@
 import Link from 'next/link';
 import { FC } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/Avatar';
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui';
+} from '~/components/ui/Card';
 
 const BioCard: FC = () => {
   return (

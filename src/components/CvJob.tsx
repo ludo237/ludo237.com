@@ -1,14 +1,12 @@
 import { format, formatDistanceStrict } from 'date-fns';
 import { CalendarDays } from 'lucide-react';
 import { FC } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/Avatar';
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '~/components/ui';
+} from '~/components/ui/HoverCard';
 
 const CvJob: FC<{ job: Job }> = ({ job }) => {
   return (
@@ -41,7 +39,7 @@ const CvJob: FC<{ job: Job }> = ({ job }) => {
             </div>
           </HoverCardContent>
         </HoverCard>
-        <p className='text-sm text-zinc-600  dark:text-zinc-200'>
+        <p className='text-sm text-zinc-600 dark:text-zinc-200'>
           {job.role.title}
         </p>
       </div>

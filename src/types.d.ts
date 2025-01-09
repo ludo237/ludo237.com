@@ -35,6 +35,7 @@ interface Project extends BaseModel {
   url: string;
   name: string;
   description: string;
+  external: boolean;
 }
 
 interface Post extends BaseModel {

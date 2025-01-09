@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui';
+} from '~/components/ui/Card';
 
 const BlogCard: FC = async () => {
   const posts = await getPosts();
@@ -24,14 +24,17 @@ const BlogCard: FC = async () => {
       <CardContent>
         <div className='space-y-3'>
           {posts.map((post) => (
-            <div className='group/post flex items-center py-3' key={post.slug}>
+            <div
+              className='group/post flex flex-col items-center py-1.5'
+              key={post.slug}
+            >
               <div className='grow space-y-0.5'>
                 <Link href={`/blog/${post.slug}`}>
                   <p className='font-medium leading-none text-sky-500 group-hover/post:underline'>
                     {post.title}
                   </p>
                 </Link>
-                <p className=' text-sm text-zinc-600  dark:text-zinc-200'>
+                <p className='text-sm text-zinc-600 dark:text-zinc-200'>
                   {post.summary}
                 </p>
               </div>

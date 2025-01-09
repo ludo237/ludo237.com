@@ -8,14 +8,16 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Button,
+} from '~/components/ui/Accordion';
+import { Button } from '~/components/ui/Button';
+import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui';
+} from '~/components/ui/Card';
 
 export const metadata: Metadata = {
   title: 'Ludo237 | CV',

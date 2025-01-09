@@ -3,24 +3,21 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Check, SendHorizonal } from 'lucide-react';
 import { FC, useState, useTransition } from 'react';
-import { useForm } from 'react-hook-form';
+import { Form, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { sendEmail } from '~/actions';
+import { Alert, AlertDescription, AlertTitle } from '~/components/ui/Alert';
+import { Button } from '~/components/ui/Button';
 import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Button,
-  Form,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
-  Textarea,
-} from '~/components/ui';
+} from '~/components/ui/Form';
+import { Input } from '~/components/ui/Input';
+import { Textarea } from '~/components/ui/Textarea';
 import { contactSchema } from '~/schemas';
 
 const ContactForm: FC = () => {

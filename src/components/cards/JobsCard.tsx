@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui';
+} from '~/components/ui/Card';
 
 const JobsCard: FC = async () => {
   // it's a little hack but it does the job

@@ -4,14 +4,14 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { FC } from 'react';
 import { getPost } from '~/actions';
+import { AspectRatio } from '~/components/ui/AspectRatio';
 import {
-  AspectRatio,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui';
+} from '~/components/ui/Card';
 import { readingTime } from '~/lib/utils';
 
 export const revalidate = 60 * 60 * 24;

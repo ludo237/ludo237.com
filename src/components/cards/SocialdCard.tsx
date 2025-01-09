@@ -1,5 +1,12 @@
 'use client';
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from '@radix-ui/react-dialog';
+import {
   Github,
   Gitlab,
   Layers,
@@ -11,20 +18,17 @@ import {
 import Link from 'next/link';
 import { FC, useState } from 'react';
 import { ContactForm } from '~/components/ContactForm';
+import { Button } from '~/components/ui/Button';
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+} from '~/components/ui/Card';
+import { DialogHeader } from '~/components/ui/Dialog';
+import {
   Drawer,
   DrawerContent,
   DrawerDescription,
@@ -32,7 +36,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from '~/components/ui';
+} from '~/components/ui/Drawer';
 import { useMediaQuery } from '~/hooks/useMediaQuery';
 
 const ContactMeDesktopDialog: FC<{ open: boolean; setOpen: any }> = ({
