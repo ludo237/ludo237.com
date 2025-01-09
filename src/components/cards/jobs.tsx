@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import { getJobs } from '~/actions';
-import { CvJob } from '~/components/CvJob';
+import { CvJob } from '~/components/cv-job';
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 
 const JobsCard: FC = async () => {
   // it's a little hack but it does the job

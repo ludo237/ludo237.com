@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Game } from '~/components/sudoku/Game';
+import { Game } from '~/components/sudoku/game';
 
 const SudokuGame: FC = () => {
   return (

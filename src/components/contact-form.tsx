@@ -6,8 +6,8 @@ import { FC, useState, useTransition } from 'react';
 import { Form, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { sendEmail } from '~/actions';
-import { Alert, AlertDescription, AlertTitle } from '~/components/ui/Alert';
-import { Button } from '~/components/ui/Button';
+import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
+import { Button } from '~/components/ui/button';
 import {
   FormControl,
   FormDescription,
@@ -15,9 +15,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '~/components/ui/Form';
-import { Input } from '~/components/ui/Input';
-import { Textarea } from '~/components/ui/Textarea';
+} from '~/components/ui/form';
+import { Input } from '~/components/ui/input';
+import { Textarea } from '~/components/ui/textarea';
 import { contactSchema } from '~/schemas';
 
 const ContactForm: FC = () => {

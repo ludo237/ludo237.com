@@ -17,8 +17,8 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { FC, useState } from 'react';
-import { ContactForm } from '~/components/ContactForm';
-import { Button } from '~/components/ui/Button';
+import { ContactForm } from '~/components/contact-form';
+import { Button } from '~/components/ui/button';
 import {
   Card,
   CardContent,
@@ -26,8 +26,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
-import { DialogHeader } from '~/components/ui/Dialog';
+} from '~/components/ui/card';
+import { DialogHeader } from '~/components/ui/dialog';
 import {
   Drawer,
   DrawerContent,
@@ -36,8 +36,8 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from '~/components/ui/Drawer';
-import { useMediaQuery } from '~/hooks/useMediaQuery';
+} from '~/components/ui/drawer';
+import { useMediaQuery } from '~/hooks/use-media-query';
 
 const ContactMeDesktopDialog: FC<{ open: boolean; setOpen: any }> = ({
   open,

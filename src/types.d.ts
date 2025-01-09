@@ -112,3 +112,12 @@ interface GitlabProject {
 }
 
 type SudokuBoard = number[][];
+
+interface Email {
+  id: string;
+  subject: string;
+  from: string;
+  body: string;
+  attachments: any[];
+  date: string;
+}

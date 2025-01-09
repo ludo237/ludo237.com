@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 
 const BlogCard: FC = async () => {
   const posts = await getPosts();

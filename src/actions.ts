@@ -156,3 +156,35 @@ export const sendEmail = async (
     return false;
   }
 };
+
+export const generateEmail = async (
+  quantity: number = 1
+): Promise<string[]> => {
+  const res = await fetch(
+    `${process.env.TEMP_EMAIL_BASE_URL}genRandomMailbox&count=${quantity}`
+  );
+  const data = await res.json();
+
+  return data;
+};
+
+export const refresh = async (email: string): Promise<Email[]> => {
+  const [identifier, domain] = email.split('@');
+  const res = await fetch(
+    `${process.env.TEMP_EMAIL_BASE_URL}getMessages&login=${identifier}&domain=${domain}`
+  );
+  const data = await res.json();
+
+  return data;
+};
+
+export const load = async (email: string, id: string): Promise<Email> => {
+  const [identifier, domain] = email.split('@');
+
+  const res = await fetch(
+    `${process.env.TEMP_EMAIL_BASE_URL}readMessage&login=${identifier}&domain=${domain}&id=${id}`
+  );
+  const data = await res.json();
+
+  return data;
+};

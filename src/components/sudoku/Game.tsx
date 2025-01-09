@@ -2,11 +2,11 @@
 
 import { PartyPopper } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { SudokuBoard } from '~/components/sudoku/Board';
-import { DifficultySelector } from '~/components/sudoku/DifficultySelector';
-import { Alert, AlertDescription, AlertTitle } from '~/components/ui/Alert';
-import { Button } from '~/components/ui/Button';
-import { Separator } from '~/components/ui/Separator';
+import { SudokuBoard } from '~/components/sudoku/board';
+import { DifficultySelector } from '~/components/sudoku/difficulty-selector';
+import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
+import { Button } from '~/components/ui/button';
+import { Separator } from '~/components/ui/separator';
 import { generateSudoku, isValid } from '~/lib/sudoku';
 
 const Game: React.FC = () => {

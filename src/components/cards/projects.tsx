@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 
 const ProjectsCard: FC = async () => {
   const proejcts = await getProjects();

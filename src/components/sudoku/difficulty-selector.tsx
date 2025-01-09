@@ -1,6 +1,6 @@
 import React from 'react';
-import { Label } from '~/components/ui/Label';
-import { RadioGroup, RadioGroupItem } from '~/components/ui/RadioGroup';
+import { Label } from '~/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group';
 
 interface DifficultySelectorProps {
   difficulty: string;

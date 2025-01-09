@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cell } from '~/components/sudoku/Cell';
+import { Cell } from '~/components/sudoku/cell';
 
 interface SudokuBoardProps {
   board: SudokuBoard;

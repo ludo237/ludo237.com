@@ -4,14 +4,14 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { FC } from 'react';
 import { getPost } from '~/actions';
-import { AspectRatio } from '~/components/ui/AspectRatio';
+import { AspectRatio } from '~/components/ui/aspect-ratio';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 import { readingTime } from '~/lib/utils';
 
 export const revalidate = 86400;
@@ -67,7 +67,7 @@ const BlogSlugPage: FC<{ params: Promise<{ slug: string }> }> = async ({
         </CardHeader>
         <CardContent>
           <div
-            className='prose prose-sm md:prose-base dark:prose-invert'
+            className='prose prose-sm dark:prose-invert md:prose-base'
             dangerouslySetInnerHTML={{ __html: markdownContent }}
           />
         </CardContent>

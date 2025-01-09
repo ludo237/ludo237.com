@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { BioCard } from '~/components/cards/BioCard';
-import { BlogCard } from '~/components/cards/BlogCard';
-import { JobsCard } from '~/components/cards/JobsCard';
-import { ProjectsCard } from '~/components/cards/ProjectsCard';
-import { SocialCard } from '~/components/cards/SocialdCard';
+import { BioCard } from '~/components/cards/bio';
+import { BlogCard } from '~/components/cards/blog';
+import { JobsCard } from '~/components/cards/jobs';
+import { ProjectsCard } from '~/components/cards/projects';
+import { SocialCard } from '~/components/cards/socials';
 
 const HomePage: FC = () => {
   return (

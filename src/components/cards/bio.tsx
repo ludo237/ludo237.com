@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/Avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 
 const BioCard: FC = () => {
   return (

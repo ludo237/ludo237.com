@@ -4,14 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { getPosts } from '~/actions';
-import { AspectRatio } from '~/components/ui/AspectRatio';
+import { AspectRatio } from '~/components/ui/aspect-ratio';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 import { readingTime } from '~/lib/utils';
 
 export const revalidate = 86400;

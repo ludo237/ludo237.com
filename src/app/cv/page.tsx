@@ -2,14 +2,14 @@ import { DownloadCloudIcon } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getEducations, getJobs, getLanguages, getProjects } from '~/actions';
-import { CvJob } from '~/components/CvJob';
+import { CvJob } from '~/components/cv-job';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '~/components/ui/Accordion';
-import { Button } from '~/components/ui/Button';
+} from '~/components/ui/accordion';
+import { Button } from '~/components/ui/button';
 import {
   Card,
   CardContent,
@@ -17,7 +17,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/Card';
+} from '~/components/ui/card';
 
 export const metadata: Metadata = {
   title: 'Ludo237 | CV',
