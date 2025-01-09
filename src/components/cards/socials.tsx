@@ -1,11 +1,5 @@
 'use client';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from '@radix-ui/react-dialog';
+
 import {
   Github,
   Gitlab,
@@ -27,7 +21,14 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card';
-import { DialogHeader } from '~/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '~/components/ui/dialog';
 import {
   Drawer,
   DrawerContent,

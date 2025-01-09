@@ -3,12 +3,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Check, SendHorizonal } from 'lucide-react';
 import { FC, useState, useTransition } from 'react';
-import { Form, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { sendEmail } from '~/actions';
 import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
 import { Button } from '~/components/ui/button';
 import {
+  Form,
   FormControl,
   FormDescription,
   FormField,

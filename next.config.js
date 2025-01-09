@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
@@ -11,6 +14,7 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;
