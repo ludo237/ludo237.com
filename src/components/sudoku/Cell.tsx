@@ -57,8 +57,10 @@ const Cell: React.FC<CellProps> = ({
 
   return (
     <input
-      type='text'
-      className={`size-10 border text-center ${borderRight} ${borderBottom} ${readOnly ? 'bg-gray-300' : 'bg-white'} ${hasError ? 'bg-red-300' : ''} focus:outline-none focus:ring-0`}
+      type='number'
+      className={`size-10 border text-center ${borderRight} ${borderBottom} ${
+        readOnly ? 'bg-gray-300' : 'bg-white'
+      } ${hasError ? 'border-2 border-red-500 bg-red-300' : ''} focus:outline-none focus:ring-0`}
       value={value !== 0 ? value : ''}
       readOnly={readOnly}
       onChange={handleChange}
