@@ -39,6 +39,7 @@ const SudokuBoard: React.FC<SudokuBoardProps> = ({
                 }
                 borderRight={borderRight}
                 borderBottom={borderBottom}
+                col={colIndex + 1}
               />
             );
           })}

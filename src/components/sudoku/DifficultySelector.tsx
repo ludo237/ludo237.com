@@ -15,7 +15,7 @@ const DifficultySelector: React.FC<DifficultySelectorProps> = ({
     <div className='pb-4'>
       <RadioGroup
         className='flex items-center space-x-3'
-        defaultValue='easy'
+        defaultValue={difficulty}
         onValueChange={(value) => onDifficultyChange(value)}
       >
         <div className='flex items-center space-x-1.5'>
