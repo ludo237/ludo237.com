@@ -1,6 +1,7 @@
 'use client';
 
 import { cva } from 'class-variance-authority';
+import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import {
   ComponentPropsWithoutRef,
@@ -23,7 +24,7 @@ import {
 import { cn } from '~/lib/utils';
 
 const projectItemVariant = cva(
-  'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
+  'block select-none space-y-1 rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
 );
 
 const ProjectItem = forwardRef<
@@ -35,14 +36,18 @@ const ProjectItem = forwardRef<
       <li>
         <NavigationMenuLink asChild>
           <a
+            href={project.url}
             ref={ref}
             className={cn(projectItemVariant(), className)}
             {...props}
           >
-            <div className='text-sm font-medium leading-none text-sky-500'>
-              {project.name}
+            <div className='flex items-center space-x-0.5'>
+              <ExternalLink className='size-3' />
+              <div className='text-sm font-medium leading-none text-sky-500'>
+                {project.name}
+              </div>
             </div>
-            <p className='text-muted-foreground line-clamp-2 text-sm leading-snug'>
+            <p className='line-clamp-2 text-sm leading-snug text-zinc-600 dark:text-zinc-200'>
               {project.description}
             </p>
           </a>
@@ -63,7 +68,7 @@ const ProjectItem = forwardRef<
           <div className='text-sm font-medium leading-none text-sky-500'>
             {project.name}
           </div>
-          <p className='text-muted-foreground line-clamp-2 text-sm leading-snug'>
+          <p className='line-clamp-2 text-sm leading-snug text-zinc-600 dark:text-zinc-200'>
             {project.description}
           </p>
         </Link>
