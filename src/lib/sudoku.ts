@@ -123,6 +123,55 @@ function removeDigits(board: SudokuBoard, difficulty: string): SudokuBoard {
 
 // Function to generate a Sudoku puzzle with a given difficulty
 export function generateSudoku(difficulty: string): SudokuBoard {
-  const completeBoard = generateCompleteBoard();
-  return removeDigits(completeBoard, difficulty);
+  let board = generateCompleteBoard();
+  let isValid = false;
+
+  while (!isValid) {
+    board = generateCompleteBoard();
+    isValid = validateBoard(board);
+  }
+
+  return removeDigits(board, difficulty);
+}
+
+function validateBoard(board: SudokuBoard): boolean {
+  // Check rows
+  for (let row = 0; row < 9; row++) {
+    const seen = new Set();
+    for (let col = 0; col < 9; col++) {
+      if (board[row][col] !== 0) {
+        if (seen.has(board[row][col])) return false;
+        seen.add(board[row][col]);
+      }
+    }
+  }
+
+  // Check columns
+  for (let col = 0; col < 9; col++) {
+    const seen = new Set();
+    for (let row = 0; row < 9; row++) {
+      if (board[row][col] !== 0) {
+        if (seen.has(board[row][col])) return false;
+        seen.add(board[row][col]);
+      }
+    }
+  }
+
+  // Check boxes
+  for (let boxRow = 0; boxRow < 9; boxRow += 3) {
+    for (let boxCol = 0; boxCol < 9; boxCol += 3) {
+      const seen = new Set();
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          const value = board[boxRow + i][boxCol + j];
+          if (value !== 0) {
+            if (seen.has(value)) return false;
+            seen.add(value);
+          }
+        }
+      }
+    }
+  }
+
+  return true;
 }

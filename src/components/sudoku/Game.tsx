@@ -1,17 +1,11 @@
 'use client';
 
+import { PartyPopper } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { SudokuBoard } from '~/components/sudoku/Board';
 import { DifficultySelector } from '~/components/sudoku/DifficultySelector';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '~/components/ui/AlertDialog';
+import { Alert, AlertDescription, AlertTitle } from '~/components/ui/Alert';
+import { Button } from '~/components/ui/Button';
 import { Separator } from '~/components/ui/Separator';
 import { generateSudoku, isValid } from '~/lib/sudoku';
 
@@ -55,6 +49,7 @@ const Game: React.FC = () => {
   };
 
   const checkCompletion = (board: SudokuBoard) => {
+    // Check for empty cells or cells with errors
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         if (board[i][j] === 0 || errors[`${i}-${j}`]) {
@@ -62,6 +57,39 @@ const Game: React.FC = () => {
         }
       }
     }
+
+    // Check rows
+    for (let row = 0; row < 9; row++) {
+      const seen = new Set();
+      for (let col = 0; col < 9; col++) {
+        if (seen.has(board[row][col])) return false;
+        seen.add(board[row][col]);
+      }
+    }
+
+    // Check columns
+    for (let col = 0; col < 9; col++) {
+      const seen = new Set();
+      for (let row = 0; row < 9; row++) {
+        if (seen.has(board[row][col])) return false;
+        seen.add(board[row][col]);
+      }
+    }
+
+    // Check 3x3 boxes
+    for (let boxRow = 0; boxRow < 9; boxRow += 3) {
+      for (let boxCol = 0; boxCol < 9; boxCol += 3) {
+        const seen = new Set();
+        for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+            const value = board[boxRow + i][boxCol + j];
+            if (seen.has(value)) return false;
+            seen.add(value);
+          }
+        }
+      }
+    }
+
     return true;
   };
 
@@ -90,21 +118,6 @@ const Game: React.FC = () => {
 
   return (
     <>
-      <AlertDialog defaultOpen={isComplete}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>You have completed the puzzle!</AlertDialogTitle>
-            <AlertDialogDescription>
-              Good job, it tooke you {time} and {moves} moves to complete this
-              Sudoku in {difficulty} mode
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction>Play Again</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
       <div className='flex flex-col items-center justify-center space-y-6'>
         <div className='flex space-x-3 text-sm'>
           <p>Time: {formatTime(time)}</p>
@@ -112,16 +125,40 @@ const Game: React.FC = () => {
           <p>Moves: {moves}</p>
         </div>
 
-        <DifficultySelector
-          difficulty={difficulty}
-          onDifficultyChange={handleDifficultyChange}
-        />
-        <SudokuBoard
-          board={board}
-          initialBoard={initialBoard}
-          errors={errors}
-          onCellChange={handleCellChange}
-        />
+        {isComplete && (
+          <Alert>
+            <PartyPopper className='size-5' />
+            <AlertTitle>Congratulations!</AlertTitle>
+            <AlertDescription>
+              <p>
+                You finished the board in {formatTime(time)} minutes with{' '}
+                {moves} moves!
+              </p>
+              <div className='flex w-full items-center justify-end'>
+                <Button
+                  size='xs'
+                  onClick={() => handleDifficultyChange(difficulty)}
+                >
+                  Play again
+                </Button>
+              </div>
+            </AlertDescription>
+          </Alert>
+        )}
+        {!isComplete && (
+          <>
+            <DifficultySelector
+              difficulty={difficulty}
+              onDifficultyChange={handleDifficultyChange}
+            />
+            <SudokuBoard
+              board={board}
+              initialBoard={initialBoard}
+              errors={errors}
+              onCellChange={handleCellChange}
+            />
+          </>
+        )}
       </div>
     </>
   );
