@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { getPosts } from '~/actions';
+import { getPosts } from '~/actions/blog';
 import {
   Card,
   CardContent,

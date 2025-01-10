@@ -11,7 +11,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { getProjects } from '~/actions';
+import { getProjects } from '~/actions/cv';
 import {
   NavigationMenu,
   NavigationMenuContent,

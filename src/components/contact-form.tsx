@@ -5,7 +5,7 @@ import { Check, SendHorizonal } from 'lucide-react';
 import { FC, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { sendEmail } from '~/actions';
+import { send } from '~/actions/email';
 import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
 import { Button } from '~/components/ui/button';
 import {
@@ -35,7 +35,7 @@ const ContactForm: FC = () => {
 
   const onSubmit = (values: z.infer<typeof contactSchema>) => {
     startTransition(async () => {
-      const sent = await sendEmail(values);
+      const sent = await send(values);
       setSent(sent);
     });
   };

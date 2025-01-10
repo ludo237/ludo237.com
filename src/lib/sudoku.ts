@@ -1,32 +1,3 @@
-// Helper function to check if a number can be placed in a cell
-export function isValid(
-  board: SudokuBoard,
-  row: number,
-  col: number,
-  num: number
-): boolean {
-  // Check row
-  for (let x = 0; x < 9; x++) {
-    if (board[row][x] === num) return false;
-  }
-
-  // Check column
-  for (let x = 0; x < 9; x++) {
-    if (board[x][col] === num) return false;
-  }
-
-  // Check 3x3 box
-  const boxRow = Math.floor(row / 3) * 3;
-  const boxCol = Math.floor(col / 3) * 3;
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      if (board[boxRow + i][boxCol + j] === num) return false;
-    }
-  }
-
-  return true;
-}
-
 // Function to generate a complete Sudoku board
 function generateCompleteBoard(): SudokuBoard {
   const board: SudokuBoard = Array.from({ length: 9 }, () => Array(9).fill(0));
@@ -122,18 +93,6 @@ function removeDigits(board: SudokuBoard, difficulty: string): SudokuBoard {
 }
 
 // Function to generate a Sudoku puzzle with a given difficulty
-export function generateSudoku(difficulty: string): SudokuBoard {
-  let board = generateCompleteBoard();
-  let isValid = false;
-
-  while (!isValid) {
-    board = generateCompleteBoard();
-    isValid = validateBoard(board);
-  }
-
-  return removeDigits(board, difficulty);
-}
-
 function validateBoard(board: SudokuBoard): boolean {
   // Check rows
   for (let row = 0; row < 9; row++) {
@@ -175,3 +134,92 @@ function validateBoard(board: SudokuBoard): boolean {
 
   return true;
 }
+
+// Helper function to check if a number can be placed in a cell
+export const isValid = (
+  board: SudokuBoard,
+  row: number,
+  col: number,
+  num: number
+): boolean => {
+  // Check row
+  for (let x = 0; x < 9; x++) {
+    if (board[row][x] === num) return false;
+  }
+
+  // Check column
+  for (let x = 0; x < 9; x++) {
+    if (board[x][col] === num) return false;
+  }
+
+  // Check 3x3 box
+  const boxRow = Math.floor(row / 3) * 3;
+  const boxCol = Math.floor(col / 3) * 3;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (board[boxRow + i][boxCol + j] === num) return false;
+    }
+  }
+
+  return true;
+};
+
+export const generateSudoku = (difficulty: string): SudokuBoard => {
+  let board = generateCompleteBoard();
+  let isValid = false;
+
+  while (!isValid) {
+    board = generateCompleteBoard();
+    isValid = validateBoard(board);
+  }
+
+  return removeDigits(board, difficulty);
+};
+
+export const checkCompletion = (
+  board: SudokuBoard,
+  errors: { [key: string]: boolean }
+) => {
+  // Check for empty cells or cells with errors
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (board[i][j] === 0 || errors[`${i}-${j}`]) {
+        return false;
+      }
+    }
+  }
+
+  // Check rows
+  for (let row = 0; row < 9; row++) {
+    const seen = new Set();
+    for (let col = 0; col < 9; col++) {
+      if (seen.has(board[row][col])) return false;
+      seen.add(board[row][col]);
+    }
+  }
+
+  // Check columns
+  for (let col = 0; col < 9; col++) {
+    const seen = new Set();
+    for (let row = 0; row < 9; row++) {
+      if (seen.has(board[row][col])) return false;
+      seen.add(board[row][col]);
+    }
+  }
+
+  // Check 3x3 boxes
+  for (let boxRow = 0; boxRow < 9; boxRow += 3) {
+    for (let boxCol = 0; boxCol < 9; boxCol += 3) {
+      const seen = new Set();
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          const value = board[boxRow + i][boxCol + j];
+          if (seen.has(value)) return false;
+          seen.add(value);
+        }
+      }
+    }
+  }
+
+  return true;
+};

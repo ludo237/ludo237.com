@@ -1,15 +1,18 @@
 'use client';
 
+import { User } from '@supabase/supabase-js';
 import { PartyPopper } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { addGame } from '~/actions/sudoku';
 import { SudokuBoard } from '~/components/sudoku/board';
 import { DifficultySelector } from '~/components/sudoku/difficulty-selector';
 import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
 import { Button } from '~/components/ui/button';
 import { Separator } from '~/components/ui/separator';
-import { generateSudoku, isValid } from '~/lib/sudoku';
+import { checkCompletion, generateSudoku, isValid } from '~/lib/sudoku';
+import { formatTime } from '~/lib/utils';
 
-const Game: React.FC = () => {
+const Game: FC<{ user: User | null }> = ({ user }) => {
   const [difficulty, setDifficulty] = useState<string>('easy');
   const [board, setBoard] = useState<SudokuBoard>([]);
   const [initialBoard, setInitialBoard] = useState<SudokuBoard>([]);
@@ -28,70 +31,22 @@ const Game: React.FC = () => {
     return () => clearInterval(timer);
   }, [isComplete]);
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
+  useEffect(() => {
+    const handleSudokuCompletition = async () => {
+      if (user) {
+        await addGame(user, moves, time, difficulty);
+      }
+    };
+
+    if (isComplete) {
+      handleSudokuCompletition();
+    }
+  }, [isComplete]);
 
   // Generate the board when the component mounts or difficulty changes
   useEffect(() => {
-    const newBoard = generateSudoku(difficulty);
-    setInitialBoard(JSON.parse(JSON.stringify(newBoard)));
-    setBoard(newBoard);
-    setErrors({});
+    handleRestart();
   }, [difficulty]);
-
-  const handleDifficultyChange = (newDifficulty: string) => {
-    setDifficulty(newDifficulty);
-    setTime(0);
-    setMoves(0);
-  };
-
-  const checkCompletion = (board: SudokuBoard) => {
-    // Check for empty cells or cells with errors
-    for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
-        if (board[i][j] === 0 || errors[`${i}-${j}`]) {
-          return false;
-        }
-      }
-    }
-
-    // Check rows
-    for (let row = 0; row < 9; row++) {
-      const seen = new Set();
-      for (let col = 0; col < 9; col++) {
-        if (seen.has(board[row][col])) return false;
-        seen.add(board[row][col]);
-      }
-    }
-
-    // Check columns
-    for (let col = 0; col < 9; col++) {
-      const seen = new Set();
-      for (let row = 0; row < 9; row++) {
-        if (seen.has(board[row][col])) return false;
-        seen.add(board[row][col]);
-      }
-    }
-
-    // Check 3x3 boxes
-    for (let boxRow = 0; boxRow < 9; boxRow += 3) {
-      for (let boxCol = 0; boxCol < 9; boxCol += 3) {
-        const seen = new Set();
-        for (let i = 0; i < 3; i++) {
-          for (let j = 0; j < 3; j++) {
-            const value = board[boxRow + i][boxCol + j];
-            if (seen.has(value)) return false;
-            seen.add(value);
-          }
-        }
-      }
-    }
-
-    return true;
-  };
 
   const handleCellChange = (row: number, col: number, value: number) => {
     if (initialBoard[row][col] !== 0) return;
@@ -105,7 +60,7 @@ const Game: React.FC = () => {
       delete newErrors[`${row}-${col}`];
 
       // Check if game is complete after valid move
-      if (checkCompletion(newBoard)) {
+      if (checkCompletion(newBoard, errors)) {
         setIsComplete(true);
       }
     } else {
@@ -116,51 +71,59 @@ const Game: React.FC = () => {
     setErrors(newErrors);
   };
 
-  return (
-    <>
-      <div className='flex flex-col items-center justify-center space-y-6'>
-        <div className='flex space-x-3 text-sm'>
-          <p>Time: {formatTime(time)}</p>
-          <Separator orientation='vertical' />
-          <p>Moves: {moves}</p>
-        </div>
+  const handleRestart = () => {
+    setTime(0);
+    setMoves(0);
+    setIsComplete(false);
+    setErrors({});
 
-        {isComplete && (
-          <Alert>
-            <PartyPopper className='size-5' />
-            <AlertTitle>Congratulations!</AlertTitle>
-            <AlertDescription>
-              <p>
-                You finished the board in {formatTime(time)} minutes with{' '}
-                {moves} moves!
-              </p>
-              <div className='flex w-full items-center justify-end'>
-                <Button
-                  size='xs'
-                  onClick={() => handleDifficultyChange(difficulty)}
-                >
-                  Play again
-                </Button>
-              </div>
-            </AlertDescription>
-          </Alert>
-        )}
-        {!isComplete && (
-          <>
-            <DifficultySelector
-              difficulty={difficulty}
-              onDifficultyChange={handleDifficultyChange}
-            />
-            <SudokuBoard
-              board={board}
-              initialBoard={initialBoard}
-              errors={errors}
-              onCellChange={handleCellChange}
-            />
-          </>
-        )}
+    const newBoard = generateSudoku(difficulty);
+    setInitialBoard(JSON.parse(JSON.stringify(newBoard)));
+    setBoard(newBoard);
+  };
+
+  return (
+    <div className='flex flex-col items-center justify-center space-y-6'>
+      <div className='flex space-x-3 text-sm'>
+        <p>Time: {formatTime(time)}</p>
+        <Separator orientation='vertical' />
+        <p>Moves: {moves}</p>
+
+        <button onClick={() => setIsComplete(true)}>test</button>
       </div>
-    </>
+
+      {isComplete && (
+        <Alert>
+          <PartyPopper className='size-5' />
+          <AlertTitle>Congratulations!</AlertTitle>
+          <AlertDescription>
+            <p>
+              You finished the board in {formatTime(time)} minutes with {moves}{' '}
+              moves!
+            </p>
+            <div className='flex w-full items-center justify-end'>
+              <Button size='xs' onClick={handleRestart}>
+                Play again
+              </Button>
+            </div>
+          </AlertDescription>
+        </Alert>
+      )}
+      {!isComplete && (
+        <>
+          <DifficultySelector
+            difficulty={difficulty}
+            onDifficultyChange={setDifficulty}
+          />
+          <SudokuBoard
+            board={board}
+            initialBoard={initialBoard}
+            errors={errors}
+            onCellChange={handleCellChange}
+          />
+        </>
+      )}
+    </div>
   );
 };
 

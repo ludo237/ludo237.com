@@ -3,7 +3,7 @@ import * as marked from 'marked';
 import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { FC } from 'react';
-import { getPost } from '~/actions';
+import { getPost } from '~/actions/blog';
 import { Header } from '~/components/header';
 import { AspectRatio } from '~/components/ui/aspect-ratio';
 import {

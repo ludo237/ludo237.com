@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { FC } from 'react';
-import { getProjects } from '~/actions';
+import { getProjects } from '~/actions/cv';
 import {
   Card,
   CardContent,

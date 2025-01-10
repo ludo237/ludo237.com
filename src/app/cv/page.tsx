@@ -1,7 +1,12 @@
 import { DownloadCloudIcon } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getEducations, getJobs, getLanguages, getProjects } from '~/actions';
+import {
+  getEducations,
+  getJobs,
+  getLanguages,
+  getProjects,
+} from '~/actions/cv';
 import { CvJob } from '~/components/cv-job';
 import { Header } from '~/components/header';
 import {

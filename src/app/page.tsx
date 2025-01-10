@@ -6,7 +6,7 @@ import { ProjectsCard } from '~/components/cards/projects';
 import { SocialCard } from '~/components/cards/socials';
 import { Header } from '~/components/header';
 
-const HomePage: FC = () => {
+const HomePage: FC = async () => {
   return (
     <>
       <Header />

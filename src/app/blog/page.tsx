@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
-import { getPosts } from '~/actions';
+import { getPosts } from '~/actions/blog';
 import { Header } from '~/components/header';
 import { AspectRatio } from '~/components/ui/aspect-ratio';
 import {

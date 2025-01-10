@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { getJobs } from '~/actions';
+import { getJobs } from '~/actions/cv';
 import { CvJob } from '~/components/cv-job';
 import {
   Card,

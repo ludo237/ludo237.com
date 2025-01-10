@@ -4,3 +4,8 @@ export const contactSchema = z.object({
   email: z.string().email(),
   message: z.string().min(10).max(500),
 });
+
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string(),
+});
