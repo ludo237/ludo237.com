@@ -6,13 +6,13 @@ const ContactMe = () => {
 	return (
 		<section id="contact">
 			<div className="text-center md:px-6 w-full space-y-3">
-				<h2 className="text-3xl font-bold text-sky-500 tracking-tighter sm:text-5xl">
+				<h2 className="text-3xl font-bold text-sky-500 dark:text-sky-600 tracking-tighter sm:text-5xl">
 					Get in Touch
 				</h2>
-				<p className="mx-auto max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+				<p className="mx-auto max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400">
 					<span>Want to chat? Just shoot me a dm</span>{" "}
 					<a
-						className="text-sky-500 hover:underline"
+						className="text-sky-500 dark:text-sky-600 hover:underline"
 						href="https://x.com/intent/follow?screen_name=realLudo237"
 					>
 						with a direct question on Twitter

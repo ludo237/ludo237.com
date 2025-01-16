@@ -30,7 +30,7 @@ export default function RootLayout(props: LayoutProps) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
-			<body className="bg-background mx-auto min-h-screen max-w-2xl px-6 py-12 font-sans antialiased sm:py-24">
+			<body className="bg-white dark:bg-slate-800 mx-auto min-h-screen max-w-2xl px-6 py-12 font-sans antialiased sm:py-24">
 				{props.children}
 				<SpeedInsights />
 				<Analytics />

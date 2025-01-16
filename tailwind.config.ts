@@ -1,7 +1,7 @@
-import type { Config } from 'tailwindcss';
+import type {Config} from 'tailwindcss';
 
 const config = {
-  darkMode: ['class'],
+  darkMode: "media",
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {

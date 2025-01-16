@@ -10,10 +10,10 @@ const ProjectsGrid = async () => {
 			<div className="space-y-9 w-full">
 				<div className="flex flex-col items-center justify-center space-y-4 text-center">
 					<div className="space-y-1.5">
-						<h2 className="text-3xl font-bold text-sky-500 tracking-tighter sm:text-5xl">
+						<h2 className="text-3xl font-bold text-sky-500 dark:text-sky-600 tracking-tighter sm:text-5xl">
 							Check out my latest work
 						</h2>
-						<p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+						<p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400">
 							I've worked on a variety of projects, from simple websites to
 							complex web applications. Here are a few of my favorites.
 						</p>
@@ -31,8 +31,8 @@ const ProjectsGrid = async () => {
 										rel="noreferrer"
 										className="flex items-center space-x-1.5 group-hover/post:underline"
 									>
-										<ExternalLink className="size-3" />
-										<h2 className="text-lg font-semibold leading-none text-sky-500">
+										<ExternalLink className="size-3 dark:text-sky-600" />
+										<h2 className="text-lg font-semibold leading-none text-sky-500 dark:text-sky-600">
 											{p.name}
 										</h2>
 									</a>
@@ -43,12 +43,12 @@ const ProjectsGrid = async () => {
 										href={p.url}
 										className="flex items-center space-x-1.5 group-hover/post:underline"
 									>
-										<h2 className="text-lg font-semibold leading-none text-sky-500">
+										<h2 className="text-lg font-semibold leading-none text-sky-500 dark:text-sky-600">
 											{p.name}
 										</h2>
 									</Link>
 								)}
-								<p className="text-sm text-zinc-600 dark:text-zinc-200">
+								<p className="text-sm text-slate-700 dark:text-slate-400">
 									{p.description}
 								</p>
 							</div>

@@ -8,14 +8,17 @@ const Header: FC = () => {
 				<div className="flex items-center justify-between gap-3">
 					<div className="flex flex-1 flex-col space-y-1.5">
 						<div className="flex">
-							<span className="inline-block text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+							<span className="dark:text-slate-400 inline-block text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
 								Hi 👋, I'm Claudio Ludovico
 							</span>
 						</div>
 						<div className="flex">
-							<span className="inline-block max-w-[600px] md:text-xl">
-								Also known as <strong className="text-sky-500">Ludo237</strong>.
-								Software Engineer turned Entrepreneur.
+							<span className="inline-block max-w-[600px] md:text-xl dark:text-slate-400">
+								Also known as{" "}
+								<strong className="text-sky-500 dark:text-sky-600">
+									Ludo237
+								</strong>
+								. Software Engineer turned Entrepreneur.
 							</span>
 						</div>
 					</div>

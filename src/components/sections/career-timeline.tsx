@@ -41,16 +41,18 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
 			</div>
 			<div className="flex flex-1 flex-col justify-start gap-1.5">
 				<div className="flex items-center justify-between">
-					<h2 className="text-lg font-semibold leading-none text-sky-500">
+					<h2 className="text-lg font-semibold leading-none text-sky-500 dark:text-sky-600">
 						{item.name}
 					</h2>
-					<time className="text-xs text-neutral-500">
+					<time className="text-xs text-slate-500 dark:text-slate-400">
 						{format(item.startDate, "MMMM yyyy")} -{" "}
 						{item.endDate ? format(item.endDate, "MMMM yyyy") : "present"}
 					</time>
 				</div>
-				<p className="text-xs text-neutral-500">{item.location}</p>
-				<span className="prose dark:prose-invert text-sm  text-neutral-700">
+				<p className="text-xs  text-slate-500 dark:text-slate-400">
+					{item.location}
+				</p>
+				<span className="prose dark:prose-invert text-sm  text-slate-700 dark:text-slate-300">
 					{item.description}
 				</span>
 			</div>
@@ -74,10 +76,10 @@ const CareerTimeline = async () => {
 		<section id="career">
 			<div className="flex flex-col items-center justify-center space-y-4 text-center">
 				<div className="space-y-1.5">
-					<h2 className="text-3xl font-bold text-sky-500 tracking-tighter sm:text-5xl">
+					<h2 className="text-3xl font-bold text-sky-500 dark:text-sky-600 tracking-tighter sm:text-5xl">
 						My Career
 					</h2>
-					<p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+					<p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400">
 						Have a look at my career timeline, you will find educations and jobs
 						I have done.
 					</p>
@@ -91,8 +93,13 @@ const CareerTimeline = async () => {
 			</ul>
 
 			<p className="w-full justify-end flex space-x-0.5">
-				<span>Do you need a more comprehensive look?</span>
-				<Link href="/cv" className="text-sky-500 font-semibold">
+				<span className="dark:text-slate-400">
+					Do you need a more comprehensive look?
+				</span>
+				<Link
+					href="/cv"
+					className="text-sky-500 dark:text-sky-600 font-semibold"
+				>
 					Get my CV
 				</Link>
 			</p>
