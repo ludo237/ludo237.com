@@ -1,13 +1,37 @@
 [
   {
+    "id": 2,
     "name": "Standford University",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/1024px-Seal_of_Leland_Stanford_Junior_University.svg.png",
     "description": "Basic Knowledge of Machine Learning and Neural Networks, Machine LearningBasic Knowledge of Machine Learning and Neural Networks, Machine Learning",
+    "location": "Remote",
+    "links": [
+      {
+        "title": "Official website",
+        "href": "https://www.stanford.edu/",
+        "type": "website"
+      }
+    ],
+    "startedAt": "2015-01-01T00:00:00.000Z",
+    "endedAt": "2016-01-01T00:00:00.000Z",
     "createdAt": "2024-04-10T00:00:00.000Z",
     "updatedAt": "2024-04-10T00:00:00.000Z"
   },
   {
+    "id": 1,
+    "image": "https://www.supsi.ch/o/supsi-v2-theme/images/logo/supsi-logo.svg",
     "name": "SUPSI",
     "description": "I learned the basic of Computer Science, Match analysis and Software design that helped, and still help, me in my work experience",
+    "location": "Manno - Switzerland",
+    "links": [
+      {
+        "title": "Official website",
+        "href": "https://supsi.ch",
+        "type": "website"
+      }
+    ],
+    "startedAt": "2012-09-01T00:00:00.000Z",
+    "endedAt": "2013-09-01T00:00:00.000Z",
     "createdAt": "2024-04-10T00:00:00.000Z",
     "updatedAt": "2024-04-10T00:00:00.000Z"
   }

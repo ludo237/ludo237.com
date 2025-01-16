@@ -1,123 +1,85 @@
 interface BaseModel {
-  createdAt: Date;
-  updatedAt: Date;
+	readonly id: number;
+	readonly createdAt: string;
+	readonly updatedAt: string;
 }
 
 interface Role {
-  title: string;
-  description: string;
+	title: string;
+	description: string;
 }
 
 interface Job extends BaseModel {
-  avatar: string;
-  short: string;
-  company: string;
-  role: Role;
-  about: string;
-  startedAt: Date;
-  endedAt?: Date;
+	image: string;
+	company: {
+		name: string;
+		shortName: string;
+	};
+	description: string;
+	location: string;
+	role: Role;
+	links: TimelineLink[];
+	startedAt: string;
+	endedAt?: string;
 }
 
 interface Education extends BaseModel {
-  name: string;
-  description: string;
-  startDate: Date;
-  endDate: Date;
+	name: string;
+	description: string;
+	image: string;
+	location: string;
+	links: readonly TimelineLink[];
+	startedAt: string;
+	endedAt?: string;
 }
 
 interface Language extends BaseModel {
-  name: string;
-  description: string;
-  experience: string;
+	name: string;
+	description: string;
+	experience: string;
 }
 
 interface Project extends BaseModel {
-  url: string;
-  name: string;
-  description: string;
-  external: boolean;
+	url: string;
+	name: string;
+	description: string;
+	external: boolean;
 }
 
 interface Post extends BaseModel {
-  slug: string;
-  title: string;
-  summary: string;
-  cover: string;
-  content: string;
-  date: Date;
-  tags: string[];
-}
-
-interface GithubEvent {
-  id: number;
-  type: string;
-  actor: {
-    id: string;
-    login: string;
-    display_login: string;
-    gravatar_id: string;
-    avatar_url: string;
-    url: string;
-  };
-  repo: {
-    id: number;
-    name: string;
-    url: string;
-  };
-  created_at: string;
-  public: boolean;
-}
-
-interface GitlabEvent {
-  id: number;
-  title: string;
-  project_id: number;
-  action_name:
-    | 'approved'
-    | 'accepted'
-    | 'closed'
-    | 'commented'
-    | 'commented on'
-    | 'created'
-    | 'destroyed'
-    | 'deleted'
-    | 'expired'
-    | 'joined'
-    | 'left'
-    | 'merged'
-    | 'opened'
-    | 'pushed'
-    | 'pushed new'
-    | 'pushed to'
-    | 'reopened'
-    | 'updated';
-  target_id: number;
-  target_iid: number;
-  target_type:
-    | 'issue'
-    | 'milestone'
-    | 'merge_request'
-    | 'note'
-    | 'project'
-    | 'snippet'
-    | 'user';
-  target_title: string;
-  created_at: string;
-}
-
-interface GitlabProject {
-  id: number;
-  description: string;
-  name: string;
+	slug: string;
+	title: string;
+	summary: string;
+	cover: string;
+	content: string;
+	date: Date;
+	tags: string[];
 }
 
 type SudokuBoard = number[][];
 
 interface Email {
-  id: string;
-  subject: string;
-  from: string;
-  body: string;
-  attachments: any[];
-  date: string;
+	id: string;
+	subject: string;
+	from: string;
+	body: string;
+	attachments: string[];
+	date: string;
+}
+
+interface TimelineItem {
+	id: string;
+	name: string;
+	description: string;
+	image: string;
+	location: string;
+	links: readonly TimelineLink[];
+	startDate: string;
+	endDate?: string;
+}
+
+interface TimelineLink {
+	type: "website" | "github" | "gitlab" | "twitter";
+	title: string;
+	href: string;
 }
