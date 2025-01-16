@@ -1,25 +1,26 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import type { FC } from "react";
 import { getProjects } from "~/actions/cv";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "~/components/ui/card";
+import { ProjectsCard } from "~/components/cards/projects";
 
-const ProjectsCard: FC = async () => {
+const ProjectsGrid = async () => {
 	const projects = await getProjects();
 
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle className="text-sky-500">Projects</CardTitle>
-				<CardDescription>My most notable projects</CardDescription>
-			</CardHeader>
-			<CardContent>
+		<section id="projects">
+			<div className="space-y-9 w-full">
+				<div className="flex flex-col items-center justify-center space-y-4 text-center">
+					<div className="space-y-1.5">
+						<h2 className="text-3xl font-bold text-sky-500 tracking-tighter sm:text-5xl">
+							Check out my latest work
+						</h2>
+						<p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+							I've worked on a variety of projects, from simple websites to
+							complex web applications. Here are a few of my favorites.
+						</p>
+					</div>
+				</div>
+
 				<div className="space-y-3">
 					{projects.map((p) => (
 						<div className="group/post flex items-center py-1.5" key={p.id}>
@@ -51,9 +52,9 @@ const ProjectsCard: FC = async () => {
 						</div>
 					))}
 				</div>
-			</CardContent>
-		</Card>
+			</div>
+		</section>
 	);
 };
 
-export { ProjectsCard };
+export { ProjectsGrid };

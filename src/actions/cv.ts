@@ -33,7 +33,7 @@ export const getLanguages = async () => {
 	return languages;
 };
 
-export const getProjects = async () => {
+export const getProjects = async (): Promise<Project[]> => {
 	const projectsDirectory = path.join(process.cwd(), "/data/db/projects.json");
 	const fileContent = fs.readFileSync(projectsDirectory, "utf8");
 	const projects = JSON.parse(fileContent) as Project[];

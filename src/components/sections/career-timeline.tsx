@@ -40,15 +40,17 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
 				</Avatar>
 			</div>
 			<div className="flex flex-1 flex-col justify-start gap-1.5">
-				<time className="text-xs">
-					{format(item.startDate, "MMMM yyyy")} -{" "}
-					{item.endDate ? format(item.endDate, "MMMM yyyy") : "present"}
-				</time>
-				<h2 className="text-lg font-semibold leading-none text-sky-500">
-					{item.name}
-				</h2>
-				<p className="text-xs">{item.location}</p>
-				<span className="prose dark:prose-invert text-sm">
+				<div className="flex items-center justify-between">
+					<h2 className="text-lg font-semibold leading-none text-sky-500">
+						{item.name}
+					</h2>
+					<time className="text-xs text-neutral-500">
+						{format(item.startDate, "MMMM yyyy")} -{" "}
+						{item.endDate ? format(item.endDate, "MMMM yyyy") : "present"}
+					</time>
+				</div>
+				<p className="text-xs text-neutral-500">{item.location}</p>
+				<span className="prose dark:prose-invert text-sm  text-neutral-700">
 					{item.description}
 				</span>
 			</div>
@@ -82,7 +84,7 @@ const CareerTimeline = async () => {
 				</div>
 			</div>
 
-			<ul className="mb-4 ml-4 divide-y divide-dashed border-l">
+			<ul className="mb-4 ml-4 divide-y divide-dashed border-l py-3">
 				{timelineItems.map((item) => (
 					<TimelineItem key={item.id} item={item} />
 				))}
