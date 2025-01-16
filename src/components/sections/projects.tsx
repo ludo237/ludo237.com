@@ -1,7 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { getProjects } from "~/actions/cv";
-import { ProjectsCard } from "~/components/cards/projects";
 
 const ProjectsGrid = async () => {
 	const projects = await getProjects();
@@ -30,19 +29,23 @@ const ProjectsGrid = async () => {
 										href={p.url}
 										target="_blank"
 										rel="noreferrer"
-										className="flex items-center space-x-1.5 font-medium leading-none text-sky-500 group-hover/post:underline"
+										className="flex items-center space-x-1.5 group-hover/post:underline"
 									>
 										<ExternalLink className="size-3" />
-										<span>{p.name}</span>
+										<h2 className="text-lg font-semibold leading-none text-sky-500">
+											{p.name}
+										</h2>
 									</a>
 								)}
 
 								{!p.external && (
 									<Link
 										href={p.url}
-										className="flex items-center space-x-1.5 font-medium leading-none text-sky-500 group-hover/post:underline"
+										className="flex items-center space-x-1.5 group-hover/post:underline"
 									>
-										<span>{p.name}</span>
+										<h2 className="text-lg font-semibold leading-none text-sky-500">
+											{p.name}
+										</h2>
 									</Link>
 								)}
 								<p className="text-sm text-zinc-600 dark:text-zinc-200">

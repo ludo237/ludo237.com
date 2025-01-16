@@ -5,6 +5,14 @@ import { logout } from "~/actions/auth";
 import { LoginForm } from "~/components/forms/login";
 import { Header } from "~/components/sections/header";
 import { Game } from "~/components/sudoku/game";
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "~/components/ui/breadcrumb";
 import { Button } from "~/components/ui/button";
 import {
 	Dialog,
@@ -73,15 +81,24 @@ const SudokuGame: FC = async () => {
 		<>
 			<Header />
 
-			<main className="mx-auto max-w-lg">
-				<div className="mb-8 w-full text-center">
-					<h1 className="text-3xl font-semibold">Sudoku</h1>
-					<div className="text-sm">
-						{!data.user && <SignupCta />}
-						{data.user && <LoginCta user={data.user} />}
-					</div>
-				</div>
+			<Breadcrumb className="py-3">
+				<BreadcrumbList>
+					<BreadcrumbItem>
+						<BreadcrumbLink href="/">Home</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbPage>Sudoku</BreadcrumbPage>
+					</BreadcrumbItem>
+				</BreadcrumbList>
+			</Breadcrumb>
 
+			<div className="py-3">
+				{!data.user && <SignupCta />}
+				{data.user && <LoginCta user={data.user} />}
+			</div>
+
+			<main className="mx-auto max-w-lg">
 				<Game user={data.user} />
 			</main>
 		</>
