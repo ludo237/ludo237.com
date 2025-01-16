@@ -33,13 +33,15 @@ export const metadata: Metadata = {
 const SignupCta = () => {
 	return (
 		<div>
-			<span>
+			<span className="dark:text-slate-400">
 				Simple sudoku board that reflects the classic game, which i like a lot.
 				Do you want to keep track of your scores?
 			</span>{" "}
 			<Dialog>
 				<DialogTrigger asChild>
-					<span className="text-sky-500 underline">Login or Register</span>
+					<span className="text-sky-500 dark:text-sky-600 underline">
+						Login or Register
+					</span>
 				</DialogTrigger>
 				<DialogContent>
 					<DialogHeader>

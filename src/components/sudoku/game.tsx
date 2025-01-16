@@ -84,7 +84,7 @@ const Game: FC<{ user: User | null }> = ({ user }) => {
 
 	return (
 		<div className="flex flex-col items-center justify-center space-y-6">
-			<div className="flex space-x-3 text-sm">
+			<div className="flex space-x-3 text-sm dark:text-slate-400">
 				<p>Time: {formatTime(time)}</p>
 				<Separator orientation="vertical" />
 				<p>Moves: {moves}</p>
@@ -95,7 +95,7 @@ const Game: FC<{ user: User | null }> = ({ user }) => {
 					<PartyPopper className="size-5" />
 					<AlertTitle>Congratulations!</AlertTitle>
 					<AlertDescription>
-						<p>
+						<p className="dark:text-slate-400">
 							You finished the board in {formatTime(time)} minutes with {moves}{" "}
 							moves!
 						</p>

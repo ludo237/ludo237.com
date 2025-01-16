@@ -19,15 +19,21 @@ const DifficultySelector: React.FC<DifficultySelectorProps> = ({
 		>
 			<div className="flex items-center space-x-1.5">
 				<RadioGroupItem value="easy" id="easy" />
-				<Label htmlFor="easy">Easy</Label>
+				<Label htmlFor="easy" className="dark:text-slate-400">
+					Easy
+				</Label>
 			</div>
 			<div className="flex items-center space-x-1.5">
 				<RadioGroupItem value="medium" id="medium" />
-				<Label htmlFor="medium">Medium</Label>
+				<Label htmlFor="medium" className="dark:text-slate-400">
+					Medium
+				</Label>
 			</div>
 			<div className="flex items-center space-x-1.5">
 				<RadioGroupItem value="hard" id="hard" />
-				<Label htmlFor="hard">Hard</Label>
+				<Label htmlFor="hard" className="dark:text-slate-400">
+					Hard
+				</Label>
 			</div>
 		</RadioGroup>
 	);
