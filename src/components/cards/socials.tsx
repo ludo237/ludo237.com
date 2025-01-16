@@ -1,17 +1,16 @@
-"use client";
-
 import {
 	Github,
 	Gitlab,
 	Layers,
 	Linkedin,
+	MessageCirclePlusIcon,
 	QrCode,
 	Send,
 	Twitter,
 } from "lucide-react";
 import Link from "next/link";
-import { type FC, useState } from "react";
-import { ContactForm } from "~/components/forms/contact";
+import type { FC } from "react";
+import { ContactMeDialogs } from "~/components/contact-me-dialogs";
 import { Button } from "~/components/ui/button";
 import {
 	Card,
@@ -21,80 +20,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "~/components/ui/card";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "~/components/ui/dialog";
-import {
-	Drawer,
-	DrawerContent,
-	DrawerDescription,
-	DrawerFooter,
-	DrawerHeader,
-	DrawerTitle,
-	DrawerTrigger,
-} from "~/components/ui/drawer";
-import { useMediaQuery } from "~/hooks/use-media-query";
-
-const ContactMeDesktopDialog: FC<{ open: boolean; setOpen: any }> = ({
-	open,
-	setOpen,
-}) => {
-	return (
-		<Dialog open={open} onOpenChange={setOpen}>
-			<DialogTrigger asChild>
-				<Button variant="outline" size="sm">
-					Contact me
-				</Button>
-			</DialogTrigger>
-			<DialogContent className="sm:max-w-[425px]">
-				<DialogHeader>
-					<DialogTitle>Send me a message</DialogTitle>
-					<DialogDescription>
-						Be sure to specify why you&apos;re contacting me. I&apos;ll get back
-						to you as soon as possible.
-					</DialogDescription>
-				</DialogHeader>
-				<ContactForm />
-			</DialogContent>
-		</Dialog>
-	);
-};
-
-const ContactMeMobileDialog: FC<{ open: boolean; setOpen: any }> = ({
-	open,
-	setOpen,
-}) => {
-	return (
-		<Drawer open={open} onOpenChange={setOpen}>
-			<DrawerTrigger asChild>
-				<Button variant="outline" size="sm">
-					Contact me
-				</Button>
-			</DrawerTrigger>
-			<DrawerContent>
-				<DrawerHeader className="text-left">
-					<DrawerTitle>Send me a message</DrawerTitle>
-					<DrawerDescription>
-						Be sure to specify why you&apos;re contacting me. I&apos;ll get back
-						to you as soon as possible.
-					</DrawerDescription>
-					<ContactForm />
-				</DrawerHeader>
-				<DrawerFooter className="py-3" />
-			</DrawerContent>
-		</Drawer>
-	);
-};
 
 const SocialCard: FC = () => {
-	const [open, setOpen] = useState(false);
-	const isDesktop = useMediaQuery("(min-width: 768px)");
-
 	return (
 		<Card>
 			<CardHeader>
@@ -151,11 +78,14 @@ const SocialCard: FC = () => {
 				</div>
 			</CardContent>
 			<CardFooter className="flex justify-end">
-				{isDesktop ? (
-					<ContactMeDesktopDialog open={open} setOpen={setOpen} />
-				) : (
-					<ContactMeMobileDialog open={open} setOpen={setOpen} />
-				)}
+				<ContactMeDialogs
+					trigger={
+						<Button variant={"outline"} size={"sm"}>
+							<MessageCirclePlusIcon />
+							<span>Send me a message</span>
+						</Button>
+					}
+				/>
 			</CardFooter>
 		</Card>
 	);

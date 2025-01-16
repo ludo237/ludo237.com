@@ -9,8 +9,8 @@ const AboutMe = () => {
 			<div>
 				<div className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert">
 					<p>
-						am part of the '90s generation that grew up with the Fresh Prince of
-						Bel Air and the Commodore 64. Currently I'm the{" "}
+						I am part of the '90s generation that grew up with the Fresh Prince
+						of Bel Air and the Commodore 64. Currently I'm the{" "}
 						<strong>C.T.O.</strong> of{" "}
 						<a href="https://6go.it" target="_blank" rel="noreferrer">
 							6GO

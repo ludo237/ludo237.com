@@ -69,7 +69,7 @@ const CareerTimeline = async () => {
 	const timelineItems = addItemsToTimeline([...jobs, ...educations]);
 
 	return (
-		<section id="about">
+		<section id="career">
 			<div className="flex flex-col items-center justify-center space-y-4 text-center">
 				<div className="space-y-1.5">
 					<h2 className="text-3xl font-bold text-sky-500 tracking-tighter sm:text-5xl">
