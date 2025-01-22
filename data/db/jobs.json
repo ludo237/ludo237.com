@@ -12,6 +12,7 @@
       "title": "Senior Software Engineer",
       "description": "Mantaining backend services written in PHP for Indomio and Immobiliare group in Europe"
     },
+    "skills": ["php", "symfony", "gitlab CI", "linux", "google meet"],
     "links": [
       {
         "title": "Official website",
@@ -19,9 +20,7 @@
         "type": "website"
       }
     ],
-    "startedAt": "2023-04-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "startedAt": "2023-04-01T00:00:00.000Z"
   },
   {
     "id": 4,
@@ -36,6 +35,20 @@
       "title": "Chief Technology Officer",
       "description": "Came back to this company with only one goal in mind: take everything I learned and apply it to scale the company back-end API to reach new customers around the workd while orchestrating diverse teams of developers in a remote and asynchronous environment"
     },
+    "skills": [
+      "php",
+      "laravel",
+      "IaaS",
+      "PaaS",
+      "CI/CD",
+      "devops",
+      "react",
+      "typescript",
+      "nextjs",
+      "team building",
+      "management",
+      "investor relationships"
+    ],
     "links": [
       {
         "title": "Official website",
@@ -43,59 +56,7 @@
         "type": "website"
       }
     ],
-    "startedAt": "2018-06-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
-  },
-  {
-    "id": 3,
-    "image": "/companies/aws_logo.jpg",
-    "company": {
-      "name": "Amazon Web Services",
-      "shortName": "AWS"
-    },
-    "description": "Launched in 2006, Amazon Web Services (AWS) began exposing key infrastructure services to businesses in the form of web services -- now widely known as cloud computing. The ultimate benefit of cloud computing, and AWS, is the ability to leverage a new business model and turn capital infrastructure expenses into variable costs. Businesses no longer need to plan and procure servers and other IT resources weeks or months in advance. Using AWS, businesses can take advantage of Amazon's expertise and economies of scale to access resources when their business needs them, delivering results faster and at a lower cost.",
-    "location": "Ireland - Remote",
-    "role": {
-      "title": "AWS Solutions Developer",
-      "description": "Having a great time around you help you push your best code to production, worked on improving the efficency and reliability of the AWS console to scale"
-    },
-    "links": [
-      {
-        "title": "Official website",
-        "href": "https://aws.com",
-        "type": "website"
-      }
-    ],
-    "startedAt": "2016-03-01T00:00:00.000Z",
-    "endedAt": "2018-01-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
-  },
-  {
-    "id": 2,
-    "image": "/companies/twitter_logo.jpg",
-    "company": {
-      "name": "X (Twitter)",
-      "shortName": "TWRT"
-    },
-    "description": "Life’s not about a job, it’s about purpose. We believe real change starts with conversation. Here, your voice matters. Come as you are and together we’ll do what’s right (not what’s easy) to serve the public conversation.",
-    "location": "U.S.A. - Remote",
-    "role": {
-      "title": "Frontend Engineer",
-      "description": "Manage to deliver new improvements with the twitter timeline team, deploy UI components to Twitter scale and reach millions of user with my improvements"
-    },
-    "links": [
-      {
-        "title": "Official website",
-        "href": "https://x.com",
-        "type": "website"
-      }
-    ],
-    "startedAt": "2013-01-01T00:00:00.000Z",
-    "endedAt": "2016-01-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "startedAt": "2018-06-01T00:00:00.000Z"
   },
   {
     "id": 1,
@@ -110,6 +71,7 @@
       "title": "Full Stack Developer",
       "description": "In this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integratorIn this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integrator"
     },
+    "skills": ["php", "javascript"],
     "links": [
       {
         "title": "Official website",
@@ -118,8 +80,6 @@
       }
     ],
     "startedAt": "2010-07-01T00:00:00.000Z",
-    "endedAt": "2013-01-01T00:00:00.000Z",
-    "createdAt": "2024-04-10T00:00:00.000Z",
-    "updatedAt": "2024-04-10T00:00:00.000Z"
+    "endedAt": "2018-06-01T00:00:00.000Z"
   }
 ]
