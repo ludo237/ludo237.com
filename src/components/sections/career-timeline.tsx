@@ -26,7 +26,7 @@ const TimelineLink: FC<{ link: TimelineLink }> = ({ link }) => {
 const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
   return (
     <li className='relative ml-10 py-3'>
-      <div className='absolute -left-16 top-3 flex items-center justify-center rounded-full bg-white'>
+      <div className='absolute top-3 -left-16 flex items-center justify-center rounded-full bg-white'>
         <Avatar className='m-auto size-12 border'>
           <AvatarImage
             src={item.image}
@@ -41,7 +41,7 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
       </div>
       <div className='flex flex-1 flex-col justify-start gap-1.5'>
         <div className='flex items-center justify-between'>
-          <h2 className='text-lg font-semibold leading-none text-sky-500 dark:text-sky-600'>
+          <h2 className='text-lg leading-none font-semibold text-sky-500 dark:text-sky-600'>
             {item.name}
           </h2>
           <time className='text-xs text-slate-500 dark:text-slate-400'>
@@ -58,7 +58,7 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
           </span>
         )}
 
-        <span className='prose text-sm text-slate-700 dark:prose-invert dark:text-slate-300'>
+        <span className='prose dark:prose-invert text-sm text-slate-700 dark:text-slate-300'>
           {item.role ? item.role.description : item.description}
         </span>
       </div>

@@ -30,7 +30,7 @@ const BlogCard: FC = async () => {
             >
               <div className='grow space-y-0.5'>
                 <Link href={`/blog/${post.slug}`}>
-                  <p className='font-medium leading-none text-sky-500 group-hover/post:underline'>
+                  <p className='leading-none font-medium text-sky-500 group-hover/post:underline'>
                     {post.title}
                   </p>
                 </Link>

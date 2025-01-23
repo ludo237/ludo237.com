@@ -92,7 +92,7 @@ const CvPage = async () => {
                 {projects.map((project) => (
                   <div key={project.name} className='flex items-center gap-3'>
                     <div className='grow space-y-0.5'>
-                      <h4 className='font-medium leading-none text-sky-500'>
+                      <h4 className='leading-none font-medium text-sky-500'>
                         {project.name}
                       </h4>
                       <small className='ml-auto text-xs text-zinc-600 dark:text-zinc-400'>
@@ -109,7 +109,7 @@ const CvPage = async () => {
                 {educations.map((edu) => (
                   <div key={edu.id} className='flex items-center gap-3'>
                     <div className='grow space-y-0.5'>
-                      <h4 className='font-medium leading-none text-sky-500'>
+                      <h4 className='leading-none font-medium text-sky-500'>
                         {edu.name}
                       </h4>
                       <small className='ml-auto text-xs text-zinc-600 dark:text-zinc-400'>
@@ -126,7 +126,7 @@ const CvPage = async () => {
                 {languages.map((language) => (
                   <div key={language.name} className='flex items-center gap-3'>
                     <div className='grow space-y-0.5'>
-                      <h4 className='font-medium leading-none text-sky-500'>
+                      <h4 className='leading-none font-medium text-sky-500'>
                         {language.name}
                       </h4>
                       <small className='ml-auto text-xs text-zinc-600 dark:text-zinc-400'>

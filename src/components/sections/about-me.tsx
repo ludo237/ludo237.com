@@ -7,7 +7,7 @@ const AboutMe = () => {
         <h2 className='text-xl font-bold dark:text-slate-400'>About</h2>
       </div>
       <div>
-        <div className='prose max-w-full text-pretty font-sans text-sm dark:prose-invert'>
+        <div className='prose dark:prose-invert max-w-full font-sans text-sm text-pretty'>
           <p>
             I am part of the '90s generation that grew up with the Fresh Prince
             of Bel Air and the Commodore 64. Currently I'm the{' '}

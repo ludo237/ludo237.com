@@ -64,7 +64,7 @@ function MainSidebar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 side='top'
-                className='w-[--radix-popper-anchor-width]'
+                className='w-(--radix-popper-anchor-width)'
               >
                 <DropdownMenuItem>
                   <span>Buy your slot forever!</span>

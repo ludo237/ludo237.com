@@ -32,7 +32,7 @@ const ProjectsGrid = async () => {
                     className='flex items-center space-x-1.5 group-hover/post:underline'
                   >
                     <ExternalLink className='size-3 dark:text-sky-600' />
-                    <h2 className='text-lg font-semibold leading-none text-sky-500 dark:text-sky-600'>
+                    <h2 className='text-lg leading-none font-semibold text-sky-500 dark:text-sky-600'>
                       {p.name}
                     </h2>
                   </a>
@@ -43,7 +43,7 @@ const ProjectsGrid = async () => {
                     href={p.url}
                     className='flex items-center space-x-1.5 group-hover/post:underline'
                   >
-                    <h2 className='text-lg font-semibold leading-none text-sky-500 dark:text-sky-600'>
+                    <h2 className='text-lg leading-none font-semibold text-sky-500 dark:text-sky-600'>
                       {p.name}
                     </h2>
                   </Link>

@@ -19,7 +19,7 @@ const CvJob: FC<{ job: Job }> = ({ job }) => {
       <div className='grow space-y-1.5'>
         <HoverCard>
           <HoverCardTrigger asChild>
-            <h4 className='font-medium leading-none text-sky-500'>
+            <h4 className='leading-none font-medium text-sky-500'>
               {job.company.name}
             </h4>
           </HoverCardTrigger>
@@ -55,7 +55,7 @@ const CvJob: FC<{ job: Job }> = ({ job }) => {
 
         <div>
           {job.skills.map((s) => (
-            <Badge variant='outline' className='mb-1.5 mr-1.5' key={s}>
+            <Badge variant='outline' className='mr-1.5 mb-1.5' key={s}>
               {s}
             </Badge>
           ))}

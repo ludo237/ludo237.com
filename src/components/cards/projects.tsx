@@ -29,7 +29,7 @@ const ProjectsCard: FC = async () => {
                     href={p.url}
                     target='_blank'
                     rel='noreferrer'
-                    className='flex items-center space-x-1.5 font-medium leading-none text-sky-500 group-hover/post:underline'
+                    className='flex items-center space-x-1.5 leading-none font-medium text-sky-500 group-hover/post:underline'
                   >
                     <ExternalLink className='size-3' />
                     <span>{p.name}</span>
@@ -39,7 +39,7 @@ const ProjectsCard: FC = async () => {
                 {!p.external && (
                   <Link
                     href={p.url}
-                    className='flex items-center space-x-1.5 font-medium leading-none text-sky-500 group-hover/post:underline'
+                    className='flex items-center space-x-1.5 leading-none font-medium text-sky-500 group-hover/post:underline'
                   >
                     <span>{p.name}</span>
                   </Link>

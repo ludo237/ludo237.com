@@ -11,7 +11,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <MainSidebar />
-      <main className='mx-auto w-full max-w-screen-lg p-3'>
+      <main className='mx-auto w-full max-w-(--breakpoint-lg) p-3'>
         <div className='flex items-center space-x-3 pb-3'>
           <SidebarTrigger />
           <p>Temporary Email as a Service</p>
