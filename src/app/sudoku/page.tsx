@@ -1,7 +1,7 @@
-import type {Metadata} from 'next';
-import type {FC} from 'react';
-import {Header} from '~/components/sections/header';
-import {Game} from '~/components/sudoku/game';
+import type { Metadata } from 'next';
+import type { FC } from 'react';
+import { Header } from '~/components/sections/header';
+import { Game } from '~/components/sudoku/game';
 import {
   Breadcrumb,
   BreadcrumbItem,

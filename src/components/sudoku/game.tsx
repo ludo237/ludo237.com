@@ -1,20 +1,20 @@
 'use client';
 
-import {PartyPopper} from 'lucide-react';
-import {type FC, useEffect, useState} from 'react';
-import {SudokuBoard} from '~/components/sudoku/board';
-import {DifficultySelector} from '~/components/sudoku/difficulty-selector';
-import {Alert, AlertDescription, AlertTitle} from '~/components/ui/alert';
-import {Button} from '~/components/ui/button';
-import {Separator} from '~/components/ui/separator';
-import {checkCompletion, generateSudoku, isValid} from '~/lib/sudoku';
-import {formatTime} from '~/lib/utils';
+import { PartyPopper } from 'lucide-react';
+import { type FC, useEffect, useState } from 'react';
+import { SudokuBoard } from '~/components/sudoku/board';
+import { DifficultySelector } from '~/components/sudoku/difficulty-selector';
+import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
+import { Button } from '~/components/ui/button';
+import { Separator } from '~/components/ui/separator';
+import { checkCompletion, generateSudoku, isValid } from '~/lib/sudoku';
+import { formatTime } from '~/lib/utils';
 
 const Game: FC = () => {
   const [difficulty, setDifficulty] = useState<string>('easy');
   const [board, setBoard] = useState<SudokuBoard>([]);
   const [initialBoard, setInitialBoard] = useState<SudokuBoard>([]);
-  const [errors, setErrors] = useState<{[key: string]: boolean}>({});
+  const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
   const [isComplete, setIsComplete] = useState(false);
   const [time, setTime] = useState(0);
   const [moves, setMoves] = useState(0);
@@ -40,7 +40,7 @@ const Game: FC = () => {
     setMoves((m) => m + 1);
 
     const newBoard = board.map((row) => [...row]);
-    const newErrors = {...errors};
+    const newErrors = { ...errors };
 
     if (value === 0 || isValid(newBoard, row, col, value)) {
       newBoard[row][col] = value;
@@ -112,4 +112,4 @@ const Game: FC = () => {
   );
 };
 
-export {Game};
+export { Game };
