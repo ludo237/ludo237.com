@@ -12,7 +12,7 @@
       "title": "Senior Software Engineer",
       "description": "Mantaining backend services written in PHP for Indomio and Immobiliare group in Europe"
     },
-    "skills": ["php", "symfony", "gitlab CI", "linux", "google meet"],
+    "skills": [ "php", "symfony", "gitlab CI", "linux", "google meet" ],
     "links": [
       {
         "title": "Official website",
@@ -20,7 +20,8 @@
         "type": "website"
       }
     ],
-    "startedAt": "2023-04-01T00:00:00.000Z"
+    "startedAt": "2023-04-01T00:00:00.000Z",
+    "endedAt": "2025-06-21T00:00:00.000Z"
   },
   {
     "id": 4,
@@ -71,7 +72,7 @@
       "title": "Full Stack Developer",
       "description": "In this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integratorIn this brave new world, it is critical to have at least one person with at least a functional understanding of each of the composite parts who is also capable of connecting various tiers and working with each expert so that a feature can actually be delivered. In a way, these tier-connecting, bridge-building software architects — who are likely experts in only one or a couple of tiers — are less full stack developer and much more full stack integrator"
     },
-    "skills": ["php", "javascript"],
+    "skills": [ "php", "javascript" ],
     "links": [
       {
         "title": "Official website",
