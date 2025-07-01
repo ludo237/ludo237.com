@@ -1,6 +1,6 @@
-import { Send } from 'lucide-react';
-import { ContactMeDialogs } from '~/components/contact-me-dialogs';
-import { Button } from '~/components/ui/button';
+import {Send} from 'lucide-react';
+import {ContactMeDialogs} from '~/components/contact-me-dialogs';
+import {Button} from '~/components/ui/button';
 
 const ContactMe = () => {
   return (
@@ -17,7 +17,7 @@ const ContactMe = () => {
           >
             with a direct question on Twitter
           </a>{' '}
-          <span>and I'll respond whenever I can.</span>
+          <span>and I wil respond whenever I can.</span>
           <br />
           <span>Want to send me an email?</span>{' '}
           <ContactMeDialogs
@@ -34,4 +34,4 @@ const ContactMe = () => {
   );
 };
 
-export { ContactMe };
+export {ContactMe};

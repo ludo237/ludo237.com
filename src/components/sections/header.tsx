@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import type {FC} from 'react';
+import {Avatar, AvatarFallback, AvatarImage} from '~/components/ui/avatar';
 
 const Header: FC = () => {
   return (
@@ -9,7 +9,7 @@ const Header: FC = () => {
           <div className='flex flex-1 flex-col space-y-1.5'>
             <div className='flex'>
               <span className='inline-block text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none dark:text-slate-400'>
-                Hi 👋, I'm Claudio Ludovico
+                Hi 👋, I am Claudio Ludovico
               </span>
             </div>
             <div className='flex'>
@@ -32,4 +32,4 @@ const Header: FC = () => {
   );
 };
 
-export { Header };
+export {Header};

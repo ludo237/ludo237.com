@@ -9,8 +9,8 @@ const AboutMe = () => {
       <div>
         <div className='prose dark:prose-invert max-w-full font-sans text-sm text-pretty'>
           <p>
-            I am part of the '90s generation that grew up with the Fresh Prince
-            of Bel Air and the Commodore 64. Currently I'm the{' '}
+            I am part of the 90s generation that grew up with the Fresh Prince
+            of Bel Air and the Commodore 64. Currently I am the{' '}
             <strong>C.T.O.</strong> of{' '}
             <a
               href='https://6go.it'
@@ -20,11 +20,11 @@ const AboutMe = () => {
             >
               6GO
             </a>
-            , which is one of my business adventures, I've quite an experience
+            , which is one of my business adventures, I have quite an experience
             in{' '}
-            <a href='/#career' className='dark:text-slate-400'>
+            <Link href='/#career' className='dark:text-slate-400'>
               software engineering
-            </a>
+            </Link>
             .
           </p>
 
@@ -37,4 +37,4 @@ const AboutMe = () => {
   );
 };
 
-export { AboutMe };
+export {AboutMe};

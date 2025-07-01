@@ -4,6 +4,14 @@ import type { FC } from 'react';
 import { getEducations, getJobs } from '~/actions/cv';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Badge } from '~/components/ui/badge';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
 import { addItemsToTimeline, mapTimelineIcon } from '~/lib/utils';
 
 const TimelineLink: FC<{ link: TimelineLink }> = ({ link }) => {
@@ -80,35 +88,33 @@ const CareerTimeline = async () => {
 
   return (
     <section id='career'>
-      <div className='flex flex-col items-center justify-center space-y-4 text-center'>
-        <div className='space-y-1.5'>
-          <h2 className='text-3xl font-bold tracking-tighter text-sky-500 sm:text-5xl dark:text-sky-600'>
-            My Career
-          </h2>
-          <p className='md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400'>
+      <Card>
+        <CardHeader>
+          <CardTitle>My Career</CardTitle>
+          <CardDescription>
             Have a look at my career timeline, you will find educations and jobs
             I have done.
-          </p>
-        </div>
-      </div>
-
-      <ul className='mb-4 ml-4 divide-y divide-dashed border-l py-3'>
-        {timelineItems.map((item) => (
-          <TimelineItem key={item.id} item={item} />
-        ))}
-      </ul>
-
-      <p className='flex w-full justify-end space-x-0.5'>
-        <span className='dark:text-slate-400'>
-          Do you need a more comprehensive look?
-        </span>
-        <Link
-          href='/cv'
-          className='font-semibold text-sky-500 dark:text-sky-600'
-        >
-          Get my CV
-        </Link>
-      </p>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className='mb-4 ml-4 divide-y divide-dashed border-l py-3'>
+            {timelineItems.map((item) => (
+              <TimelineItem key={item.id} item={item} />
+            ))}
+          </ul>
+        </CardContent>
+        <CardFooter>
+          <span className='mr-0.5 dark:text-slate-400'>
+            Do you need a more comprehensive look?
+          </span>
+          <Link
+            href='/cv'
+            className='font-semibold text-sky-500 dark:text-sky-600'
+          >
+            Get my CV
+          </Link>
+        </CardFooter>
+      </Card>
     </section>
   );
 };
