@@ -21,7 +21,6 @@ workflow:
 include:
   - local: .gitlab/ci/bun.yml
   - local: .gitlab/ci/composer.yml
-  - local: .gitlab/ci/merge-to-master.yml
   - local: .gitlab/ci/build.yml
   - local: .gitlab/ci/tag.yml
   - local: .gitlab/ci/release.yml
