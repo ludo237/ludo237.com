@@ -24,7 +24,6 @@ production:
     - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "cd $PRODUCTION_PATH && docker compose up -d --force-recreate && exit"
     - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan key:generate && exit"
     - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan migrate --force && exit"
-    - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan optimize && exit"
   rules:
     - if: $CI_COMMIT_TAG
       when: manual

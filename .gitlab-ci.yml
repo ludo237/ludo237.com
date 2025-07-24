@@ -23,4 +23,5 @@ include:
   - local: .gitlab/ci/composer.yml
   - local: .gitlab/ci/build.yml
   - local: .gitlab/ci/release.yml
+  - local: .gitlab/ci/deploy.yml
 
