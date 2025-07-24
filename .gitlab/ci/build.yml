@@ -1,19 +1,30 @@
 include:
-  - local: .gitlab/ci/templates/docker/build.yml
   - local: .gitlab/ci/templates/docker/tag.yml
 
-variables:
-  SERVICE_NAME: app
-  REGISTRY_PATH: ludo237/ludo237.com
-  DOCKERFILE_PATH: ./docker/Dockerfile
-
 build::docker::production:
-  extends: .build::production
+  stage: docker
+  image: docker:latest
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_DRIVER: overlay2
+    DOCKERFILE_PATH: ./docker/Dockerfile
+    SERVICE_NAME: app
+    REGISTRY_PATH: ludo237/ludo237.com
+  services:
+    - name: docker:dind
+      variables:
+        HEALTHCHECK_TCP_PORT: "2376"
   needs:
     - job: bun::build
       artifacts: true
     - job: composer::install
       artifacts: true
+  before_script:
+    - docker info
+    - cp ./envs/.env.prod .env
+    - php artisan key:generate
+    - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   script:
     - docker pull $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production || true
     - docker build .
@@ -21,13 +32,26 @@ build::docker::production:
       -t $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG
       -f $DOCKERFILE_PATH
     - docker push $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG
 
 tag::docker::production:
-  extends: .tag::production
+  stage: docker
+  image: docker:latest
+  services:
+    - docker:dind
   needs:
     - job: build::docker::production
       artifacts: false
+  variables:
+    GIT_STRATEGY: none
+    SERVICE_NAME: app
+    REGISTRY_PATH: ludo237/ludo237.com
+  before_script:
+    - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   script:
     - docker pull $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG
     - docker tag $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production
     - docker push $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production
+  rules:
+    - if: $CI_COMMIT_TAG
