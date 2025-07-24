@@ -1,0 +1,25 @@
+name: ludo237
+
+services:
+  app:
+    image: registry.gitlab.com/ludo237/ludo237dotcom/app:production
+    container_name: 237_app
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8889:80"
+    volumes:
+      - ./storage:/app/storage/app
+      - ./logs/application:/app/storage/logs
+      - ./database.sqlite:/app/database/database.sqlite
+    networks:
+      - 237
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/up"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  237:
+    driver: bridge

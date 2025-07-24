@@ -1,0 +1,26 @@
+.tag::production:
+  stage: docker
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+  rules:
+    - if: $CI_COMMIT_TAG
+
+.tag::rollback:
+  stage: rollback
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    GIT_STRATEGY: fetch
+  before_script:
+    - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+    - PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n '2p')
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: manual
+      allow_failure: true
