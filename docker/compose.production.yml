@@ -2,7 +2,7 @@ name: ludo237
 
 services:
   app:
-    image: registry.gitlab.com/ludo237/ludo237dotcom/app:production
+    image: registry.gitlab.com/ludo237/ludo237.com/app:production
     container_name: 237_app
     restart: unless-stopped
     ports:
