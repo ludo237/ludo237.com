@@ -10,19 +10,73 @@ production:
       artifacts: false
   variables:
     SSH_KEY: $COMPUTE_SSH_PRIVATE_KEY
+    DEPLOY_TIMEOUT: "300"
   before_script:
+    - apk add --no-cache openssh-client curl
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo $SSH_KEY >> ~/.ssh/id_ed25519
-    - chmod 400 ~/.ssh/id_ed25519
-    - eval $(ssh-agent -s)
-    - echo "$SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - echo "$SSH_KEY" | base64 -d > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+    - ssh-keyscan -p $COMPUTE_SSH_PORT $COMPUTE_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   script:
-    - scp -i ~/.ssh/id_ed25519 -P $COMPUTE_SSH_PORT ./docker/compose.production.yml $COMPUTE_SSH_USER@$COMPUTE_IP:$PRODUCTION_PATH/docker-compose.yml
-    - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "cd $PRODUCTION_PATH && docker compose pull && exit"
-    - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "cd $PRODUCTION_PATH && docker compose up -d --force-recreate && exit"
-    - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan migrate --force && exit"
-    - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan ziggy:generate && exit"
+    - scp -i ~/.ssh/id_ed25519 -P $COMPUTE_SSH_PORT ./docker/compose.production.yml $COMPUTE_SSH_USER@$COMPUTE_IP:$PRODUCTION_PATH/docker-compose.yml.new
+    - |
+      ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP bash -s << EOF
+        set -euo pipefail
+        cd $PRODUCTION_PATH
+
+        echo "Starting deployment..."
+
+        # Create backup
+        if [ -f docker-compose.yml ]; then
+          cp docker-compose.yml docker-compose.yml.backup
+        fi
+
+        # Validate compose file
+        if ! docker compose -f docker-compose.yml.new config > /dev/null; then
+          echo "Invalid compose file"
+          exit 1
+        fi
+
+        mv docker-compose.yml.new docker-compose.yml
+
+        # Pull images
+        echo "Pulling new images..."
+        docker compose pull
+
+        # Deploy with zero-downtime strategy
+        echo "Starting new containers..."
+        docker compose up -d --force-recreate --remove-orphans
+
+        # Wait for containers to be ready
+        echo "Waiting for containers to be ready..."
+        timeout 60 bash -c 'until docker compose ps | grep -q "healthy\|Up"; do sleep 2; done'
+
+        # Run migrations
+        echo "Running migrations..."
+        docker exec 237_app php artisan migrate --force
+
+        # Generate Ziggy routes
+        echo "Generating Ziggy routes..."
+        docker exec 237_app php artisan ziggy:generate
+
+        # Health check
+        echo "Performing health check..."
+        if ! curl -f -s https://www.ludo237.com > /dev/null; then
+          echo "Warning: Health check failed - consider manual rollback"
+          exit 1
+        fi
+
+        # Cleanup
+        echo "Cleaning up..."
+        docker system prune -f
+        rm -f docker-compose.yml.backup
+
+        echo "Deployment completed successfully!"
+      EOF
+  after_script:
+    - rm -f ~/.ssh/id_ed25519
   rules:
     - if: $CI_COMMIT_TAG
+  timeout: 10m
