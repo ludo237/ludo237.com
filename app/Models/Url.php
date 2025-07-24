@@ -10,6 +10,8 @@ class Url extends Model
 {
     use HasUlids;
 
+    protected $guarded = ['id'];
+
     public function owner(): MorphTo
     {
         return $this->morphTo();
