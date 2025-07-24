@@ -8,6 +8,7 @@ services:
     ports:
       - "127.0.0.1:8884:80"
     volumes:
+      - ./.env:/app/.env
       - ./storage:/app/storage/app
       - ./logs/application:/app/storage/logs
       - ./database.sqlite:/app/database/database.sqlite

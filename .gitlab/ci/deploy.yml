@@ -22,7 +22,6 @@ production:
     - scp -i ~/.ssh/id_ed25519 -P $COMPUTE_SSH_PORT ./docker/compose.production.yml $COMPUTE_SSH_USER@$COMPUTE_IP:$PRODUCTION_PATH/docker-compose.yml
     - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "cd $PRODUCTION_PATH && docker compose pull && exit"
     - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "cd $PRODUCTION_PATH && docker compose up -d --force-recreate && exit"
-    - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan key:generate && exit"
     - ssh -i ~/.ssh/id_ed25519 -p $COMPUTE_SSH_PORT $COMPUTE_SSH_USER@$COMPUTE_IP "docker exec 237_app php artisan migrate --force && exit"
   rules:
     - if: $CI_COMMIT_TAG
