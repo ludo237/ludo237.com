@@ -73,7 +73,9 @@ RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp && \
 USER ${USER}
 
 # Laravel optimizations
-RUN php artisan optimize && \
+RUN php artisan event:cache && \
+    php artisan route:cache && \
+    php artisan view:cache && \
     php artisan storage:link
 
 # Health check
