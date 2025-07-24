@@ -1,0 +1,28 @@
+stages:
+  - build
+  - tests
+  - release
+  - docker
+  - deploy
+  - rollback
+
+variables:
+  XDEBUG_MODE: debug,coverage
+  OPCACHE_ENABLE: 0
+  BUN_INSTALL_CACHE_DIR: "$CI_PROJECT_DIR/.bun_cache"
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == 'master'
+
+include:
+  - local: .gitlab/ci/bun.yml
+  - local: .gitlab/ci/composer.yml
+  - local: .gitlab/ci/merge-to-master.yml
+  - local: .gitlab/ci/build.yml
+  - local: .gitlab/ci/tag.yml
+  - local: .gitlab/ci/release.yml
+

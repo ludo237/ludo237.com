@@ -1,0 +1,33 @@
+include:
+  - local: .gitlab/ci/templates/docker/build.yml
+  - local: .gitlab/ci/templates/docker/tag.yml
+
+variables:
+  SERVICE_NAME: app
+  REGISTRY_PATH: ludo237/ludo237.com
+  DOCKERFILE_PATH: ./docker/Dockerfile
+
+build::docker::production:
+  extends: .build::production
+  needs:
+    - job: bun::build
+      artifacts: true
+    - job: composer::install
+      artifacts: true
+  script:
+    - docker pull $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production || true
+    - docker build .
+      --cache-from $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production
+      -t $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG
+      -f $DOCKERFILE_PATH
+    - docker push $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG
+
+tag::docker::production:
+  extends: .tag::production
+  needs:
+    - job: build::docker::production
+      artifacts: false
+  script:
+    - docker pull $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG
+    - docker tag $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:$CI_COMMIT_TAG $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production
+    - docker push $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production

@@ -1,0 +1,18 @@
+merge::to::master:
+  stage: .post
+  image: registry.gitlab.com/6go/dx/docker/git:latest
+  before_script:
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git config --global user.name "${GITLAB_USER_NAME}"
+  script:
+    - git fetch --all --no-tags
+    - 'curl -X POST
+        -H "Private-Token: ${GROUP_ACCESS_TOKEN}"
+        -H "Authorization: Bearer ${GROUP_ACCESS_TOKEN}"
+        -H "Content-Type: application/json"
+        -d "{\"source_branch\":\"develop\",\"target_branch\":\"master\",\"title\":\"Merge branch develop into master\"}"
+        "https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/merge_requests"'
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      allow_failure: true
+      when: manual

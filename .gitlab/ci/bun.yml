@@ -1,0 +1,78 @@
+.bun::cache:
+  before_script:
+    - mkdir -p "$CI_PROJECT_DIR/.bun_cache"
+  cache:
+    key:
+      files:
+        - bun.lock
+    paths:
+      - .bun_cache/
+    policy: pull-push
+
+bun::install:
+  stage: .pre
+  image: registry.gitlab.com/6go/dx/docker/bun:1
+  needs: [ ]
+  extends: .bun::cache
+  cache:
+    policy: pull-push
+  artifacts:
+    name: "bun-install"
+    expose_as: 'bun-install'
+    paths:
+      - node_modules/
+      - .env/
+    expire_in: 1 day
+    when: on_success
+    untracked: false
+  script:
+    - bun install --cache-dir .bun-cache --frozen-lockfile
+
+prettier:
+  stage: tests
+  image: registry.gitlab.com/6go/dx/docker/bun:1
+  needs:
+    - job: bun::install
+      artifacts: true
+  script:
+    - bun run format:check
+
+lint:
+  stage: tests
+  image: registry.gitlab.com/6go/dx/docker/bun:1
+  needs:
+    - job: bun::install
+      artifacts: true
+  script:
+    - bun run lint:check
+
+typescript:
+  stage: tests
+  image: registry.gitlab.com/6go/dx/docker/bun:1
+  needs:
+    - job: bun::install
+      artifacts: true
+  script:
+    - bun run types
+
+bun::build:
+  stage: build
+  image: registry.gitlab.com/6go/dx/docker/bun:1
+  needs:
+    - job: bun::install
+      artifacts: true
+  extends: .bun::cache
+  cache:
+    policy: pull
+  artifacts:
+    name: "bun-build"
+    expose_as: 'bun-build'
+    paths:
+      - .env/
+    expire_in: 1 day
+    when: on_success
+    untracked: false
+  before_script:
+    - cp envs/.env.dev .env
+  script:
+    - bun run build

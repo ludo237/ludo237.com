@@ -1,0 +1,47 @@
+.composer::cache:
+  cache:
+    key:
+      files:
+        - composer.lock
+    paths:
+      - .composer-cache/
+    policy: pull-push
+
+composer::audit:
+  stage: tests
+  image: registry.gitlab.com/6go/dx/docker/composer:latest
+  needs: [ ]
+  extends: .composer::cache
+  cache:
+    policy: pull-push
+  artifacts:
+    name: "composer-security-audit"
+    expose_as: 'Security Audit'
+    paths:
+      - reports
+    expire_in: 1 day
+    when: on_failure
+  before_script:
+    - mkdir -p ./reports
+  script:
+    - composer audit
+
+composer::install:
+  stage: .pre
+  image: registry.gitlab.com/6go/dx/docker/composer:latest
+  needs: [ ]
+  extends: .composer::cache
+  cache:
+    policy: pull-push
+  artifacts:
+    name: "composer-install"
+    expose_as: 'Composer install'
+    paths:
+      - vendor/
+    expire_in: 1 day
+    when: on_success
+    untracked: false
+  before_script:
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
+  script:
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts -o --ignore-platform-req=*
