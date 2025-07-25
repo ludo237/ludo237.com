@@ -99,7 +99,6 @@ export const addItemsToTimeline = (items: (JobExperience | School)[]): TimelineI
         };
 
         if (Object.hasOwn(item, 'company')) {
-            console.log(item);
             const jItem = item as JobExperience;
             defaultObject.name = jItem.company;
             defaultObject.role = {
