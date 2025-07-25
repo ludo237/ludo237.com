@@ -60,17 +60,6 @@
     --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-}
-
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0 0 0);
@@ -182,16 +171,6 @@
     --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 10.1961% / 2.5);
 }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
-
-    body {
-        @apply bg-background text-foreground;
-    }
-}
-
 @theme inline {
     --font-sans: Oxanium, sans-serif;
     --font-mono: JetBrains Mono, monospace;
@@ -257,6 +236,14 @@
     --radius-xl: calc(var(--radius) + 4px);
 }
 
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
     *,
     ::after,
