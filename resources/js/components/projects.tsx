@@ -26,7 +26,7 @@ const ProjectUrls = ({ urls }: { urls: Url[] }) => {
     return (
         <div className="grow space-y-0.5">
             {urls.map((url) => (
-                <ProjectUrl url={url} />
+                <ProjectUrl url={url} key={url.id} />
             ))}
         </div>
     );
