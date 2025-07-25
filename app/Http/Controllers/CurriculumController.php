@@ -7,10 +7,11 @@ use App\Models\Language;
 use App\Models\Project;
 use App\Models\School;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class CurriculumController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $jobs = JobExperience::query()
             ->with('urls')

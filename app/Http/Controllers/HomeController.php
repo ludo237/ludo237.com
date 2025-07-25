@@ -6,10 +6,11 @@ use App\Models\JobExperience;
 use App\Models\Project;
 use App\Models\School;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $jobs = JobExperience::query()
             ->with('urls')
