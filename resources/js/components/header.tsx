@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <div className="w-full max-w-2xl">
+                <div className="w-full">
                     <div className="flex items-center justify-between gap-3">
                         <div className="flex flex-1 flex-col space-y-1.5">
                             <div className="flex">

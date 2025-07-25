@@ -149,11 +149,11 @@ export default function Curriculum({ jobs, languages, projects, schools }: Curri
                         <CardFooter>
                             <CardDescription className="flex w-full justify-end">
                                 <Button variant="default" asChild>
-                                    <Link href="/resume_latest.pdf" title="download my resume in pdf">
+                                    <a href="/resume_latest.pdf" title="download my resume in pdf" download>
                                         Need a PDF version?
-                                        <DownloadCloudIcon className={'size-8 px-1.5'} />
+                                        <DownloadCloudIcon className='size-8 px-1.5' />
                                         Download it
-                                    </Link>
+                                    </a>
                                 </Button>
                             </CardDescription>
                         </CardFooter>
