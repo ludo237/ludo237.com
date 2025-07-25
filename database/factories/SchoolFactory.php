@@ -15,7 +15,7 @@ class SchoolFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->company(),
+            'name' => $this->faker->company(),
             'avatar' => $this->faker->imageUrl(),
             'description' => $this->faker->paragraph(),
             'location' => $this->faker->city(),

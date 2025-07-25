@@ -15,7 +15,7 @@ class LanguageFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->languageCode(),
+            'name' => $this->faker->randomElement(['English', 'Spanish', 'French', 'German', 'Italian']),
             'experience' => $this->faker->randomElement([
                 'beginner',
                 'intermediate',

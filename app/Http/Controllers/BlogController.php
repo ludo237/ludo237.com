@@ -9,7 +9,10 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->get();
+        $posts = Post::query()
+            ->whereNotNull('published_at')
+            ->orderBy('published_at', 'desc')
+            ->get();
 
         return Inertia::render('blog/index', [
             'posts' => $posts,

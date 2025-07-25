@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use Database\Factories\PostFactory;
 
 test('blog index page can be rendered', function () {
     $response = $this->get('/blog');
@@ -9,9 +10,19 @@ test('blog index page can be rendered', function () {
     $response->assertInertia(fn ($page) => $page->component('blog/index'));
 });
 
-test('blog index loads all posts', function () {
-    $post1 = Post::factory()->create(['title' => 'First Post']);
-    $post2 = Post::factory()->create(['title' => 'Second Post']);
+test('blog index loads published posts ordered by date', function () {
+    // Clear existing posts
+    Post::query()->delete();
+
+    $oldPost = PostFactory::new()->published()->create([
+        'title' => 'Old Post',
+        'published_at' => now()->subDays(2),
+    ]);
+    $newPost = PostFactory::new()->published()->create([
+        'title' => 'New Post',
+        'published_at' => now()->subDay(),
+    ]);
+    PostFactory::new()->draft()->create(['title' => 'Draft Post']);
 
     $response = $this->get('/blog');
 
@@ -19,13 +30,13 @@ test('blog index loads all posts', function () {
         ->assertInertia(fn ($page) => $page
             ->component('blog/index')
             ->has('posts', 2)
-            ->where('posts.0.id', $post1->id)
-            ->where('posts.1.id', $post2->id)
+            ->where('posts.0.id', $newPost->id)
+            ->where('posts.1.id', $oldPost->id)
         );
 });
 
 test('blog show page can be rendered with valid slug', function () {
-    $post = Post::factory()->create(['slug' => 'test-post']);
+    $post = PostFactory::new()->create(['slug' => 'test-post']);
 
     $response = $this->get('/blog/test-post');
 
@@ -44,7 +55,7 @@ test('blog show page returns 404 for invalid slug', function () {
 });
 
 test('blog show page loads specific post data', function () {
-    $post = Post::factory()->create([
+    $post = PostFactory::new()->create([
         'title' => 'My Awesome Post',
         'slug' => 'my-awesome-post',
         'content' => 'This is the content of my post.',

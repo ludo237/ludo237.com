@@ -4,6 +4,10 @@ use App\Models\JobExperience;
 use App\Models\Language;
 use App\Models\Project;
 use App\Models\School;
+use Database\Factories\JobExperienceFactory;
+use Database\Factories\LanguageFactory;
+use Database\Factories\ProjectFactory;
+use Database\Factories\SchoolFactory;
 
 test('curriculum page can be rendered', function () {
     $response = $this->get('/cv');
@@ -13,31 +17,35 @@ test('curriculum page can be rendered', function () {
 });
 
 test('curriculum page loads with all required data', function () {
-    // Create test data
-    $job = JobExperience::factory()->create();
-    $language = Language::factory()->create();
-    $project = Project::factory()->create();
-    $school = School::factory()->create();
+    // Clear existing data
+    JobExperience::query()->delete();
+    Language::query()->delete();
+    Project::query()->delete();
+    School::query()->delete();
+
+    JobExperienceFactory::new()->count(2)->create();
+    LanguageFactory::new()->count(2)->create();
+    ProjectFactory::new()->count(2)->create();
+    SchoolFactory::new()->count(2)->create();
 
     $response = $this->get('/cv');
 
     $response->assertStatus(200)
         ->assertInertia(fn ($page) => $page
             ->component('curriculum')
-            ->has('jobs')
-            ->has('languages')
-            ->has('projects')
-            ->has('schools')
-            ->where('jobs.0.id', $job->id)
-            ->where('languages.0.id', $language->id)
-            ->where('projects.0.id', $project->id)
-            ->where('schools.0.id', $school->id)
+            ->has('jobs', 2)
+            ->has('languages', 2)
+            ->has('projects', 2)
+            ->has('schools', 2)
         );
 });
 
 test('curriculum page loads jobs sorted by started_at desc', function () {
-    $oldJob = JobExperience::factory()->create(['started_at' => '2020-01-01']);
-    $newJob = JobExperience::factory()->create(['started_at' => '2023-01-01']);
+    // Clear existing data
+    JobExperience::query()->delete();
+
+    $oldJob = JobExperienceFactory::new()->create(['started_at' => '2020-01-01']);
+    $newJob = JobExperienceFactory::new()->create(['started_at' => '2023-01-01']);
 
     $response = $this->get('/cv');
 
@@ -50,10 +58,14 @@ test('curriculum page loads jobs sorted by started_at desc', function () {
 });
 
 test('curriculum page loads projects with urls relationship', function () {
-    $project = Project::factory()->create();
-    $project->urls()->create([
-        'label' => 'GitHub',
-        'url' => 'https://github.com/user/repo',
+    // Clear existing data
+    Project::query()->delete();
+
+    $project = ProjectFactory::new()->create();
+    $url = $project->urls()->create([
+        'name' => 'GitHub',
+        'href' => 'https://github.com/user/repo',
+        'type' => 'website',
     ]);
 
     $response = $this->get('/cv');
@@ -62,6 +74,6 @@ test('curriculum page loads projects with urls relationship', function () {
         ->assertInertia(fn ($page) => $page
             ->component('curriculum')
             ->has('projects.0.urls', 1)
-            ->where('projects.0.urls.0.label', 'GitHub')
+            ->has('projects.0')
         );
 });

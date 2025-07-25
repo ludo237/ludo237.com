@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Url;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Url>
+ * @extends Factory<Url>
  */
 class UrlFactory extends Factory
 {
@@ -17,7 +18,9 @@ class UrlFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->sentence(2),
+            'href' => $this->faker->url(),
+            'type' => $this->faker->randomElement(['website', 'internal']),
         ];
     }
 }

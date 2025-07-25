@@ -19,7 +19,7 @@ class JobExperienceFactory extends Factory
             'company' => $this->faker->company(),
             'company_description' => $this->faker->paragraph(),
             'location' => $this->faker->city(),
-            'role' => $this->faker->word(),
+            'role' => $this->faker->words(2, true),
             'role_description' => $this->faker->paragraph(),
             'skills' => $this->faker->words(5),
             'started_at' => $this->faker->date(),
