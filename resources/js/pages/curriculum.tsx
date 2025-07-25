@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { useInitials } from '@/hooks/use-initials';
 import { JobExperience, Language, Project, School } from '@/types/model';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { format, formatDistanceStrict } from 'date-fns';
 import { CalendarDays, DownloadCloudIcon } from 'lucide-react';
 
@@ -151,7 +151,7 @@ export default function Curriculum({ jobs, languages, projects, schools }: Curri
                                 <Button variant="default" asChild>
                                     <a href="/resume_latest.pdf" title="download my resume in pdf" download>
                                         Need a PDF version?
-                                        <DownloadCloudIcon className='size-8 px-1.5' />
+                                        <DownloadCloudIcon className="size-8 px-1.5" />
                                         Download it
                                     </a>
                                 </Button>

@@ -33,14 +33,14 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
                     </AvatarFallback>
                 </Avatar>
             </div>
-            <div className="flex flex-1 flex-col justify-start gap-1.5">
-                <div className="flex items-center justify-between">
+            <div className="flex flex-col space-y-1.5">
+                <div className="space-y-0.5">
                     <h2 className="text-lg leading-none font-semibold text-sky-500 dark:text-sky-600">{item.name}</h2>
                     <time className="text-xs text-slate-500 dark:text-slate-400">
                         {format(item.startDate, 'MMMM yyyy')} - {item.endDate ? format(item.endDate, 'MMMM yyyy') : 'present'}
                     </time>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{item.location}</p>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400">{item.location}</p>
                 {item.role && <span className="text-sm text-sky-700 dark:text-sky-300">{item.role.title}</span>}
 
                 <span className="prose text-sm text-slate-700 dark:text-slate-300 dark:prose-invert">
