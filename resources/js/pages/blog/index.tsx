@@ -15,10 +15,9 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
     return (
         <>
             <Head title="My Toughts" />
-            <main className="mx-auto max-w-6xl px-4 py-9">
-                <Header />
-
-                <div className="mx-auto max-w-2xl py-3">
+            <main className="flex min-h-[100dvh] flex-col space-y-9 py-9">
+                <div className="max-w-2xl space-y-6 px-4 md:mx-auto md:px-0 lg:max-w-3xl xl:max-w-5xl">
+                    <Header />
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
@@ -30,9 +29,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
-                </div>
-
-                <div className="py-3">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {posts.map((post) => (
                             <Link key={post.id} href={`/blog/${post.slug}`} className="block transition-transform hover:scale-105">
@@ -59,7 +55,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                             </Link>
                         ))}
                     </div>
-
                     {posts.length === 0 && (
                         <div className="py-12 text-center">
                             <p className="text-muted-foreground">No blog posts found.</p>

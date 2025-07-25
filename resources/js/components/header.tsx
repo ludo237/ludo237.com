@@ -6,7 +6,7 @@ export default function Header() {
     const { firstPost } = usePage<SharedProps>().props;
 
     return (
-        <div className="mx-auto max-w-2xl space-y-6">
+        <>
             <header>
                 <div className="w-full max-w-2xl">
                     <div className="flex items-center justify-between gap-3">
@@ -23,7 +23,7 @@ export default function Header() {
                                 </span>
                             </div>
                         </div>
-                        <Avatar className="size-36">
+                        <Avatar className="size-16 md:size-36">
                             <AvatarImage src="https://avatars.githubusercontent.com/u/921500?v=4" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
@@ -55,6 +55,6 @@ export default function Header() {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 }

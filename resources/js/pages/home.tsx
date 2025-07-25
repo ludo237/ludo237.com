@@ -16,10 +16,12 @@ export default function Home({ jobs, projects, schools }: HomeProps) {
             <Head title="Home" />
 
             <main className="flex min-h-[100dvh] flex-col space-y-9 py-9">
-                <Header />
-                <div className="grid grid-cols-1 px-48 md:grid-cols-2 md:gap-x-32">
-                    <CareerTimeline jobs={jobs} schools={schools} />
-                    <ProjectsGrid projects={projects} />
+                <div className="max-w-2xl space-y-6 px-4 md:mx-auto md:px-0 lg:max-w-3xl xl:max-w-5xl">
+                    <Header />
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <CareerTimeline jobs={jobs} schools={schools} />
+                        <ProjectsGrid projects={projects} />
+                    </div>
                 </div>
             </main>
         </>
