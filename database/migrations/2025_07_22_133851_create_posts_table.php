@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('excerpt');
             $table->string('cover');
             $table->longText('content');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
