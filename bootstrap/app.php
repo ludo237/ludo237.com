@@ -8,6 +8,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Inertia\Inertia;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -27,7 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->respond(function (Response $response, Throwable $exception, Request $request) {
+        $exceptions->respond(function (SymfonyResponse $response, Throwable $exception, Request $request) {
             if (! app()->environment(['local', 'testing', 'dev']) && in_array($response->getStatusCode(), [500, 503, 404, 403])) {
                 return Inertia::render('error', ['status' => $response->getStatusCode()])
                     ->toResponse($request)
