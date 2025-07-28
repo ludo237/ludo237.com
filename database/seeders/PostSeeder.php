@@ -50,7 +50,7 @@ EOF,
             ->published()
             ->create([
                 'title' => $title = 'My Story',
-                'slug' => Str::slug($title.'-'.Str::random(7)),
+                'slug' => 'my-story-aj4910245',
                 'excerpt' => 'I am part of the ‘90s generation that grew up with the Fresh Prince of Bel Air and the Commodore 64',
                 'cover' => 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80',
                 'content' => <<<'EOF'

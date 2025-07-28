@@ -14,7 +14,10 @@ class HandleInertiaRequests extends Middleware
 
     public function share(Request $request): array
     {
-        $post = Cache::rememberForever('first-post', fn () => Post::query()->first());
+        $post = Cache::rememberForever(
+            'first-post',
+            fn () => Post::query()->where('slug', '=', 'my-story-aj4910245')->first()
+        );
 
         return [
             ...parent::share($request),
