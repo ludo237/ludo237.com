@@ -12,6 +12,7 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         PostFactory::new()
+            ->published()
             ->create([
                 'title' => $title = 'Hello World!',
                 'slug' => Str::slug($title.'-'.Str::random(7)),
@@ -46,6 +47,7 @@ EOF,
             ]);
 
         PostFactory::new()
+            ->published()
             ->create([
                 'title' => $title = 'My Story',
                 'slug' => Str::slug($title.'-'.Str::random(7)),
@@ -78,6 +80,7 @@ EOF,
             ]);
 
         PostFactory::new()
+            ->published()
             ->create([
                 'title' => $title = 'Teach your kids about money',
                 'slug' => Str::slug($title.'-'.Str::random(7)),
