@@ -12,6 +12,50 @@ class ProjectSeeder extends Seeder
     {
         $project = ProjectFactory::new()
             ->create([
+                'name' => 'WS Socials',
+                'description' => 'Turn house hunting into a community adventure',
+            ]);
+
+        UrlFactory::new()
+            ->for($project, 'owner')
+            ->create([
+                'name' => 'WS Socials Website',
+                'href' => 'https://ws-socials.ludo237.com/',
+                'type' => 'website',
+            ]);
+
+        UrlFactory::new()
+            ->for($project, 'owner')
+            ->create([
+                'name' => 'Source Code',
+                'href' => 'https://gitlab.com/ws-socials',
+                'type' => 'website',
+            ]);
+
+        UrlFactory::new()
+            ->for($project, 'owner')
+            ->create([
+                'name' => 'Chrome Extension',
+                'href' => 'https://chromewebstore.google.com/detail/nkefdpiahfaigkbmkbmmdgopfjkglcon',
+                'type' => 'website',
+            ]);
+
+        $project = ProjectFactory::new()
+            ->create([
+                'name' => 'Omarchy',
+                'description' => 'Opinionated Arch/Hyprland Setup',
+            ]);
+
+        UrlFactory::new()
+            ->for($project, 'owner')
+            ->create([
+                'name' => 'Omarchy',
+                'href' => 'https://github.com/basecamp/omarchy',
+                'type' => 'website',
+            ]);
+
+        $project = ProjectFactory::new()
+            ->create([
                 'name' => 'Eloquent Traits',
                 'description' => 'Useful set of Eloquent traits. The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding Model, which is used to interact with that table.',
             ]);
@@ -21,34 +65,6 @@ class ProjectSeeder extends Seeder
             ->create([
                 'name' => 'Laravel Eloquent Traits',
                 'href' => 'https://gitlab.com/ludo237/laravel-eloquent-traits',
-                'type' => 'website',
-            ]);
-
-        $project = ProjectFactory::new()
-            ->create([
-                'name' => 'Delayed Artistic Guppy',
-                'description' => 'Package that generates slugify words like Gfycat or Twitch Clips.',
-            ]);
-
-        UrlFactory::new()
-            ->for($project, 'owner')
-            ->create([
-                'name' => 'Delayed Artistic Guppy',
-                'href' => 'https://gitlab.com/ludo237/delayed-artistic-guppy',
-                'type' => 'website',
-            ]);
-
-        $project = ProjectFactory::new()
-            ->create([
-                'name' => 'Laravel Rules',
-                'description' => "A set of custom Laravel rules that I've developed over the years I find them useful",
-            ]);
-
-        UrlFactory::new()
-            ->for($project, 'owner')
-            ->create([
-                'name' => 'Laravel Rules',
-                'href' => 'https://gitlab.com/ludo237/laravel-rules',
                 'type' => 'website',
             ]);
 
@@ -106,20 +122,6 @@ class ProjectSeeder extends Seeder
                 'name' => 'IdeaQR',
                 'href' => 'https://ideaqr.com',
                 'type' => 'website',
-            ]);
-
-        $project = ProjectFactory::new()
-            ->create([
-                'name' => 'Sudoku Classic',
-                'description' => 'Simple sudoku board that reflects the classic game, which i like a lot',
-            ]);
-
-        UrlFactory::new()
-            ->for($project, 'owner')
-            ->create([
-                'name' => 'Sudoku',
-                'href' => '/projects/sudoku',
-                'type' => 'internal',
             ]);
     }
 }
