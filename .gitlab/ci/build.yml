@@ -22,7 +22,7 @@ build::docker::production:
       artifacts: true
   before_script:
     - docker info
-    - cp ./envs/.env.prod .env
+    - cp ./envs/.env.ci .env
     - echo -n $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   script:
     - docker pull $CI_REGISTRY/$REGISTRY_PATH/$SERVICE_NAME:production || true
