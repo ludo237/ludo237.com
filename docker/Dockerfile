@@ -63,7 +63,7 @@ COPY --chown=${USER}:${USER} --link database ./database
 COPY --chown=${USER}:${USER} --link public ./public
 COPY --chown=${USER}:${USER} --link resources ./resources
 COPY --chown=${USER}:${USER} --link routes ./routes
-COPY --chown=${USER}:${USER} --link src ./src
+COPY --chown=${USER}:${USER} --link app ./app
 COPY --chown=${USER}:${USER} --link storage ./storage
 
 RUN chown -R ${USER}:${USER} /data/caddy /config/caddy . && \
