@@ -29,7 +29,6 @@ RUN --mount=type=cache,target=/tmp/cache \
     --no-autoloader \
     --prefer-dist
 
-# Production stage
 FROM registry.gitlab.com/6go/dx/docker/frankenphp:1
 
 ARG UID=1003
@@ -44,7 +43,7 @@ ENV OPCACHE_JIT_FLAGS=1225
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends sqlite3 && \
+    apt-get install -y --no-install-recommends zip unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     groupadd -g $PRIMARY_GID -o $USER && \

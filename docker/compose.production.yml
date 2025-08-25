@@ -22,4 +22,5 @@ services:
 
 networks:
   ludo:
+    name: ludo
     driver: bridge
