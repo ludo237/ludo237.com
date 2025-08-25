@@ -8,9 +8,9 @@ services:
     ports:
       - "127.0.0.1:8884:80"
     volumes:
-      - ./.env:/app/.env
-      - /home/deploy/buckets/ludo237:/app/storage/app
-      - /home/deploy/logs/ludo237:/app/storage/logs
+      - ./.env:/app/.env:ro
+      - /home/deploy/buckets/ludo237:/app/storage/app:Z
+      - /home/deploy/logs/ludo237:/app/storage/log:Z
     networks:
       - ludo
     healthcheck:
