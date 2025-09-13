@@ -37,7 +37,8 @@
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=jetbrains-mono:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i|oxanium:500,600,700,800|source-serif-pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=dm-sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|space-mono:400,400i,700,700i" rel="stylesheet" />
+
         @routes
         @viteReactRefresh
         @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
