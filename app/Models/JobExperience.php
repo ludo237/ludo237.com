@@ -13,6 +13,8 @@ class JobExperience extends Model
 
     protected $table = 'job_experiences';
 
+    protected $guarded = ['id'];
+
     protected $casts = [
         'skills' => 'array',
     ];

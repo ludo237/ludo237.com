@@ -1,11 +1,11 @@
 import Header from '@/components/header';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { parseMarkdown, readingTime } from '@/lib/utils';
 import { Post } from '@/types/model';
 import { Head, Link } from '@inertiajs/react';
 import { formatDistanceToNowStrict } from 'date-fns';
+import SeoHead from '@/components/seo-head'
 
 interface BlogIndexProps {
     posts: Post[];
@@ -14,7 +14,8 @@ interface BlogIndexProps {
 export default function BlogIndex({ posts }: BlogIndexProps) {
     return (
         <>
-            <Head title="My Toughts" />
+            <SeoHead />
+
             <main className="flex min-h-[100dvh] flex-col space-y-9 py-9">
                 <div className="max-w-2xl space-y-6 px-4 md:mx-auto md:px-0 lg:max-w-3xl xl:max-w-5xl">
                     <Header />
@@ -32,14 +33,10 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {posts.map((post) => (
                             <Link key={post.id} href={`/blog/${post.slug}`} className="block transition-transform hover:scale-105">
-                                <Card className="h-full pt-0">
-                                    <div className="relative overflow-hidden rounded-t-md">
-                                        <AspectRatio ratio={16 / 9}>
-                                            <img src={post.cover} alt={post.title} className="h-full w-full object-cover" />
-                                        </AspectRatio>
-                                    </div>
-                                    <CardHeader className="pb-2">
-                                        <CardTitle className="line-clamp-2 text-sky-500">{post.title}</CardTitle>
+                                <Card className="overflow-hidden pt-0">
+                                    <img src={post.cover} alt={post.title} className="aspect-video" />
+                                    <CardHeader>
+                                        <CardTitle>{post.title}</CardTitle>
                                         <CardDescription>
                                             {readingTime(post.content)} minutes read • Written{' '}
                                             {formatDistanceToNowStrict(post.created_at, { addSuffix: true })}

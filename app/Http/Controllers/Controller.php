@@ -2,4 +2,19 @@
 
 namespace App\Http\Controllers;
 
-abstract class Controller {}
+use Inertia\Inertia;
+
+abstract class Controller
+{
+    /**
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
+     */
+    protected function mergeSeoValues(array $data): array
+    {
+        return array_merge(
+            Inertia::getShared()['meta'],
+            $data,
+        );
+    }
+}

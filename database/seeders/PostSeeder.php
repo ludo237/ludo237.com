@@ -43,7 +43,7 @@ aside from the mentioned Twitter but I keep the usage to a minimum probably I'll
 Writing is not my thing, you can clearly verify that by the quality of my posts 😂. I'll try to be consistent but this is not a blog, it's more
 like a diary for me. So expect confused posts, non linear posting, rants about anything and technical stuff.
 EOF,
-                'created_at' => Date::create(2022, 1, 3),
+                'published_at' => Date::create(2022, 1, 3),
             ]);
 
         PostFactory::new()
@@ -76,7 +76,7 @@ where I learnt a lot of basic essential techniques for a good engineer.
 
 I'm deeply proud of my work and I strongly believe in continuous formation because technology never stops and I will not ever let it go too far from my passion.
 EOF,
-                'created_at' => Date::create(2022, 2, 1),
+                'published_at' => Date::create(2022, 2, 1),
             ]);
 
         PostFactory::new()
@@ -160,7 +160,7 @@ them the proper way. In general I reccomend a few guiding principles you can use
 
 Teaching your children the value of money is very important for their financial future. Inspire them!
 EOF,
-                'created_at' => Date::create(2022, 3, 1),
+                'published_at' => Date::create(2022, 3, 1),
             ]);
     }
 }

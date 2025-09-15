@@ -11,4 +11,6 @@ class Post extends Model
     use HasFactory, HasUlids;
 
     protected $table = 'posts';
+
+    protected $guarded = ['id'];
 }

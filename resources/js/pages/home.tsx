@@ -3,6 +3,7 @@ import Header from '@/components/header';
 import ProjectsGrid from '@/components/projects';
 import { JobExperience, Project, School } from '@/types/model';
 import { Head } from '@inertiajs/react';
+import SeoHead from '@/components/seo-head'
 
 interface HomeProps {
     jobs: JobExperience[];
@@ -13,7 +14,7 @@ interface HomeProps {
 export default function Home({ jobs, projects, schools }: HomeProps) {
     return (
         <>
-            <Head title="Home" />
+            <SeoHead />
 
             <main className="flex min-h-[100dvh] flex-col space-y-9 py-9">
                 <div className="max-w-2xl space-y-6 px-4 md:mx-auto md:px-0 lg:max-w-3xl xl:max-w-5xl">

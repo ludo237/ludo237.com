@@ -2,35 +2,34 @@ import { Post, User } from '@/types/model';
 import { LucideIcon } from 'lucide-react';
 import type { Config } from 'ziggy-js';
 
-export interface ErrorCode {
-    [key: string]: unknown; // This allows for additional properties...
-}
+
 export interface Auth {
     user: User;
 }
 
-export interface BreadcrumbItem {
-    title: string;
-    href: string;
-}
-
-export interface NavGroup {
-    title: string;
-    items: NavItem[];
-}
-
-export interface NavItem {
-    title: string;
-    href: string;
-    icon?: LucideIcon | null;
-    isActive?: boolean;
-}
-
-export interface SharedProps {
-    name: string;
+export interface SharedPageProps {
+    csrf_token: string;
     auth: Auth;
     ziggy: Config & { location: string };
     firstPost: Post;
+    meta: {
+        title: string;
+        description: string;
+        og: {
+            title: string;
+            description: string;
+            type: string;
+            url: string;
+            image: string;
+        };
+        twitter: {
+            card: string;
+            title: string;
+            description: string;
+            image: string;
+            alt: string;
+        };
+    };
     [key: string]: unknown;
 }
 

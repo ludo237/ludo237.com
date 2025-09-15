@@ -51,7 +51,6 @@
     "react-dom": "^19.1.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.13",
-    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.9.2",
     "vite": "^6.3.6",
     "ziggy-js": "^2.5.3"

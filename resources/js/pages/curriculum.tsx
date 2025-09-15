@@ -29,7 +29,7 @@ const CvJob = ({ job }: { job: JobExperience }) => {
             <div className="grow space-y-1.5">
                 <HoverCard>
                     <HoverCardTrigger asChild>
-                        <h4 className="leading-none font-medium text-sky-500">{job.company}</h4>
+                        <h4 className="leading-none font-medium text-primary">{job.company}</h4>
                     </HoverCardTrigger>
                     <HoverCardContent className="w-80">
                         <div className="flex justify-between space-x-3">
@@ -76,7 +76,7 @@ export default function Curriculum({ jobs, languages, projects, schools }: Curri
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
-                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                                <BreadcrumbLink href={route("home")}>Home</BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
@@ -88,11 +88,11 @@ export default function Curriculum({ jobs, languages, projects, schools }: Curri
                         <CardHeader>
                             <CardTitle>Curriculum Vitae</CardTitle>
                             <CardDescription>
-                                <span className="pr-1">
+                                <span className="leading-snug tracking-wider">
                                     Aiming to connect people through free services and automation. Invest into big ideas and bold people and help them
-                                    growing as a family. To take on the bold, everyone need a deep seated desire to direct their own lives.
+                                    growing as a family. To take on the bold, everyone need a deep seated desire to direct their own lives.{" "}
                                 </span>
-                                <small className="text-sky-600">Pro tip: hover on each company to see more details.</small>
+                                <small className="text-secondary">Pro tip: hover on each company to see more details.</small>
                             </CardDescription>
                         </CardHeader>
                         <CardContent>

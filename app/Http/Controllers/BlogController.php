@@ -22,10 +22,29 @@ class BlogController extends Controller
 
     public function show(string $slug): Response
     {
+        /** @var Post $post */
         $post = Post::query()->where('slug', '=', $slug)->firstOrFail();
 
         return Inertia::render('blog/show', [
             'post' => $post,
+            'meta' => $this->mergeSeoValues([
+                'title' => $post->getAttributeValue('title'),
+                'description' => $post->getAttributeValue('title'),
+                'og' => [
+                    'title' => $post->getAttributeValue('title'),
+                    'description' => $post->getAttributeValue('title'),
+                    'type' => 'article',
+                    'url' => route('blog.show', $post->getAttributeValue('slug')),
+                    'image' => $post->getAttributeValue('cover'),
+                ],
+                'twitter' => [
+                    'card' => 'summary_large_image',
+                    'title' => $post->getAttributeValue('title'),
+                    'description' => $post->getAttributeValue('title'),
+                    'alt' => $post->getAttributeValue('title'),
+                    'image' => $post->getAttributeValue('cover'),
+                ],
+            ]),
         ]);
     }
 }

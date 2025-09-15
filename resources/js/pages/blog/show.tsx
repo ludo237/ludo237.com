@@ -1,11 +1,11 @@
 import Header from '@/components/header';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { parseMarkdown, readingTime } from '@/lib/utils';
 import { Post } from '@/types/model';
 import { Head } from '@inertiajs/react';
 import { formatDistanceToNowStrict } from 'date-fns';
+import SeoHead from '@/components/seo-head'
 
 interface BlogShowProps {
     post: Post;
@@ -14,7 +14,8 @@ interface BlogShowProps {
 export default function BlogShow({ post }: BlogShowProps) {
     return (
         <>
-            <Head title="My Toughts" />
+            <SeoHead />
+
             <main className="flex min-h-[100dvh] flex-col space-y-9 py-9">
                 <div className="max-w-2xl space-y-6 px-4 md:mx-auto md:px-0 lg:max-w-3xl xl:max-w-5xl">
                     <Header />
@@ -33,15 +34,10 @@ export default function BlogShow({ post }: BlogShowProps) {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
-                    <Card className="pt-0">
-                        <div className="relative overflow-hidden rounded-t-md">
-                            <AspectRatio ratio={16 / 9}>
-                                <img src={post.cover} alt={post.title} className="object-cover" />
-                            </AspectRatio>
-                        </div>
+                    <Card className="overflow-hidden p-0">
+                        <img src={post.cover} alt={post.title} className="aspect-video" />
                         <CardHeader>
-                            <CardTitle className="text-sky-500">{post.title}</CardTitle>
-
+                            <CardTitle>{post.title}</CardTitle>
                             <CardDescription>
                                 {readingTime(post.content)} minutes read.Written {formatDistanceToNowStrict(post.created_at, { addSuffix: true })}
                             </CardDescription>

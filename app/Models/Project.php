@@ -13,6 +13,8 @@ class Project extends Model
 
     protected $table = 'projects';
 
+    protected $guarded = ['id'];
+
     public function urls(): MorphMany
     {
         return $this->morphMany(Url::class, 'owner');
