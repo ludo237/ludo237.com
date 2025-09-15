@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\JobExperiences\RelationManagers;
 
-use App\Filament\Resources\JobExperiences\JobExperienceResource;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteBulkAction;
@@ -15,7 +14,6 @@ use Filament\Tables\Table;
 class UrlsRelationManager extends RelationManager
 {
     protected static string $relationship = 'urls';
-
 
     public function form(Schema $schema): Schema
     {

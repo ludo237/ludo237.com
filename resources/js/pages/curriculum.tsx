@@ -76,7 +76,7 @@ export default function Curriculum({ jobs, languages, projects, schools }: Curri
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
-                                <BreadcrumbLink href={route("home")}>Home</BreadcrumbLink>
+                                <BreadcrumbLink href={route('home')}>Home</BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
@@ -90,7 +90,7 @@ export default function Curriculum({ jobs, languages, projects, schools }: Curri
                             <CardDescription>
                                 <span className="leading-snug tracking-wider">
                                     Aiming to connect people through free services and automation. Invest into big ideas and bold people and help them
-                                    growing as a family. To take on the bold, everyone need a deep seated desire to direct their own lives.{" "}
+                                    growing as a family. To take on the bold, everyone need a deep seated desire to direct their own lives.{' '}
                                 </span>
                                 <small className="text-secondary">Pro tip: hover on each company to see more details.</small>
                             </CardDescription>

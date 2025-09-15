@@ -1,9 +1,8 @@
 import CareerTimeline from '@/components/career-timeline';
 import Header from '@/components/header';
 import ProjectsGrid from '@/components/projects';
+import SeoHead from '@/components/seo-head';
 import { JobExperience, Project, School } from '@/types/model';
-import { Head } from '@inertiajs/react';
-import SeoHead from '@/components/seo-head'
 
 interface HomeProps {
     jobs: JobExperience[];

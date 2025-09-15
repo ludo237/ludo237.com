@@ -43,7 +43,7 @@ class JobExperienceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            UrlsRelationManager::class
+            UrlsRelationManager::class,
         ];
     }
 

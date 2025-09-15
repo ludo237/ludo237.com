@@ -25,7 +25,7 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
     return (
         <li className="relative ml-10 py-3">
             <div className="absolute top-3 -left-16 flex items-center justify-center rounded-full bg-foreground">
-                <Avatar className="m-auto size-12 border-primary border-2">
+                <Avatar className="m-auto size-12 border-2 border-primary">
                     <AvatarImage src={item.image} alt={item.name} />
                     <AvatarFallback>
                         {item.name[0]}
@@ -43,9 +43,7 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
                 </div>
                 {item.role && <span className="text-sm text-secondary">{item.role.title}</span>}
 
-                <p className="text-muted-foreground tracking-wide leading-snug">
-                    {item.role ? item.role.description : item.description}
-                </p>
+                <p className="leading-snug tracking-wide text-muted-foreground">{item.role ? item.role.description : item.description}</p>
             </div>
             {item.links && item.links.length > 0 && (
                 <div className="flex flex-row flex-wrap items-start space-y-1.5 py-3">
@@ -66,7 +64,9 @@ export default function CareerTimeline({ jobs, schools }: { jobs: JobExperience[
             <Card>
                 <CardHeader>
                     <CardTitle className="text-primary">My Career</CardTitle>
-                    <CardDescription className="text-muted-foreground">Have a look at my career timeline, you will find educations and jobs I have done.</CardDescription>
+                    <CardDescription className="text-muted-foreground">
+                        Have a look at my career timeline, you will find educations and jobs I have done.
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <ul className="mb-4 ml-4 divide-y divide-dashed border-l py-3">
@@ -77,7 +77,7 @@ export default function CareerTimeline({ jobs, schools }: { jobs: JobExperience[
                 </CardContent>
                 <CardFooter>
                     <span className="mr-0.5">Do you need a more comprehensive look?</span>
-                    <Link href={route("curriculum")} className="font-semibold">
+                    <Link href={route('curriculum')} className="font-semibold">
                         Get my CV
                     </Link>
                 </CardFooter>

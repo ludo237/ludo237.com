@@ -1,11 +1,11 @@
 import Header from '@/components/header';
+import SeoHead from '@/components/seo-head';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { parseMarkdown, readingTime } from '@/lib/utils';
 import { Post } from '@/types/model';
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { formatDistanceToNowStrict } from 'date-fns';
-import SeoHead from '@/components/seo-head'
 
 interface BlogIndexProps {
     posts: Post[];
