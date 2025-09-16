@@ -37,7 +37,7 @@ production:
 
         mv docker-compose.yml.new docker-compose.yml
         docker compose pull
-        docker compose up -d --force-recreate --remove-orphans
+        docker compose up -d --force-recreate
         timeout 60 bash -c 'until docker compose ps | grep -q "healthy\|Up"; do sleep 2; done'
         docker exec 237_app php artisan migrate --force
         docker exec 237_app php artisan ziggy:generate
