@@ -10,7 +10,7 @@ services:
     volumes:
       - ./.env:/app/.env:ro
       - /home/deploy/buckets/ludo237:/app/storage/app:Z
-      - /home/deploy/logs/ludo237:/app/storage/log:Z
+      - /home/deploy/logs/ludo237:/app/storage/logs:Z
     networks:
       - ludo
     healthcheck:
