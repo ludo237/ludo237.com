@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Middleware;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
@@ -14,19 +14,14 @@ class HandleInertiaRequests extends Middleware
 
     public function share(Request $request): array
     {
-        $post = Cache::rememberForever(
-            'first-post',
-            fn () => Post::query()->where('slug', '=', 'my-story-aj4910245')->first()
-        );
-
         return [
             ...parent::share($request),
+            'user' => $request->user(),
             'csrf_token' => csrf_token(),
             'ziggy' => fn (): array => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            'firstPost' => $post,
         ];
     }
 }
