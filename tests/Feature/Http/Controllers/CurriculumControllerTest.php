@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\JobExperience;
 use App\Models\Language;
 use App\Models\Project;
