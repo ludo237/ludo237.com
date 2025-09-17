@@ -18,7 +18,7 @@ return new class extends Migration
             $table->ulidMorphs('owner');
             $table->string('name');
             $table->string('href')->index();
-            $table->enum('type', ['website', 'internal']);
+            $table->string('type');
             $table->timestamps();
         });
     }

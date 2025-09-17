@@ -1,17 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
-use Filament\Panel;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements FilamentUser, HasAvatar
+class User extends Authenticatable
 {
     use HasFactory, HasUlids, Notifiable;
 
@@ -28,15 +27,5 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return str_ends_with($this->getAttributeValue('email'), '@ludo237.com') && $this->hasVerifiedEmail();
-    }
-
-    public function getFilamentAvatarUrl(): ?string
-    {
-        return 'https://avatars.laravel.cloud/'.$this->getAttributeValue('email');
     }
 }

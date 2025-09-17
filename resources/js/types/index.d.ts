@@ -42,14 +42,37 @@ export interface TimelineItem {
     description: string;
     image: string;
     location: string;
-    role: Role;
+    role?: Role;
     links: readonly TimelineLink[];
     startDate: string;
     endDate: string | null;
+    type: 'job' | 'school';
 }
 
 export interface TimelineLink {
     type: 'website' | 'github' | 'gitlab' | 'twitter';
     title: string;
     href: string;
+}
+
+export interface EloquentResource<T> extends Response {
+    data: T;
+    meta: MetaResource;
+}
+
+export interface MetaLinkResource {
+    url: string | null;
+    label: string;
+    active: boolean;
+}
+
+export interface MetaResource {
+    current_page: number;
+    from: number | null;
+    last_page: number;
+    links: MetaLinkResource[];
+    path: string;
+    per_page: number;
+    to: number | null;
+    total: number;
 }

@@ -6,7 +6,30 @@ import type { TimelineItem, TimelineLink } from '@/types';
 import { JobExperience, School } from '@/types/model';
 import { Link } from '@inertiajs/react';
 import { format } from 'date-fns';
+import { Briefcase, GraduationCap } from 'lucide-react';
 import type { FC } from 'react';
+
+const getTimelineItemIcon = (type: TimelineItem['type']) => {
+    switch (type) {
+        case 'job':
+            return Briefcase;
+        case 'school':
+            return GraduationCap;
+        default:
+            return Briefcase;
+    }
+};
+
+const getTimelineItemBadge = (type: TimelineItem['type']) => {
+    switch (type) {
+        case 'job':
+            return { text: 'Work', variant: 'default' as const };
+        case 'school':
+            return { text: 'Education', variant: 'secondary' as const };
+        default:
+            return { text: 'Experience', variant: 'default' as const };
+    }
+};
 
 const TimelineLink: FC<{ link: TimelineLink }> = ({ link }) => {
     const Icon = mapTimelineIcon(link.type);
@@ -22,22 +45,29 @@ const TimelineLink: FC<{ link: TimelineLink }> = ({ link }) => {
 };
 
 const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
+    const TypeIcon = getTimelineItemIcon(item.type);
+    const badge = getTimelineItemBadge(item.type);
+
     return (
         <li className="relative ml-10 py-3">
             <div className="absolute top-3 -left-16 flex items-center justify-center rounded-full bg-foreground">
                 <Avatar className="m-auto size-12 border-2 border-primary">
                     <AvatarImage src={item.image} alt={item.name} />
                     <AvatarFallback>
-                        {item.name[0]}
-                        {item.name[1]}
+                        <TypeIcon className="size-6" />
                     </AvatarFallback>
                 </Avatar>
             </div>
             <div className="flex flex-col space-y-1.5">
                 <div className="space-y-0.5">
-                    <h2 className="text-lg leading-none font-semibold text-primary">{item.name}</h2>
+                    <div className="flex items-center gap-2">
+                        <h2 className="text-lg leading-none font-semibold text-primary">{item.name}</h2>
+                        <Badge variant={badge.variant} className="text-xs">
+                            {badge.text}
+                        </Badge>
+                    </div>
                     <time className="text-xs text-muted-foreground">
-                        {format(item.startDate, 'MMMM yyyy')} - {item.endDate ? format(item.endDate, 'MMMM yyyy') : 'present'}
+                        {format(new Date(item.startDate), 'MMMM yyyy')} - {item.endDate ? format(new Date(item.endDate), 'MMMM yyyy') : 'present'}
                     </time>
                     <p className="text-xs text-muted-foreground">{item.location}</p>
                 </div>
@@ -46,7 +76,7 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
                 <p className="leading-snug tracking-wide text-muted-foreground">{item.role ? item.role.description : item.description}</p>
             </div>
             {item.links && item.links.length > 0 && (
-                <div className="flex flex-row flex-wrap items-start space-y-1.5 py-3">
+                <div className="flex flex-row flex-wrap gap-1.5 py-3">
                     {item.links?.map((link) => (
                         <TimelineLink key={link.title} link={link} />
                     ))}
@@ -57,7 +87,7 @@ const TimelineItem: FC<{ item: TimelineItem }> = ({ item }) => {
 };
 
 export default function CareerTimeline({ jobs, schools }: { jobs: JobExperience[]; schools: School[] }) {
-    const timelineItems = addItemsToTimeline([...jobs, ...schools]);
+    const timelineItems = addItemsToTimeline(jobs, schools);
 
     return (
         <section id="career">
@@ -65,7 +95,7 @@ export default function CareerTimeline({ jobs, schools }: { jobs: JobExperience[
                 <CardHeader>
                     <CardTitle className="text-primary">My Career</CardTitle>
                     <CardDescription className="text-muted-foreground">
-                        Have a look at my career timeline, you will find educations and jobs I have done.
+                        A chronological timeline of my professional career and educational background.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -76,9 +106,9 @@ export default function CareerTimeline({ jobs, schools }: { jobs: JobExperience[
                     </ul>
                 </CardContent>
                 <CardFooter>
-                    <span className="mr-0.5">Do you need a more comprehensive look?</span>
-                    <Link href={route('curriculum')} className="font-semibold">
-                        Get my CV
+                    <span className="mr-0.5">Want a more comprehensive view?</span>
+                    <Link href="/cv" className="font-semibold text-primary hover:underline">
+                        View my full CV
                     </Link>
                 </CardFooter>
             </Card>

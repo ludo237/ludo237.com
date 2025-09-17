@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -16,7 +19,7 @@ class BlogController extends Controller
             ->get();
 
         return Inertia::render('blog/index', [
-            'posts' => $posts,
+            'posts' => PostResource::collection($posts),
         ]);
     }
 
@@ -26,7 +29,7 @@ class BlogController extends Controller
         $post = Post::query()->where('slug', '=', $slug)->firstOrFail();
 
         return Inertia::render('blog/show', [
-            'post' => $post,
+            'post' => new PostResource($post),
             'meta' => $this->mergeSeoValues([
                 'title' => $post->getAttributeValue('title'),
                 'description' => $post->getAttributeValue('title'),

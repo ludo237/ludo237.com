@@ -80,42 +80,82 @@ export const formatTime = (seconds: number) => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 };
 
-export const addItemsToTimeline = (items: (JobExperience | School)[]): TimelineItem[] => {
+export const addItemsToTimeline = (jobs: JobExperience[] = [], schools: School[] = []): TimelineItem[] => {
     const timeline: TimelineItem[] = [];
-    for (const item of items) {
-        const defaultObject: Partial<TimelineItem> = {
-            id: item.id,
-            image: item.avatar,
-            location: item.location,
-            links: item.urls.map((u) => {
-                return {
-                    type: u.type,
+
+    for (const job of jobs) {
+        timeline.push({
+            id: job.id,
+            name: job.company,
+            description: job.companyDescription,
+            image: job.avatar,
+            location: job.location,
+            role: {
+                title: job.role,
+                description: job.roleDescription,
+            },
+            links:
+                job.urls?.map((u) => ({
+                    type: u.type as TimelineLink['type'],
                     title: u.name,
                     href: u.href,
-                } as TimelineLink;
-            }),
-            startDate: item.started_at,
-            endDate: item.ended_at,
-        };
-
-        if (Object.hasOwn(item, 'company')) {
-            const jItem = item as JobExperience;
-            defaultObject.name = jItem.company;
-            defaultObject.role = {
-                title: jItem.role,
-                description: jItem.role_description,
-            };
-            defaultObject.description = jItem.company_description;
-        } else {
-            const sItem = item as School;
-            defaultObject.name = sItem.name;
-            defaultObject.description = sItem.description;
-        }
-
-        timeline.push(defaultObject as TimelineItem);
+                })) || [],
+            startDate: job.startedAt,
+            endDate: job.endedAt,
+            type: 'job',
+        });
     }
 
-    return timeline;
+    for (const school of schools) {
+        timeline.push({
+            id: school.id,
+            name: school.name,
+            description: school.description,
+            image: school.avatar,
+            location: school.location,
+            links:
+                school.urls?.map((u) => ({
+                    type: u.type as TimelineLink['type'],
+                    title: u.name,
+                    href: u.href,
+                })) || [],
+            startDate: school.startedAt,
+            endDate: school.endedAt,
+            type: 'school',
+        });
+    }
+
+    // Smart chronological sorting
+    return timeline.sort((a, b) => {
+        const aStartDate = new Date(a.startDate).getTime();
+        const aEndDate = a.endDate ? new Date(a.endDate).getTime() : null;
+        const bStartDate = new Date(b.startDate).getTime();
+        const bEndDate = b.endDate ? new Date(b.endDate).getTime() : null;
+        const now = new Date().getTime();
+        const twoYearsAgo = now - 2 * 365 * 24 * 60 * 60 * 1000;
+
+        // Priority 1: Current/ongoing items (no end date)
+        if (!aEndDate && bEndDate) return -1;
+        if (aEndDate && !bEndDate) return 1;
+        if (!aEndDate && !bEndDate) {
+            // Both ongoing, sort by start date (newest first)
+            return bStartDate - aStartDate;
+        }
+
+        // Priority 2: Recently ended items (within 2 years)
+        const aRecentlyEnded = aEndDate && aEndDate > twoYearsAgo;
+        const bRecentlyEnded = bEndDate && bEndDate > twoYearsAgo;
+
+        if (aRecentlyEnded && !bRecentlyEnded) return -1;
+        if (!aRecentlyEnded && bRecentlyEnded) return 1;
+        if (aRecentlyEnded && bRecentlyEnded) {
+            // Both recently ended, sort by end date (newest first)
+            return bEndDate! - aEndDate!;
+        }
+
+        // Priority 3: Historical items, sort by start date (newest first)
+        return bStartDate - aStartDate;
+    });
 };
 
 export const mapTimelineIcon = (

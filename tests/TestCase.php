@@ -4,15 +4,10 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        // Run seeders for tests
-        $this->seed();
-    }
+    use RefreshDatabase;
 }

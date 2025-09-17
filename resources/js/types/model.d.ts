@@ -1,7 +1,7 @@
 interface Model {
     id: string;
-    created_at: string;
-    updated_at: string;
+    createdAt: string;
+    updatedAt: string;
     [key: string]: unknown; // This allows for additional properties...
 }
 
@@ -9,7 +9,7 @@ export interface User extends Model {
     name: string;
     email: string;
     avatar?: string;
-    email_verified_at: string | null;
+    emailVerifiedAt: string | null;
 }
 
 export interface Url extends Model {
@@ -21,14 +21,14 @@ export interface Url extends Model {
 export interface JobExperience extends Model {
     avatar: string;
     company: string;
-    company_description: string;
+    companyDescription: string;
     location: string;
     role: string;
-    role_description: string;
+    roleDescription: string;
     skills: string[];
-    started_at: string;
-    ended_at: string | null;
-    urls: Url[];
+    startedAt: string;
+    endedAt: string | null;
+    urls?: Url[];
 }
 
 export interface School extends Model {
@@ -36,15 +36,15 @@ export interface School extends Model {
     avatar: string;
     description: string;
     location: string;
-    started_at: string;
-    ended_at: string;
+    startedAt: string;
+    endedAt: string;
     urls: Url[];
 }
 
 export interface Project extends Model {
     name: string;
     description: string;
-    urls: Url[];
+    urls?: Url[];
 }
 
 export interface Post extends Model {
@@ -53,6 +53,7 @@ export interface Post extends Model {
     cover: string;
     excerpt: string;
     content: string;
+    publishedAt: string | null;
 }
 
 export interface Language extends Model {
