@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Support\Facades\Password;
 
 test('guest can access reset password form with valid token', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
     ]);
 
@@ -18,7 +17,7 @@ test('guest can access reset password form with valid token', function () {
 });
 
 test('authenticated user is redirected from reset password form', function () {
-    $user = User::factory()->create();
+    $user = UserFactory::new()->create();
     $token = Password::createToken($user);
 
     $response = $this->actingAs($user)->get("/reset-password/{$token}?email={$user->email}");
@@ -27,7 +26,7 @@ test('authenticated user is redirected from reset password form', function () {
 });
 
 test('can reset password with valid token and data', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
     ]);
 
@@ -45,7 +44,7 @@ test('can reset password with valid token and data', function () {
 });
 
 test('password reset fails with invalid token', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
     ]);
 
@@ -60,7 +59,7 @@ test('password reset fails with invalid token', function () {
 });
 
 test('password reset fails with mismatched passwords', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
     ]);
 

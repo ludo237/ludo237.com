@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
+use Database\Factories\UserFactory;
 
 test('guest can access forgot password form', function () {
     $response = $this->get('/forgot-password');
@@ -11,7 +11,7 @@ test('guest can access forgot password form', function () {
 });
 
 test('authenticated user is redirected from forgot password form', function () {
-    $user = User::factory()->create();
+    $user = UserFactory::new()->create();
 
     $response = $this->actingAs($user)->get('/forgot-password');
 
@@ -19,7 +19,7 @@ test('authenticated user is redirected from forgot password form', function () {
 });
 
 test('can request password reset with valid email', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
     ]);
 

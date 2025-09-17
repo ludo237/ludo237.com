@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 test('login screen can be rendered', function () {
@@ -12,7 +11,7 @@ test('login screen can be rendered', function () {
 });
 
 test('users can authenticate using the login screen', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
         'password' => Hash::make('password'),
     ]);
@@ -27,7 +26,7 @@ test('users can authenticate using the login screen', function () {
 });
 
 test('users can not authenticate with invalid password', function () {
-    $user = User::factory()->create([
+    $user = UserFactory::new()->create([
         'email' => 'test@example.com',
         'password' => Hash::make('password'),
     ]);
@@ -41,7 +40,7 @@ test('users can not authenticate with invalid password', function () {
 });
 
 test('authenticated users can logout', function () {
-    $user = User::factory()->create();
+    $user = UserFactory::new()->create();
 
     $response = $this->actingAs($user)->delete('/logout');
 

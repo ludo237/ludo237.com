@@ -14,6 +14,9 @@ class Url extends Model
 
     protected $guarded = ['id'];
 
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function owner(): MorphTo
     {
         return $this->morphTo();

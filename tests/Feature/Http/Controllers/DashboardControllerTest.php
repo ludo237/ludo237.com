@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
+use Database\Factories\UserFactory;
 
 test('guest cannot access dashboard', function () {
     $response = $this->get('/dashboard');
@@ -11,7 +11,7 @@ test('guest cannot access dashboard', function () {
 });
 
 test('authenticated user can access dashboard', function () {
-    $user = User::factory()->create();
+    $user = UserFactory::new()->create();
 
     $response = $this->actingAs($user)->get('/dashboard');
 
