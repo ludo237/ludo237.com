@@ -2,13 +2,13 @@ import { Badge } from '@/components/ui/badge';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { EloquentResource } from '@/types';
+import { EloquentResource, SharedPageProps } from '@/types';
 import { Post } from '@/types/model';
 import { Head, Link, router } from '@inertiajs/react';
 import { format } from 'date-fns';
 
-interface Props {
-    posts: EloquentResource<Post>;
+interface PageProps extends SharedPageProps {
+    posts: EloquentResource<Post[]>;
 }
 
 const PostCard = ({ post, onDelete }: { post: Post; onDelete: (post: Post) => void }) => (
@@ -46,7 +46,7 @@ const PostCard = ({ post, onDelete }: { post: Post; onDelete: (post: Post) => vo
     </Card>
 );
 
-export default function PostsIndex({ posts }: Props) {
+export default function PostsIndex({ posts }: PageProps) {
     const handleLogout = () => {
         router.post(route('logout'));
     };

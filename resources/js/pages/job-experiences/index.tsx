@@ -2,13 +2,13 @@ import { Badge } from '@/components/ui/badge';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { EloquentResource } from '@/types';
+import { EloquentResource, SharedPageProps } from '@/types';
 import { JobExperience } from '@/types/model';
 import { Head, Link, router } from '@inertiajs/react';
 import { format } from 'date-fns';
 
-interface Props {
-    jobExperiences: EloquentResource<JobExperience>;
+interface PageProps extends SharedPageProps {
+    jobExperiences: EloquentResource<JobExperience[]>;
 }
 
 const JobExperienceCard = ({ jobExperience, onDelete }: { jobExperience: JobExperience; onDelete: (jobExperience: JobExperience) => void }) => (
@@ -74,7 +74,7 @@ const JobExperienceCard = ({ jobExperience, onDelete }: { jobExperience: JobExpe
     </Card>
 );
 
-export default function JobExperiencesIndex({ jobExperiences }: Props) {
+export default function JobExperiencesIndex({ jobExperiences }: PageProps) {
     const handleLogout = () => {
         router.post(route('logout'));
     };
@@ -156,12 +156,8 @@ export default function JobExperiencesIndex({ jobExperiences }: Props) {
                     {jobExperiences.meta.total > jobExperiences.meta.per_page && (
                         <div className="flex items-center justify-center space-x-2">
                             {jobExperiences.meta.links.map((link, index) => (
-                                <Button key={index} asChild={!!link.url} variant={link.active ? 'default' : 'outline'} size="sm" disabled={!link.url}>
-                                    {link.url ? (
-                                        <Link href={link.url} dangerouslySetInnerHTML={{ __html: link.label }} />
-                                    ) : (
-                                        <span dangerouslySetInnerHTML={{ __html: link.label }} />
-                                    )}
+                                <Button key={index} asChild variant={link.active ? 'default' : 'outline'} size="sm" disabled={!link.url}>
+                                    <Link href={link.url!}>{link.label}</Link>
                                 </Button>
                             ))}
                         </div>

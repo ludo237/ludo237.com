@@ -2,34 +2,18 @@ import AdminLayout from '@/components/AdminLayout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { EloquentResource, SharedPageProps } from '@/types';
+import { JobExperience } from '@/types/model';
 import { Head, Link } from '@inertiajs/react';
 import { format } from 'date-fns';
 
-interface JobExperience {
-    id: string;
-    avatar: string | null;
-    company: string;
-    company_description: string | null;
-    location: string | null;
-    role: string;
-    role_description: string | null;
-    skills: string[] | null;
-    started_at: string;
-    ended_at: string | null;
-    created_at: string;
-    updated_at: string;
-    urls?: Array<{
-        id: string;
-        url: string;
-        title: string;
-    }>;
+interface PageProps extends SharedPageProps {
+    jobExperience: EloquentResource<JobExperience>;
 }
 
-interface Props {
-    jobExperience: JobExperience;
-}
+export default function ShowJobExperience(props: PageProps) {
+    const jobExperience = props.jobExperience.data;
 
-export default function ShowJobExperience({ jobExperience }: Props) {
     return (
         <>
             <Head title={`View Experience: ${jobExperience.role} at ${jobExperience.company}`} />
@@ -129,14 +113,14 @@ export default function ShowJobExperience({ jobExperience }: Props) {
                                 <h4 className="mb-2 text-sm font-medium text-foreground">Related URLs</h4>
                                 <div className="space-y-2">
                                     {jobExperience.urls.map((url) => (
-                                        <div key={url.id} className="flex items-center space-x-2">
+                                        <div key={url.id} className="flex items-center space-x-3">
                                             <a
-                                                href={url.url}
+                                                href={url.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-primary hover:underline"
                                             >
-                                                {url.title || url.url}
+                                                {url.name}
                                             </a>
                                         </div>
                                     ))}

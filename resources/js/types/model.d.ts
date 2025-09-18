@@ -44,7 +44,7 @@ export interface School extends Model {
 export interface Project extends Model {
     name: string;
     description: string;
-    urls?: Url[];
+    urls: Url[];
 }
 
 export interface Post extends Model {
