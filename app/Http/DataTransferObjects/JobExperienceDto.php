@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\DataTransferObjects;
 
-readonly class JobExperienceDto
+final readonly class JobExperienceDto
 {
     /**
      * @param  array<string>|null  $skills

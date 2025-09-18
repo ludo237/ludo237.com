@@ -8,7 +8,7 @@ use Database\Factories\ProjectFactory;
 use Database\Factories\UrlFactory;
 use Illuminate\Database\Seeder;
 
-class ProjectSeeder extends Seeder
+final class ProjectSeeder extends Seeder
 {
     public function run(): void
     {

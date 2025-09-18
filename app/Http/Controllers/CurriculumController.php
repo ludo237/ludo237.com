@@ -15,7 +15,7 @@ use App\Models\School;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class CurriculumController extends Controller
+final class CurriculumController extends Controller
 {
     public function index(): Response
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\DataTransferObjects;
 
-readonly class PostDto
+final readonly class PostDto
 {
     public function __construct(
         public string $title,

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Post extends Model
+final class Post extends Model
 {
     use HasUlids;
 
@@ -18,7 +18,7 @@ class Post extends Model
 
     protected static function booted(): void
     {
-        static::creating(function (Post $post) {
+        self::creating(function (Post $post): void {
             $post->slug = Str::slug($post->getAttributeValue('title')).'-'.Str::random(5);
         });
     }

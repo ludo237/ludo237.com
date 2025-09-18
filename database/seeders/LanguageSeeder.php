@@ -7,7 +7,7 @@ namespace Database\Seeders;
 use Database\Factories\LanguageFactory;
 use Illuminate\Database\Seeder;
 
-class LanguageSeeder extends Seeder
+final class LanguageSeeder extends Seeder
 {
     public function run(): void
     {

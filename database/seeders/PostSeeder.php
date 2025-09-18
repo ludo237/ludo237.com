@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 
-class PostSeeder extends Seeder
+final class PostSeeder extends Seeder
 {
     public function run(): void
     {

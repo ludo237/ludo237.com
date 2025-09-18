@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('job_experiences', function (Blueprint $table) {
+        Schema::create('job_experiences', function (Blueprint $table): void {
             $table->ulid('id');
             $table->string('avatar');
             $table->string('company')->index();

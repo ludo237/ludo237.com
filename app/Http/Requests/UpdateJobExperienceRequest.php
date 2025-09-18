@@ -8,7 +8,7 @@ use App\Http\DataTransferObjects\JobExperienceDto;
 use App\Http\Requests\Contracts\HasDto;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateJobExperienceRequest extends FormRequest implements HasDto
+final class UpdateJobExperienceRequest extends FormRequest implements HasDto
 {
     public function authorize(): bool
     {

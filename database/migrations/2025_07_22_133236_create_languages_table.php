@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table): void {
             $table->ulid('id');
             $table->string('name')->index();
             $table->enum('experience', ['beginner', 'intermediate', 'fluent', 'native']);

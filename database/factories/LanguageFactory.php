@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Language>
  */
-class LanguageFactory extends Factory
+final class LanguageFactory extends Factory
 {
     protected $model = Language::class;
 

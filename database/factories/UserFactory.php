@@ -12,14 +12,14 @@ use Illuminate\Support\Str;
 /**
  * @extends Factory<User>
  */
-class UserFactory extends Factory
+final class UserFactory extends Factory
 {
     protected $model = User::class;
 
     /**
      * The current password being used by the factory.
      */
-    protected static ?string $password;
+    private static ?string $password;
 
     public function definition(): array
     {
@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => self::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
     }
@@ -35,9 +35,9 @@ class UserFactory extends Factory
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
+    public function unverified(): self
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes): array => [
             'email_verified_at' => null,
         ]);
     }
@@ -45,9 +45,9 @@ class UserFactory extends Factory
     /**
      * Create a tester user with predefined credentials.
      */
-    public function tester(): static
+    public function tester(): self
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes): array => [
             'name' => 'Tester User',
             'email' => 'foo@bar.com',
             'password' => Hash::make('supersecret'),

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Post>
  */
-class PostFactory extends Factory
+final class PostFactory extends Factory
 {
     protected $model = Post::class;
 
@@ -27,14 +27,14 @@ class PostFactory extends Factory
 
     public function published(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes): array => [
             'published_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ]);
     }
 
     public function draft(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes): array => [
             'published_at' => null,
         ]);
     }

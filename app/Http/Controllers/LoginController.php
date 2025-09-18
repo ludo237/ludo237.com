@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class LoginController extends Controller
+final class LoginController extends Controller
 {
     public function show(): Response
     {

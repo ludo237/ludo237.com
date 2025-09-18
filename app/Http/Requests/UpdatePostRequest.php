@@ -8,7 +8,7 @@ use App\Http\DataTransferObjects\PostDto;
 use App\Http\Requests\Contracts\HasDto;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePostRequest extends FormRequest implements HasDto
+final class UpdatePostRequest extends FormRequest implements HasDto
 {
     public function authorize(): bool
     {

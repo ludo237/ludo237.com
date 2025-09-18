@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('urls', function (Blueprint $table) {
+        Schema::create('urls', function (Blueprint $table): void {
             $table->ulid('id');
             $table->ulidMorphs('owner');
             $table->string('name');

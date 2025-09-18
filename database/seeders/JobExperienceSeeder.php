@@ -9,7 +9,7 @@ use Database\Factories\UrlFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
 
-class JobExperienceSeeder extends Seeder
+final class JobExperienceSeeder extends Seeder
 {
     public function run(): void
     {

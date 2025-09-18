@@ -9,7 +9,7 @@ use App\Models\Post;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class BlogController extends Controller
+final class BlogController extends Controller
 {
     public function index(): Response
     {

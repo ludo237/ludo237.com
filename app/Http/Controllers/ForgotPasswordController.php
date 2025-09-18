@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ForgotPasswordController extends Controller
+final class ForgotPasswordController extends Controller
 {
     public function show(): Response
     {

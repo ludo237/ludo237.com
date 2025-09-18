@@ -9,7 +9,7 @@ use Database\Factories\UrlFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
 
-class SchoolSeeder extends Seeder
+final class SchoolSeeder extends Seeder
 {
     public function run(): void
     {

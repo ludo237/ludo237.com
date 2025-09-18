@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class PostController extends Controller
+final class PostController extends Controller
 {
     public function index(): Response
     {

@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class JobExperienceController extends Controller
+final class JobExperienceController extends Controller
 {
     public function index(): Response
     {

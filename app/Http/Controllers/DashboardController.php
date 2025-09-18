@@ -9,7 +9,7 @@ use App\Models\Post;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class DashboardController extends Controller
+final class DashboardController extends Controller
 {
     public function index(): Response
     {
