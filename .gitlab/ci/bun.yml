@@ -35,7 +35,7 @@ prettier:
     - job: bun::install
       artifacts: true
   script:
-    - bun run format:check
+    - bun run prettier:check
 
 lint:
   stage: tests
@@ -44,7 +44,7 @@ lint:
     - job: bun::install
       artifacts: true
   script:
-    - bun run lint:check
+    - bun run eslint:check
 
 typescript:
   stage: tests
@@ -53,7 +53,7 @@ typescript:
     - job: bun::install
       artifacts: true
   script:
-    - bun run types
+    - bun run types:check
 
 bun::build:
   stage: build
